@@ -49,7 +49,6 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
 .card-sub{font-size:11px;opacity:.85;margin-top:2px;}
 .listen-snap{background:linear-gradient(135deg,#0a1a12,#061510);border:1px solid rgba(6,182,212,.3);border-radius:16px;margin-bottom:14px;}
 .therapist-banner{background:linear-gradient(135deg,#1a1000,#2a1800);border:1px solid rgba(245,158,11,.35);border-radius:14px;padding:12px 14px;margin-bottom:14px;display:flex;gap:12px;align-items:center;}
-/* CALENDAR */
 .cal-box{background:#1a0030;border-radius:16px;padding:16px 20px;margin-bottom:14px;}
 .cal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
 .cal-nav{background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.4);color:#c084fc;border-radius:8px;padding:4px 10px;font-size:13px;cursor:pointer;}
@@ -64,13 +63,11 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
 .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
 .leg-item{display:flex;align-items:center;gap:4px;font-size:11px;color:#9b90b0;}
 .leg-dot{width:8px;height:8px;border-radius:50%;}
-/* MODALS */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;align-items:flex-end;justify-content:center;}
 .modal-bg.open{display:flex;}
 .modal{background:#160028;border-radius:20px 20px 0 0;padding:24px 20px 36px;width:100%;max-width:480px;border:1px solid #3d2060;}
 .act-check{background:#0a0015;border:1.5px solid rgba(124,58,237,.2);border-radius:10px;padding:10px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:all .2s;}
 .act-check.checked{border-color:#c084fc;background:rgba(124,58,237,.2);}
-/* NAV */
 .bot-nav{position:fixed;bottom:0;left:0;right:0;background:#0e0018;border-top:1px solid #2a1845;display:flex;z-index:100;max-width:480px;margin:0 auto;}
 .nav-btn{flex:1;padding:10px 4px 14px;border:none;background:none;color:#c084fc;font-size:10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;border-top:2px solid #c084fc;}
 .nav-icon{font-size:19px;}
@@ -85,14 +82,12 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
   <p>A Year of Letters to the Girl Who Forgot She Was Worth Loving</p>
 </div>
 
-<!-- THERAPIST REMINDER -->
 <div class="therapist-banner" id="therapistBanner">
   <div style="font-size:24px;">🧠</div>
   <div style="flex:1;"><div style="font-size:13px;color:#fbbf24;font-weight:700;margin-bottom:2px;">Find a New Therapist</div><div style="font-size:11px;color:#9b90b0;line-height:1.4;">This work deserves professional support alongside it.</div></div>
   <button onclick="dismissTherapist()" style="background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.4);border-radius:8px;color:#fbbf24;font-size:11px;padding:5px 10px;cursor:pointer;white-space:nowrap;font-weight:700;">Done ✓</button>
 </div>
 
-<!-- HERO: TODAY — always open -->
 <div class="collapse-card hero-card">
   <div style="padding:16px 20px 6px;display:flex;align-items:center;gap:12px;">
     <div style="font-size:24px;">✦</div>
@@ -123,7 +118,7 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
       <div style="font-size:15px;color:#fff;font-style:italic;line-height:1.55;font-family:Georgia,serif;" id="scriptureText"></div>
       <div style="font-size:10px;color:rgba(255,255,255,.5);margin-top:6px;" id="scriptureLetter"></div>
     </div>
-    <div class="prompt-box" onclick="window.location.href='ual-today'">
+    <div class="prompt-box" onclick="window.location.href='https://fletch1980.github.io/Unworthy_today/'">
       <div style="font-size:10px;font-weight:700;color:#f9a8d4;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;">Today's Prompt · Day <span id="promptDay"></span></div>
       <div style="font-size:14px;color:#fff;font-style:italic;line-height:1.55;font-family:Georgia,serif;margin-bottom:6px;" id="promptText"></div>
       <div style="font-size:11px;color:#f9a8d4;font-weight:700;">Tap to write your response →</div>
@@ -135,7 +130,6 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
   </div>
 </div>
 
-<!-- CALENDAR -->
 <div class="cal-box">
   <div class="cal-hdr">
     <button class="cal-nav" onclick="changeMonth(-1)">◀</button>
@@ -156,16 +150,14 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
 
 <button onclick="openLogModal(todayISO())" style="width:100%;padding:14px;background:linear-gradient(135deg,#7c3aed,#be185d);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:800;cursor:pointer;margin-bottom:14px;">✅ Log Today's Practice</button>
 
-<!-- CURRENTLY LISTENING -->
 <div class="listen-snap">
   <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px;">
     <div style="color:#06b6d4;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">🎧 Currently Listening</div>
-    <a href="ual-listen" style="background:rgba(6,182,212,.15);border:1px solid rgba(6,182,212,.3);color:#06b6d4;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;text-decoration:none;">All Resources →</a>
+    <a href="https://fletch1980.github.io/Unworthy_listen/" style="background:rgba(6,182,212,.15);border:1px solid rgba(6,182,212,.3);color:#06b6d4;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;text-decoration:none;">All Resources →</a>
   </div>
   <div style="padding:0 16px 14px;" id="listenSnap"></div>
 </div>
 
-<!-- YOUR APPS -->
 <div class="collapse-card apps-card">
   <button class="collapse-trigger" onclick="toggle('appsBody','appsArrow')">
     <div class="ct-left">
@@ -179,11 +171,11 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
   </button>
   <div id="appsBody" class="collapsible collapse-body">
     <div class="inner-cards">
-      <a href="ual-today" class="app-card card-today"><div class="card-icon">◈</div><div class="card-title">Today</div><div class="card-sub">Checklist · Journal · Prompt · Schedule</div></a>
-      <a href="ual-history" class="app-card card-history"><div class="card-icon">📖</div><div class="card-title">History</div><div class="card-sub">Every entry — thoughts, prompts, media</div></a>
-      <a href="ual-blueprint" class="app-card card-blueprint"><div class="card-icon">☽</div><div class="card-title">Blueprint</div><div class="card-sub">All 52 letters · Status tracker</div></a>
-      <a href="ual-affirmations" class="app-card card-affirmations"><div class="card-icon">✦</div><div class="card-title">Affirmations</div><div class="card-sub">When the wound speaks — truth by truth</div></a>
-      <a href="ual-listen" class="app-card card-listen"><div class="card-icon">🎧</div><div class="card-title">Listen Tracker</div><div class="card-sub">Session logs · Notes · History</div></a>
+      <a href="https://fletch1980.github.io/Unworthy_today/" class="app-card card-today"><div class="card-icon">◈</div><div class="card-title">Today</div><div class="card-sub">Checklist · Journal · Prompt · Schedule</div></a>
+      <a href="https://fletch1980.github.io/Unworthy_history/" class="app-card card-history"><div class="card-icon">📖</div><div class="card-title">History</div><div class="card-sub">Every entry — thoughts, prompts, media</div></a>
+      <a href="https://fletch1980.github.io/Unworthy_blueprint/" class="app-card card-blueprint"><div class="card-icon">☽</div><div class="card-title">Blueprint</div><div class="card-sub">All 52 letters · Status tracker</div></a>
+      <a href="https://fletch1980.github.io/Unworthy_affirmation/" class="app-card card-affirmations"><div class="card-icon">✦</div><div class="card-title">Affirmations</div><div class="card-sub">When the wound speaks — truth by truth</div></a>
+      <a href="https://fletch1980.github.io/Unworthy_listen/" class="app-card card-listen"><div class="card-icon">🎧</div><div class="card-title">Listen Tracker</div><div class="card-sub">Session logs · Notes · History</div></a>
     </div>
   </div>
 </div>
@@ -250,7 +242,6 @@ function toggle(bodyId,arrowId){var b=document.getElementById(bodyId),a=document
 function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
 function dismissTherapist(){sd('ual_t_done',true);document.getElementById('therapistBanner').style.display='none';}
 
-// ── RENDER HOME ───────────────────────────────────────────────
 function renderHome(){
   var dn=getDayNum(), earned=getEarned(), elapsed=dn;
   var ep=Math.round(earned/TOTAL*100), elp=Math.round(elapsed/TOTAL*100);
@@ -281,7 +272,6 @@ function renderHome(){
   document.getElementById('promptDay').textContent=dn;
   document.getElementById('promptText').textContent='"'+PROMPTS[(dn-1)%PROMPTS.length]+'"';
 
-  // listen snap
   var resData=gd('ual_resources',{}),cur=null;
   for(var i=0;i<RES_IDS.length;i++){if(resData[RES_IDS[i]]&&resData[RES_IDS[i]].status==='current'){cur={id:RES_IDS[i],data:resData[RES_IDS[i]]};break;}}
   var ls=document.getElementById('listenSnap');
@@ -295,7 +285,6 @@ function renderHome(){
   }
 }
 
-// ── CALENDAR ──────────────────────────────────────────────────
 var calYear=new Date().getFullYear(), calMonth=new Date().getMonth();
 var logModalISO='', logCheckedSet=new Set(), dayModalISO='';
 
@@ -389,7 +378,6 @@ function removeCalAct(act){
 document.getElementById('logModal').addEventListener('click',function(e){if(e.target===this)closeLogModal();});
 document.getElementById('dayModal').addEventListener('click',function(e){if(e.target===this)closeDayModal();});
 
-// ── INIT ──────────────────────────────────────────────────────
 renderHome();
 renderCal();
 </script>
