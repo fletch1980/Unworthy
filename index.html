@@ -117,6 +117,10 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
       <div style="font-size:11px;font-weight:700;color:#f9a8d4;margin-bottom:4px;" id="scriptureRef"></div>
       <div style="font-size:15px;color:#fff;font-style:italic;line-height:1.55;font-family:Georgia,serif;" id="scriptureText"></div>
       <div style="font-size:10px;color:rgba(255,255,255,.5);margin-top:6px;" id="scriptureLetter"></div>
+      <a id="bibleBtn" href="#" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.35);border-radius:8px;padding:7px 14px;text-decoration:none;">
+        <span style="font-size:14px;">✝️</span>
+        <span style="font-size:12px;font-weight:700;color:#38bdf8;">Open in YouVersion →</span>
+      </a>
     </div>
     <div class="prompt-box" onclick="window.location.href='https://fletch1980.github.io/Unworthy_today/'">
       <div style="font-size:10px;font-weight:700;color:#f9a8d4;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;">Today's Prompt · Day <span id="promptDay"></span></div>
@@ -145,6 +149,7 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
     <div class="leg-item"><div class="leg-dot" style="background:#ec4899;box-shadow:0 0 4px #ec4899;"></div>Creative</div>
     <div class="leg-item"><div class="leg-dot" style="background:#06b6d4;box-shadow:0 0 4px #06b6d4;"></div>Journal</div>
     <div class="leg-item"><div class="leg-dot" style="background:#f59e0b;box-shadow:0 0 4px #f59e0b;"></div>Letter</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#38bdf8;box-shadow:0 0 4px #38bdf8;"></div>Bible</div>
   </div>
 </div>
 
@@ -191,6 +196,7 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
       <div class="act-check" id="chk-creative" onclick="toggleAct('creative')"><span style="font-size:1.2rem;">✍🏾</span><span style="font-size:12px;color:#ede8f5;font-weight:600;">Creative Practice</span></div>
       <div class="act-check" id="chk-journal" onclick="toggleAct('journal')"><span style="font-size:1.2rem;">📝</span><span style="font-size:12px;color:#ede8f5;font-weight:600;">Journal Entry</span></div>
       <div class="act-check" id="chk-letter" onclick="toggleAct('letter')"><span style="font-size:1.2rem;">✉️</span><span style="font-size:12px;color:#ede8f5;font-weight:600;">Letter Written</span></div>
+      <div class="act-check" id="chk-bible" onclick="toggleAct('bible')" style="grid-column:span 2;"><span style="font-size:1.2rem;">✝️</span><span style="font-size:12px;color:#ede8f5;font-weight:600;">Bible Reading</span></div>
     </div>
     <div style="display:flex;gap:10px;">
       <button onclick="closeLogModal()" style="background:#0a0015;border:1px solid #2a1845;border-radius:10px;color:#9b90b0;font-size:14px;padding:12px 18px;cursor:pointer;">Cancel</button>
@@ -222,8 +228,8 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
 var START=new Date('2026-03-15'), TOTAL=291;
 var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var MONTHS_ARR=['January','February','March','April','May','June','July','August','September','October','November','December'];
-var DOT_COLORS={healing:'#a855f7',creative:'#ec4899',journal:'#06b6d4',letter:'#f59e0b'};
-var ACT_LABELS={healing:'📖 Healing Hour',creative:'✍🏾 Creative Practice',journal:'📝 Journal Entry',letter:'✉️ Letter Written'};
+var DOT_COLORS={healing:'#a855f7',creative:'#ec4899',journal:'#06b6d4',letter:'#f59e0b',bible:'#38bdf8'};
+var ACT_LABELS={healing:'📖 Healing Hour',creative:'✍🏾 Creative Practice',journal:'📝 Journal Entry',letter:'✉️ Letter Written',bible:'✝️ Bible Reading'};
 var RES_IDS=['bgh','tpwfo','ob','haabw','aal','tbkts','moth','hb','tfbg','rob','hunger','heavy'];
 var RES_TITLES={bgh:'Black Girls Heal',tpwfo:'The Place We Find Ourselves',ob:'On Being',haabw:'Healing Anxious Attachment',aal:'All About Love',tbkts:'The Body Keeps the Score',moth:'The Moth',hb:'Hidden Brain',tfbg:'Therapy for Black Girls',rob:'The Robcast',hunger:'Hunger',heavy:'Heavy'};
 
@@ -269,6 +275,9 @@ function renderHome(){
   document.getElementById('scriptureRef').textContent=sc.ref;
   document.getElementById('scriptureText').textContent='"'+sc.text+'"';
   document.getElementById('scriptureLetter').textContent=sc.letter;
+
+  // Build YouVersion deep link from scripture ref
+  document.getElementById('bibleBtn').href=buildYVLink(sc.ref);
   document.getElementById('promptDay').textContent=dn;
   document.getElementById('promptText').textContent='"'+PROMPTS[(dn-1)%PROMPTS.length]+'"';
 
@@ -322,15 +331,14 @@ function changeMonth(dir){
 }
 
 function openCalDay(iso){
-  var acts=gd('ual_logs',{})[iso]||[];
-  if(acts.length) openDayModal(iso); else openLogModal(iso);
+  openDayModal(iso);
 }
 
 function openLogModal(iso){
   logModalISO=iso;
   var existing=gd('ual_logs',{})[iso]||[];
   logCheckedSet=new Set(existing);
-  ['healing','creative','journal','letter'].forEach(function(k){
+      ['healing','creative','journal','letter','bible'].forEach(function(k){
     document.getElementById('chk-'+k).classList.toggle('checked', logCheckedSet.has(k));
   });
   document.getElementById('logModalTitle').textContent=existing.length?'✏️ Edit Log':'✅ Log Practice';
@@ -352,17 +360,33 @@ function deleteLog(){
   var logs=gd('ual_logs',{}); delete logs[logModalISO]; sd('ual_logs',logs);
   closeLogModal(); renderCal(); renderHome(); toast('Log deleted 🗑');
 }
+function getScriptureForISO(iso){
+  var dn=Math.max(1,Math.min(Math.floor((new Date(iso+'T12:00:00')-START)/86400000)+1,TOTAL));
+  return SCRIPTURES[(dn-1)%SCRIPTURES.length];
+}
+function buildYVLink(ref){
+  var BOOK_IDS={Genesis:1,Exodus:2,Ruth:8,Psalms:19,Psalm:19,Proverbs:20,Isaiah:23,Jeremiah:24,Lamentations:25,Ezekiel:26,Daniel:27,Zephaniah:36,Malachi:39,Matthew:40,Mark:41,Luke:42,John:43,Romans:45,'1 Cor':46,'1 Corinthians':46,'2 Corinthians':47,Galatians:48,Ephesians:49,Philippians:50,Colossians:51,'1 Timothy':54,'2 Timothy':55,Hebrews:58,James:59,'1 John':62,Revelation:66,Deuteronomy:5,'1 Kings':11,Hosea:28,Joel:29,Habakkuk:35,Micah:33,Nehemiah:16};
+  var bookId=1,chapter=1,verse=1;
+  for(var bk in BOOK_IDS){if(ref.indexOf(bk)===0){bookId=BOOK_IDS[bk];var rest=ref.slice(bk.length).trim();var cv=rest.split(':');chapter=parseInt(cv[0])||1;verse=parseInt((cv[1]||'1').split('-')[0])||1;break;}}
+  return 'https://www.bible.com/bible/116/'+bookId+'.'+chapter+'.'+verse+'.NLT';
+}
 function openDayModal(iso){
   dayModalISO=iso; var acts=gd('ual_logs',{})[iso]||[];
   document.getElementById('dayModalTitle').textContent='📅 '+isoFriendly(iso);
-  var html='';
+  var sc=getScriptureForISO(iso);
+  var html='<div style="background:rgba(255,255,255,.06);border-left:3px solid #ec4899;border-radius:8px;padding:10px 12px;margin-bottom:12px;">'
+    +'<div style="font-size:10px;font-weight:700;color:#f9a8d4;margin-bottom:3px;">'+sc.ref+'</div>'
+    +'<div style="font-size:13px;color:#fff;font-style:italic;font-family:Georgia,serif;line-height:1.5;margin-bottom:8px;">"'+sc.text+'"</div>'
+    +'<a href="'+buildYVLink(sc.ref)+'" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.35);border-radius:7px;padding:5px 12px;text-decoration:none;">'
+    +'<span style="font-size:12px;">✝️</span><span style="font-size:11px;font-weight:700;color:#38bdf8;">Open in YouVersion →</span></a>'
+    +'</div>';
   acts.forEach(function(a){
     html+='<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #2a1845;">'
       +'<div style="display:flex;align-items:center;gap:8px;"><div style="width:10px;height:10px;border-radius:50%;background:'+(DOT_COLORS[a]||'#c084fc')+'"></div><span style="font-size:13px;color:#ede8f5;">'+(ACT_LABELS[a]||a)+'</span></div>'
       +'<button onclick="removeCalAct(\''+a+'\')" style="background:#1a0010;border:1px solid rgba(239,68,68,.3);color:#ef4444;border-radius:6px;font-size:11px;font-weight:700;padding:4px 10px;cursor:pointer;">Remove</button>'
       +'</div>';
   });
-  if(!html) html='<div style="text-align:center;color:#5a5070;font-size:13px;padding:12px 0;">Nothing logged.</div>';
+  if(!acts.length) html+='<div style="text-align:center;color:#5a5070;font-size:13px;padding:8px 0;">Nothing logged yet.</div>';
   document.getElementById('dayModalContent').innerHTML=html;
   document.getElementById('dayModal').classList.add('open');
 }
