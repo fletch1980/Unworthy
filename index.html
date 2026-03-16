@@ -8,51 +8,22 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#07000f;font-family:system-ui,sans-serif;min-height:100vh;padding-bottom:80px;}
 input,textarea,select{font-family:inherit;}
-
-/* NAV */
 .bot-nav{position:fixed;bottom:0;left:0;right:0;background:#0e0018;border-top:1px solid #2a1845;display:flex;z-index:100;max-width:480px;margin:0 auto;}
 .nav-btn{flex:1;padding:10px 4px 14px;border:none;background:none;color:#5a5070;font-size:10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;border-top:2px solid transparent;transition:color .2s;}
 .nav-btn.active{color:#c084fc;border-top-color:#c084fc;}
 .nav-icon{font-size:19px;}
-
-/* SCREENS */
 .screen{display:none;}
 .screen.active{display:block;}
-
-/* SHARED */
-.sect-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin:14px 0 8px;}
 .card{background:#160028;border:1px solid #2a1845;border-radius:14px;padding:14px 16px;margin-bottom:10px;}
 .grad-btn{width:100%;padding:14px;background:linear-gradient(135deg,#7c3aed,#be185d);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:800;cursor:pointer;}
-.pill{display:inline-block;border-radius:99px;padding:2px 10px;font-size:10px;font-weight:700;}
-
-/* HEADER */
 .app-header{position:relative;overflow:hidden;background:linear-gradient(160deg,#2e0060 0%,#7c1d3e 50%,#1a0030 100%);padding:32px 20px 24px;text-align:center;}
 .header-orb1{position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(168,85,247,.12);pointer-events:none;}
 .header-orb2{position:absolute;bottom:-60px;right:-30px;width:250px;height:250px;border-radius:50%;background:rgba(190,24,93,.10);pointer-events:none;}
-.header-flame{font-size:52px;line-height:1;margin-bottom:8px;filter:drop-shadow(0 0 18px rgba(251,146,60,.7));}
-.header-title{font-size:21px;font-weight:900;color:#fff;letter-spacing:.5px;margin-bottom:3px;}
-.header-sub{font-size:12px;color:rgba(255,255,255,.6);font-style:italic;margin-bottom:14px;}
-.header-quote-box{background:rgba(0,0,0,.3);border-radius:12px;padding:10px 14px;display:inline-block;}
-.header-quote-label{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:3px;}
-.header-quote{font-size:13px;color:#f9a8d4;font-style:italic;line-height:1.5;}
-
-/* STREAK ROW */
 .streak-row{display:flex;gap:10px;padding:14px 16px 0;}
 .streak-card{flex:1;background:#160028;border-radius:14px;padding:14px;text-align:center;}
 .streak-val{font-size:2rem;font-weight:900;color:#c084fc;}
 .streak-card.fire .streak-val{color:#fb923c;filter:drop-shadow(0 0 8px rgba(234,88,12,.7));}
 .streak-lbl{font-size:10px;color:#9b90b0;margin-top:2px;text-transform:uppercase;letter-spacing:1px;}
-
-/* PROGRESS */
-.prog-wrap{background:#160028;border-radius:14px;padding:12px 16px;margin:10px 16px 0;}
-.prog-row{margin-bottom:10px;}
-.prog-row:last-child{margin-bottom:0;}
-.prog-meta{display:flex;justify-content:space-between;margin-bottom:5px;font-size:11px;}
-.prog-bar-bg{background:#0a0015;border-radius:99px;overflow:hidden;}
-.prog-bar-fill{height:100%;border-radius:99px;transition:width .5s;}
-.prog-note{font-size:11px;margin-top:6px;font-style:italic;}
-
-/* CALENDAR */
 .cal-box{background:#160028;border-radius:16px;padding:16px 20px;margin:14px 16px;}
 .cal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
 .cal-title{color:#fff;font-size:15px;font-weight:800;}
@@ -71,8 +42,6 @@ input,textarea,select{font-family:inherit;}
 .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
 .leg-item{display:flex;align-items:center;gap:4px;font-size:11px;color:#9b90b0;}
 .leg-dot{width:8px;height:8px;border-radius:50%;}
-
-/* CHECKLIST */
 .check-item{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;background:#160028;border:1.5px solid #2a1845;border-radius:12px;margin-bottom:8px;cursor:pointer;transition:all .2s;}
 .check-item.done{background:rgba(124,58,237,.15);border-color:rgba(168,85,247,.5);}
 .check-box{width:22px;height:22px;border-radius:6px;flex-shrink:0;margin-top:1px;border:2px solid #3d2060;display:flex;align-items:center;justify-content:center;transition:all .2s;}
@@ -81,14 +50,10 @@ input,textarea,select{font-family:inherit;}
 .check-item.done .check-box-tick{display:block;}
 .check-lbl{font-size:13px;color:#ede8f5;line-height:1.4;}
 .check-item.done .check-lbl{color:#5a5070;text-decoration:line-through;}
-
-/* JOURNAL */
 .j-textarea{width:100%;background:#160028;border:1px solid #2a1845;border-radius:12px;padding:12px 14px;color:#ede8f5;font-size:14px;line-height:1.6;resize:vertical;outline:none;}
 .j-textarea.prompt-ta{border-color:rgba(249,168,212,.3);}
 .j-textarea::placeholder{color:#3a3050;}
 .media-btn{flex:1;padding:11px 0;border-radius:10px;border:1px solid;font-size:13px;cursor:pointer;font-weight:700;}
-
-/* HISTORY */
 .hist-item{background:#160028;border:1px solid #2a1845;border-radius:14px;padding:13px 16px;margin-bottom:8px;cursor:pointer;display:flex;gap:12px;align-items:flex-start;}
 .hist-item.has-entry{border-color:rgba(168,85,247,.4);}
 .hist-date-col{min-width:42px;text-align:center;}
@@ -97,20 +62,11 @@ input,textarea,select{font-family:inherit;}
 .hist-month{font-size:9px;color:#5a5070;text-transform:uppercase;letter-spacing:1px;}
 .hist-divider{width:1px;background:#2a1845;align-self:stretch;}
 .hist-item.has-entry .hist-divider{background:rgba(168,85,247,.4);}
-
-/* BLUEPRINT */
-.bp-part-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:#160028;border:1px solid #2a1845;border-radius:12px;cursor:pointer;text-align:left;transition:border-radius .2s;}
-.bp-part-trigger.open{border-radius:12px 12px 0 0;}
+.bp-part-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:#160028;border:1px solid #2a1845;border-radius:12px;cursor:pointer;text-align:left;}
 .bp-items{background:#0a0018;border-radius:0 0 12px 12px;border:1px solid #2a1845;border-top:none;padding:4px 0;display:none;}
 .bp-item{display:flex;gap:10px;padding:10px 14px;border-bottom:1px solid #160028;align-items:center;}
 .bp-item:last-child{border-bottom:none;}
-.bp-num{font-size:11px;font-weight:700;min-width:24px;color:#3a3050;}
-.status-btn{border-radius:8px;font-size:10px;padding:4px 8px;cursor:pointer;font-weight:700;white-space:nowrap;border:1px solid;}
-
-/* AFFIRMATIONS */
 .aff-card{background:linear-gradient(135deg,#160028,#1e0038);border:1px solid #2a1845;border-left:3px solid #a855f7;border-radius:14px;padding:14px 16px;margin-bottom:10px;}
-
-/* MODALS */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;align-items:flex-end;justify-content:center;}
 .modal-bg.open{display:flex;}
 .modal{background:#160028;border-radius:20px 20px 0 0;padding:24px 20px 36px;width:100%;max-width:480px;border:1px solid #3d2060;max-height:90vh;overflow-y:auto;}
@@ -122,89 +78,65 @@ input,textarea,select{font-family:inherit;}
 .modal-save{flex:1;background:linear-gradient(135deg,#7c3aed,#be185d);border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:700;padding:12px;cursor:pointer;}
 .modal-cancel{background:#0a0015;border:1px solid #2a1845;border-radius:10px;color:#9b90b0;font-size:14px;padding:12px 18px;cursor:pointer;}
 .modal-delete{background:#1a0010;border:1px solid rgba(239,68,68,.4);border-radius:10px;color:#ef4444;font-size:14px;font-weight:700;padding:12px 18px;cursor:pointer;}
-
-/* LISTEN */
-.resource-card{background:#160028;border:1px solid #2a1845;border-radius:14px;padding:14px 16px;margin-bottom:10px;}
-.res-update-btn{width:100%;background:rgba(124,58,237,.15);border:1px solid #2a1845;border-radius:8px;color:#c084fc;font-size:12px;padding:7px 14px;cursor:pointer;margin-top:8px;}
-
-/* TOASTS */
 .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#7c3aed;color:#fff;padding:10px 22px;border-radius:20px;font-size:14px;font-weight:700;z-index:999;pointer-events:none;opacity:0;transition:opacity .3s;}
 .toast.show{opacity:1;}
-
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,.3)}50%{box-shadow:0 0 0 6px rgba(124,58,237,0)}}
 </style>
 </head>
 <body>
 
-<!-- ══ HOME ══════════════════════════════════════════════════ -->
 <div id="screen-home" class="screen active">
   <div class="app-header">
     <div class="header-orb1"></div><div class="header-orb2"></div>
-    <div class="header-flame">🔥</div>
-    <div class="header-title">Unworthy Abandoned Love</div>
-    <div class="header-sub">A Year of Letters to the Girl Who Forgot She Was Worth Loving</div>
-    <div class="header-quote-box">
-      <div class="header-quote-label">Today's Word</div>
-      <div class="header-quote" id="homeQuote"></div>
+    <div style="font-size:52px;line-height:1;margin-bottom:8px;filter:drop-shadow(0 0 18px rgba(251,146,60,.7));">🔥</div>
+    <div style="font-size:21px;font-weight:900;color:#fff;letter-spacing:.5px;margin-bottom:3px;">Unworthy Abandoned Love</div>
+    <div style="font-size:12px;color:rgba(255,255,255,.6);font-style:italic;margin-bottom:14px;">A Year of Letters to the Girl Who Forgot She Was Worth Loving</div>
+    <div style="background:rgba(0,0,0,.3);border-radius:12px;padding:10px 14px;display:inline-block;">
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:3px;">Today's Word</div>
+      <div id="homeQuote" style="font-size:13px;color:#f9a8d4;font-style:italic;line-height:1.5;"></div>
     </div>
   </div>
-
   <div class="streak-row">
     <div class="streak-card fire"><div class="streak-val" id="homeStreak">0</div><div class="streak-lbl">🔥 Streak</div></div>
     <div class="streak-card"><div class="streak-val" id="homeEarned">0</div><div class="streak-lbl">✦ Earned</div></div>
     <div class="streak-card"><div class="streak-val" id="homeDayNum">1</div><div class="streak-lbl">📅 Day</div></div>
   </div>
-
   <div style="padding:0 16px;">
-    <!-- therapist reminder -->
     <div id="therapistCard" style="background:linear-gradient(135deg,#1a1000,#2a1800);border:1px solid rgba(245,158,11,.35);border-radius:14px;padding:12px 14px;margin-top:14px;display:flex;gap:12px;align-items:center;">
       <div style="font-size:24px;">🧠</div>
       <div style="flex:1;"><div style="font-size:13px;color:#fbbf24;font-weight:700;margin-bottom:2px;">Find a New Therapist</div><div style="font-size:11px;color:#9b90b0;line-height:1.4;">This work deserves professional support alongside it.</div></div>
       <button onclick="dismissTherapist()" style="background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.4);border-radius:8px;color:#fbbf24;font-size:11px;padding:5px 10px;cursor:pointer;white-space:nowrap;font-weight:700;">Done ✓</button>
     </div>
-
-    <!-- progress -->
-    <div class="sect-label">Journey Progress</div>
-    <div class="prog-wrap" style="margin:0 0 10px;">
-      <div class="prog-row">
-        <div class="prog-meta"><span style="color:#c084fc;font-weight:700;">✦ Earned — days worked</span><span style="color:#c084fc;font-weight:700;" id="earnedLabel">0/291 · 0%</span></div>
-        <div class="prog-bar-bg" style="height:8px;"><div class="prog-bar-fill" id="earnedBar" style="height:100%;background:linear-gradient(90deg,#7c3aed,#ec4899);box-shadow:0 0 8px rgba(124,58,237,.6);width:0%;"></div></div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin:14px 0 8px;">Journey Progress</div>
+    <div style="background:#160028;border:1px solid #2a1845;border-radius:14px;padding:12px 16px;margin-bottom:10px;">
+      <div style="margin-bottom:10px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-size:11px;color:#c084fc;font-weight:700;">✦ Earned — days worked</span><span style="font-size:11px;color:#c084fc;font-weight:700;" id="earnedLabel">0/291 · 0%</span></div>
+        <div style="background:#0a0015;border-radius:99px;height:8px;overflow:hidden;"><div id="earnedBar" style="height:100%;border-radius:99px;background:linear-gradient(90deg,#7c3aed,#ec4899);box-shadow:0 0 8px rgba(124,58,237,.6);width:0%;transition:width .5s;"></div></div>
       </div>
-      <div class="prog-row">
-        <div class="prog-meta"><span style="color:#5a5070;">📅 Elapsed — calendar days</span><span style="color:#5a5070;" id="elapsedLabel">0/291 · 0%</span></div>
-        <div class="prog-bar-bg" style="height:5px;"><div class="prog-bar-fill" id="elapsedBar" style="height:100%;background:rgba(90,80,112,.5);width:0%;"></div></div>
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-size:11px;color:#5a5070;">📅 Elapsed — calendar days</span><span style="font-size:11px;color:#5a5070;" id="elapsedLabel">0/291 · 0%</span></div>
+        <div style="background:#0a0015;border-radius:99px;height:5px;overflow:hidden;"><div id="elapsedBar" style="height:100%;border-radius:99px;background:rgba(90,80,112,.5);width:0%;transition:width .5s;"></div></div>
       </div>
-      <div class="prog-note" id="progNote" style="color:#fbbf24;"></div>
+      <div id="progNote" style="font-size:11px;margin-top:6px;font-style:italic;"></div>
     </div>
-
-    <!-- scripture -->
-    <div class="sect-label">Today's Scripture</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin-bottom:8px;">Today's Scripture</div>
     <div class="card" style="border-left:3px solid #ec4899;background:linear-gradient(135deg,#160028,#1e0035);">
       <div id="homeScriptureRef" style="font-size:12px;font-weight:700;color:#c084fc;margin-bottom:5px;"></div>
       <div id="homeScriptureText" style="font-size:16px;color:#ede8f5;font-style:italic;line-height:1.6;margin-bottom:8px;font-family:Georgia,serif;"></div>
       <div id="homeScriptureLetter" style="font-size:11px;color:#5a5070;padding-top:8px;border-top:1px solid #2a1845;"></div>
     </div>
-
-    <!-- today's prompt -->
-    <div class="sect-label">Today's Prompt</div>
-    <div class="card" id="homePromptCard" style="border-left:3px solid #f9a8d4;background:linear-gradient(135deg,#160028,#200020);cursor:pointer;" onclick="switchTab('today')">
+    <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin-bottom:8px;">Today's Prompt</div>
+    <div class="card" onclick="switchTab('today')" style="border-left:3px solid #f9a8d4;background:linear-gradient(135deg,#160028,#200020);cursor:pointer;">
       <div id="homePromptText" style="font-size:14px;color:#ede8f5;font-style:italic;line-height:1.6;font-family:Georgia,serif;margin-bottom:8px;"></div>
       <div style="font-size:11px;color:#f9a8d4;font-weight:700;">Tap to write your response →</div>
     </div>
-
-    <!-- currently listening -->
-    <div class="sect-label">Currently Listening</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin-bottom:8px;">Currently Listening</div>
     <div id="homeListenCard" class="card" style="border-left:3px solid #06b6d4;"></div>
-
-    <!-- creative -->
-    <div class="sect-label">Creative Practice Today</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin-bottom:8px;">Creative Practice Today</div>
     <div class="card" style="border-left:3px solid #a855f7;background:linear-gradient(135deg,#160028,#1a0038);">
       <div id="homeCreativeDay" style="font-size:11px;font-weight:700;color:#c084fc;margin-bottom:2px;"></div>
       <div id="homeCreativeName" style="font-size:15px;color:#f0abfc;font-weight:800;margin-bottom:4px;"></div>
       <div id="homeCreativeDesc" style="font-size:12px;color:#9b90b0;line-height:1.5;"></div>
     </div>
-
-    <!-- affirmation -->
     <div style="background:linear-gradient(135deg,#1a003a,#2e0025);border:1px solid #2a1845;border-radius:14px;padding:16px;margin-bottom:10px;">
       <div style="font-size:10px;font-weight:700;color:#c084fc;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px;">Power Affirmation</div>
       <div style="font-size:13px;color:#ede8f5;line-height:1.9;font-style:italic;font-family:Georgia,serif;">"I am God's beloved daughter. I am seen. I am known. I am held. I am never alone. My worth is inherent. My belonging is permanent. I am learning to stay."</div>
@@ -212,56 +144,37 @@ input,textarea,select{font-family:inherit;}
   </div>
 </div>
 
-<!-- ══ TODAY ══════════════════════════════════════════════════ -->
 <div id="screen-today" class="screen">
   <div style="padding:14px 16px 80px;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-      <div>
-        <div style="font-size:16px;font-weight:800;color:#ede8f5;" id="todayDateLabel"></div>
-        <div style="font-size:11px;color:#5a5070;margin-top:2px;" id="todayDayLabel"></div>
-      </div>
-      <div style="text-align:right;">
-        <div style="font-size:18px;font-weight:900;" id="todayCount" style="color:#c084fc;">0/8</div>
-        <div style="font-size:10px;color:#5a5070;">complete</div>
-      </div>
+      <div><div style="font-size:16px;font-weight:800;color:#ede8f5;" id="todayDateLabel"></div><div style="font-size:11px;color:#5a5070;margin-top:2px;" id="todayDayLabel"></div></div>
+      <div style="text-align:right;"><div style="font-size:18px;font-weight:900;color:#c084fc;" id="todayCount">0/8</div><div style="font-size:10px;color:#5a5070;">complete</div></div>
     </div>
     <div style="background:#0a0015;border-radius:99px;height:5px;margin-bottom:16px;"><div id="todayProgBar" style="height:100%;border-radius:99px;background:linear-gradient(90deg,#7c3aed,#be185d);transition:width .3s;width:0%;"></div></div>
-
     <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin-bottom:8px;">Daily Checklist</div>
     <div id="checklistContainer"></div>
-
     <div id="allDoneBanner" style="display:none;background:linear-gradient(135deg,#0a1a10,#0d2010);border:1px solid rgba(52,211,153,.4);border-radius:12px;padding:14px 16px;text-align:center;margin-bottom:14px;">
       <div style="font-size:24px;margin-bottom:6px;">✦</div>
       <div style="font-size:15px;font-weight:900;color:#34d399;">You did the work today.</div>
       <div style="font-size:12px;color:#9b90b0;margin-top:4px;font-style:italic;">You did not abandon yourself.</div>
     </div>
-
     <div style="background:#0a0015;border:1px solid #2a1845;border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:#5a5070;line-height:1.6;font-style:italic;">If the day falls apart: write one true sentence. That is enough. You are not the old pattern.</div>
-
-    <!-- journal section -->
     <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#f9a8d4;margin:16px 0 6px;">Today's Journal Entry</div>
     <div style="font-size:12px;color:#5a5070;margin-bottom:6px;font-style:italic;">General thoughts — what came up, what hurt, what you noticed</div>
     <textarea id="journalThoughts" class="j-textarea" rows="5" placeholder="What came up today? What hurt? What surprised you? What are you recognizing?"></textarea>
-
-    <!-- prompt of day -->
     <div class="card" style="border-left:3px solid #f9a8d4;background:linear-gradient(135deg,#160028,#200020);margin:12px 0 8px;">
       <div style="font-size:10px;font-weight:700;color:#f9a8d4;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Today's Prompt · Day <span id="promptDayNum"></span></div>
       <div id="todayPromptText" style="font-size:14px;color:#ede8f5;font-style:italic;line-height:1.6;font-family:Georgia,serif;"></div>
     </div>
     <textarea id="journalPromptResp" class="j-textarea prompt-ta" rows="5" placeholder="Write your response here — raw, unedited, honest..."></textarea>
-
-    <!-- voice/video -->
     <div style="font-size:12px;color:#5a5070;margin:12px 0 6px;">Add a voice or video note</div>
     <div style="display:flex;gap:8px;margin-bottom:10px;" id="mediaBtnsArea">
       <button class="media-btn" style="background:rgba(124,58,237,.2);border-color:rgba(124,58,237,.4);color:#c084fc;" onclick="startRec('audio')">🎙 Voice Note</button>
       <button class="media-btn" style="background:rgba(190,24,93,.15);border-color:rgba(236,72,153,.4);color:#f9a8d4;" onclick="startRec('video')">🎥 Video Note</button>
     </div>
     <div id="mediaPreviewArea"></div>
-
     <button class="grad-btn" onclick="saveEntry()" id="saveEntryBtn" style="margin-bottom:6px;">Save Today's Entry ✦</button>
-    <div style="font-size:11px;color:#3a3050;text-align:center;margin-bottom:16px;font-style:italic;">Saves locally. View full entry in History tab.</div>
-
-    <!-- affirmation carousel -->
+    <div style="font-size:11px;color:#3a3050;text-align:center;margin-bottom:16px;font-style:italic;">Saves locally. View in History tab.</div>
     <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin-bottom:8px;">When the Wound Speaks</div>
     <div class="card" style="background:linear-gradient(135deg,#1a003a,#2e0025);">
       <div id="affWound" style="font-size:11px;color:#5a5070;margin-bottom:6px;font-style:italic;"></div>
@@ -273,18 +186,11 @@ input,textarea,select{font-family:inherit;}
         <button onclick="nextAff()" style="background:rgba(124,58,237,.15);border:1px solid #2a1845;border-radius:8px;color:#9b90b0;padding:6px 12px;cursor:pointer;font-size:12px;">Next →</button>
       </div>
     </div>
-
-    <!-- schedule toggle -->
-    <button onclick="toggleSched()" style="width:100%;background:#160028;border:1px solid #2a1845;border-radius:12px;padding:12px 16px;color:#c084fc;font-size:13px;font-weight:700;cursor:pointer;text-align:left;margin-top:8px;display:flex;justify-content:space-between;">
-      <span>◷ Today's Schedule</span><span id="schedArrow">▼</span>
-    </button>
-    <div id="schedBlock" style="display:none;" class="card">
-      <div id="schedContent"></div>
-    </div>
+    <button onclick="toggleSched()" style="width:100%;background:#160028;border:1px solid #2a1845;border-radius:12px;padding:12px 16px;color:#c084fc;font-size:13px;font-weight:700;cursor:pointer;text-align:left;margin-top:8px;display:flex;justify-content:space-between;"><span>◷ Today's Schedule</span><span id="schedArrow">▼</span></button>
+    <div id="schedBlock" style="display:none;" class="card"><div id="schedContent"></div></div>
   </div>
 </div>
 
-<!-- ══ HISTORY ════════════════════════════════════════════════ -->
 <div id="screen-history" class="screen">
   <div id="historyMain" style="padding:14px 16px 80px;">
     <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin-bottom:6px;">Entry History</div>
@@ -298,7 +204,6 @@ input,textarea,select{font-family:inherit;}
   </div>
 </div>
 
-<!-- ══ CALENDAR ═══════════════════════════════════════════════ -->
 <div id="screen-calendar" class="screen">
   <div class="streak-row">
     <div class="streak-card fire"><div class="streak-val" id="calStreak">0</div><div class="streak-lbl">🔥 Streak</div></div>
@@ -320,23 +225,16 @@ input,textarea,select{font-family:inherit;}
       <div class="leg-item"><div class="leg-dot d-letter"></div>Letter</div>
     </div>
   </div>
-  <div style="padding:0 16px 80px;">
-    <button class="grad-btn" onclick="openLogModal(todayISO())">✅ Log Today's Practice</button>
-  </div>
+  <div style="padding:0 16px 80px;"><button class="grad-btn" onclick="openLogModal(todayISO())">✅ Log Today's Practice</button></div>
 </div>
 
-<!-- ══ MORE ═══════════════════════════════════════════════════ -->
 <div id="screen-more" class="screen">
-  <div id="moreMenu" style="padding:14px 16px 80px;">
-    <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin-bottom:14px;">More</div>
-    <div id="moreMenuItems"></div>
-  </div>
+  <div id="moreMenu" style="padding:14px 16px 80px;"><div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin-bottom:14px;">More</div><div id="moreMenuItems"></div></div>
   <div id="moreBlueprint" style="display:none;padding:14px 16px 80px;"></div>
   <div id="moreAffirmations" style="display:none;padding:14px 16px 80px;"></div>
   <div id="moreListen" style="display:none;padding:14px 16px 80px;"></div>
 </div>
 
-<!-- NAV -->
 <nav class="bot-nav">
   <button class="nav-btn active" id="nav-home" onclick="switchTab('home')"><span class="nav-icon">✦</span>Home</button>
   <button class="nav-btn" id="nav-today" onclick="switchTab('today')"><span class="nav-icon">◈</span>Today</button>
@@ -377,7 +275,7 @@ input,textarea,select{font-family:inherit;}
   </div>
 </div>
 
-<!-- LISTEN EDIT MODAL -->
+<!-- LISTEN SETTINGS MODAL -->
 <div class="modal-bg" id="listenModal">
   <div class="modal">
     <div class="modal-title" id="listenModalTitle"></div>
@@ -388,18 +286,10 @@ input,textarea,select{font-family:inherit;}
       <button onclick="setResStatus('current')" id="rs-current" style="flex:1;padding:8px 4px;border-radius:8px;font-size:11px;cursor:pointer;font-weight:700;">Listening</button>
       <button onclick="setResStatus('finished')" id="rs-finished" style="flex:1;padding:8px 4px;border-radius:8px;font-size:11px;cursor:pointer;font-weight:700;">Finished</button>
     </div>
-    <div style="font-size:12px;color:#c084fc;font-weight:700;margin-bottom:8px;">Sessions</div>
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-      <button onclick="adjSess(-1)" style="background:#0a0015;border:1px solid #2a1845;border-radius:8px;color:#ede8f5;font-size:18px;width:36px;height:36px;cursor:pointer;">−</button>
-      <div style="font-size:22px;font-weight:900;color:#c084fc;min-width:30px;text-align:center;" id="sessCount">0</div>
-      <button onclick="adjSess(1)" style="background:#0a0015;border:1px solid #2a1845;border-radius:8px;color:#ede8f5;font-size:18px;width:36px;height:36px;cursor:pointer;">+</button>
-    </div>
-    <div style="font-size:12px;color:#c084fc;font-weight:700;margin-bottom:8px;">Rating</div>
+    <div style="font-size:12px;color:#c084fc;font-weight:700;margin-bottom:8px;">Overall Rating</div>
     <div style="display:flex;gap:6px;margin-bottom:14px;" id="starRow"></div>
-    <div style="font-size:12px;color:#c084fc;font-weight:700;margin-bottom:6px;">Notes</div>
-    <textarea id="resNotes" rows="3" style="width:100%;background:#0a0015;border:1px solid #2a1845;border-radius:10px;padding:10px;color:#ede8f5;font-size:13px;outline:none;resize:vertical;margin-bottom:12px;" placeholder="What are you noticing?"></textarea>
-    <div style="font-size:12px;color:#c084fc;font-weight:700;margin-bottom:6px;">Key Takeaway</div>
-    <textarea id="resTakeaway" rows="3" style="width:100%;background:#0a0015;border:1px solid #2a1845;border-radius:10px;padding:10px;color:#ede8f5;font-size:13px;outline:none;resize:vertical;margin-bottom:16px;" placeholder="The one thing you're carrying from this."></textarea>
+    <div style="font-size:12px;color:#c084fc;font-weight:700;margin-bottom:6px;">Overall Takeaway</div>
+    <textarea id="resTakeaway" rows="3" style="width:100%;background:#0a0015;border:1px solid #2a1845;border-radius:10px;padding:10px;color:#ede8f5;font-size:13px;outline:none;resize:vertical;margin-bottom:16px;" placeholder="The one thing you're carrying from this resource overall."></textarea>
     <div class="modal-btns">
       <button class="modal-cancel" onclick="closeListenModal()">Cancel</button>
       <button class="modal-save" onclick="saveListenEdit()">Save ✦</button>
@@ -407,938 +297,438 @@ input,textarea,select{font-family:inherit;}
   </div>
 </div>
 
+<!-- SESSION LOG MODAL -->
+<div class="modal-bg" id="sessionModal">
+  <div class="modal">
+    <div style="color:#fff;font-size:15px;font-weight:800;margin-bottom:2px;" id="sessModalTitle"></div>
+    <div style="font-size:12px;color:#06b6d4;font-weight:700;margin-bottom:14px;" id="sessModalNum"></div>
+    <div style="font-size:12px;color:#c084fc;font-weight:700;margin-bottom:6px;">Session Notes</div>
+    <textarea id="sessNotes" rows="6" style="width:100%;background:#0a0015;border:1px solid #2a1845;border-radius:10px;padding:10px;color:#ede8f5;font-size:13px;outline:none;resize:vertical;margin-bottom:16px;font-family:Georgia,serif;" placeholder="What came up in this session? What resonated? What connected to your wound? What do you want to carry forward?"></textarea>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeSessionModal()">Cancel</button>
+      <button class="modal-save" onclick="saveSession()">Save Session 🎧</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
-// ══ DATA ═════════════════════════════════════════════════════
-var START_DATE = new Date('2026-03-15');
-var TOTAL_DAYS = 291;
+var START_DATE=new Date('2026-03-15');
+var TOTAL_DAYS=291;
+var QUOTES=['You knit me together in my mother\'s womb. — Psalm 139:13','I have engraved you on the palms of my hands. — Isaiah 49:16','Beauty for ashes. — Isaiah 61:3','He will rejoice over you with singing. — Zephaniah 3:17','Perfect love drives out fear. — 1 John 4:18','Nothing can separate us from the love of God. — Romans 8:38','You are precious and honored in my sight. — Isaiah 43:4','Though my father and mother forsake me, the LORD will receive me. — Psalm 27:10','There is now no condemnation. — Romans 8:1','He who began a good work will carry it to completion. — Philippians 1:6','Write the vision and make it plain. — Habakkuk 2:2','I will restore the years the locusts have eaten. — Joel 2:25','I am doing a new thing. — Isaiah 43:19','Be still and know that I am God. — Psalm 46:10','The truth will set you free. — John 8:32'];
+var SCRIPTURES=[{ref:'Psalm 139:1-6',text:'You have searched me and known me.',letter:'Letter 1'},{ref:'Psalm 139:13-16',text:'You knit me together in my mother\'s womb.',letter:'Letter 1'},{ref:'Jeremiah 1:4-5',text:'Before I formed you in the womb I knew you.',letter:'Letter 1'},{ref:'Isaiah 44:2',text:'The LORD who made you, who formed you from the womb.',letter:'Letter 1'},{ref:'Lamentations 5:7',text:'Our ancestors sinned and we bear their punishment.',letter:'Letter 2'},{ref:'Ruth 1:16-17',text:'Where you go I will go.',letter:'Letter 2'},{ref:'Psalm 27:10',text:'Though my father and mother forsake me, the LORD will receive me.',letter:'Letter 3'},{ref:'Psalm 68:5',text:'A father to the fatherless.',letter:'Letter 3'},{ref:'Isaiah 49:15',text:'Can a mother forget the baby at her breast?',letter:'Letter 4'},{ref:'Isaiah 49:16',text:'I have engraved you on the palms of my hands.',letter:'Letter 4'},{ref:'Zephaniah 3:17',text:'He will rejoice over you with singing.',letter:'Letter 4'},{ref:'Matthew 5:14-16',text:'You are the light of the world.',letter:'Letter 5'},{ref:'Proverbs 29:25',text:'Fear of man will prove to be a snare.',letter:'Letter 5'},{ref:'Deuteronomy 31:6',text:'He will never leave you nor forsake you.',letter:'Letter 6'},{ref:'Romans 8:38-39',text:'Nothing can separate us from the love of God.',letter:'Letter 6'},{ref:'Romans 8:1',text:'There is now no condemnation.',letter:'Letter 7'},{ref:'John 8:1-11',text:'Neither do I condemn you.',letter:'Letter 7'},{ref:'1 Cor 13:4-7',text:'Love is patient, love is kind.',letter:'Letter 8'},{ref:'Psalm 34:18',text:'The LORD is close to the brokenhearted.',letter:'Letter 9'},{ref:'Isaiah 43:4',text:'You are precious and honored in my sight.',letter:'Letter 10'},{ref:'1 John 4:18',text:'Perfect love drives out fear.',letter:'Letter 11'},{ref:'Isaiah 61:1-3',text:'Beauty for ashes.',letter:'Letter 12'}];
+var PROMPTS=['When did I first learn that love had conditions?','What did I do to earn love as a child? Did it work?','Who taught me I was too much — or not enough?','What is the earliest memory I have of feeling unworthy?','What did I absorb from the women who raised me about love?','What did my father\'s absence or presence teach me about whether I was worth staying for?','When did I first make myself small to keep someone close?','What secret have I carried the longest without naming it?','When did I first run before someone could leave me?','What has this wound cost me that I\'ve never fully named out loud?','What did I believe about myself before I had language for it?','What am I afraid I\'ll find if I look all the way to the bottom of this?','When did I first decide that my fullness was dangerous?','What does the little girl who started this wound need me to say to her today?','What patterns do I keep repeating that trace back to the wound?','How have I abandoned my own work the way I was abandoned?','When did I confuse neediness for love? Intensity for intimacy?','What did I give away that I wish I had kept?','When did I stay long past the time I should have left?','When did I leave before something real could form?','How have I dimmed my gifts to make others comfortable?','Who manipulated me, and what did I ignore in order to stay?','When did I stop trusting my own perception? What happened?','What is the full cost — emotionally, creatively, spiritually — of this wound?','What have I never said out loud about the damage?','What would I say to the darkest version of myself if she were sitting across from me?','How did seeking validation online feed the wound instead of heal it?','When did performing strength cost me something I couldn\'t get back?','What does it feel like in my body when I\'m about to repeat the pattern?','What finally broke the pattern — even temporarily?','When did I first hear God in the quiet instead of the chaos?','What did I finish that I almost abandoned? How did it feel to finish?','When did I choose to stay with myself instead of running?','What does the wound feel like now compared to when I started?','When did I first trust my own instincts again?','What does it feel like to let someone actually see me?','What have I forgiven — or started to forgive?','Where do I still feel the wound? Is it smaller? Louder?','What have I learned that I cannot unlearn?','What does it mean that I am still here?','When did I choose the work over the wound for the first time?','What does staying with myself look like on an ordinary Tuesday?','What is God saying to me in the quiet this week?','What does it feel like to receive without immediately deflecting?','What does finishing this project prove about who I am now?','How has my relationship with my creativity changed this year?','What does it mean to love without losing myself?','What has genuine faith — not performance — looked like this year?','Who am I becoming that the wounded version of me couldn\'t imagine?','What am I teaching by surviving this?','What do I want to say to the wound at the end?','What would I want the girl in Letter 1 to know now?','What are the final words I want to leave on this year?','How do I live differently now than I did on March 15?','What does reclamation feel like in my body?','If I could write a letter to who I was a year ago, what would I say?','What does it mean that I did not abandon myself this time?'];
+var AFFIRMATIONS=[{wound:'The wound says you are worthless',truth:'I am fearfully and wonderfully made.',ref:'Psalm 139:14'},{wound:'The wound says you will be abandoned',truth:'I will never leave you nor forsake you.',ref:'Hebrews 13:5'},{wound:'The wound says you have to chase',truth:'My soul, wait in silence for God alone.',ref:'Psalm 62:5'},{wound:'The wound says you have too much shame',truth:'There is now no condemnation for those in Christ.',ref:'Romans 8:1'},{wound:'The wound says run before you get hurt',truth:'Perfect love drives out fear.',ref:'1 John 4:18'},{wound:'The wound says your work doesn\'t matter',truth:'He who began a good work will carry it to completion.',ref:'Philippians 1:6'},{wound:'The wound says you are too much',truth:'He will rejoice over you with singing.',ref:'Zephaniah 3:17'},{wound:'The wound says no one will stay',truth:'Nothing can separate us from the love of God.',ref:'Romans 8:38-39'},{wound:'The wound says you failed again',truth:'I will restore the years the locusts have eaten.',ref:'Joel 2:25'},{wound:'The wound says you are not enough',truth:'You are precious and honored in my sight.',ref:'Isaiah 43:4'},{wound:'The wound says dim your light',truth:'You are the light of the world.',ref:'Matthew 5:14'},{wound:'The wound says you don\'t deserve rest',truth:'He makes me lie down in green pastures.',ref:'Psalm 23:2'}];
+var WEEKLY_AFFS=[{range:'Part One (Letters 1–12)',text:'I am learning to stop loving what is worthless. My worth was established before I could earn it or lose it.'},{range:'Part Two (Letters 13–25)',text:'I am naming the damage without shame. God is close to the brokenhearted. I am not too broken to be held.'},{range:'Part Three (Letters 26–38)',text:'I am turning. I am choosing myself. I am learning to stay.'},{range:'Part Four (Letters 39–52)',text:'I am being reclaimed. I am rooted and grounded in love. I am becoming who I was always meant to be.'}];
+var CREATIVE=[{day:'Monday',name:'Morning Pages',desc:'Three pages. Longhand. No editing. Let the underground river flow.'},{day:'Tuesday',name:'Poetry / Lyric Study',desc:'Read one poem out loud twice. Then write one — honest, not perfect.'},{day:'Wednesday',name:'Fiction / Novel',desc:'Reenter your story. Write forward. Leave one sentence as a handoff.'},{day:'Thursday',name:'Photography',desc:'20–30 min finding light, texture, time passing. Write 3 sentences about what you saw.'},{day:'Friday',name:'Literary Reading',desc:'Read 45–60 min. After: what did this writer do that I want to learn?'},{day:'Saturday',name:'Free Making',desc:'No assignment. No prompt. No goal. Create because you are a maker.'},{day:'Sunday',name:'Rest + Reflection',desc:'No making. Only receiving. Evening: what did I make? What surprised me?'}];
+var CHECKLIST_ITEMS=[{id:'scripture',label:'Read today\'s Scripture passage slowly — out loud if possible'},{id:'write_verse',label:'Write the anchor verse by hand in your journal'},{id:'resource',label:'Listen to today\'s healing resource (30–40 min)'},{id:'pause_note',label:'Pause when something connects — write it down'},{id:'reflection',label:'Free write in today\'s journal entry'},{id:'prompt',label:'Answer today\'s reflection prompt'},{id:'creative',label:'Complete today\'s creative practice'},{id:'sentence',label:'Write one true sentence — on hard days, this is enough'}];
+var BP_PARTS=[{name:'PART ONE: THE WOUND',sub:'How did it get inside me? · Letters 1–12',accent:'#ec4899',items:[{n:'1',t:'You Were Wanted Before You Were Born',a:'Psalm 139:13-16'},{n:'2',t:'The Women Who Taught You Love',a:'Lamentations 5:7'},{n:'3',t:'The Father Who Didn\'t Stay',a:'Psalm 27:10'},{n:'4',t:'Performing for Your Mother\'s Approval',a:'Isaiah 49:15'},{n:'5',t:'Making Yourself Small',a:'Matthew 5:14-16'},{n:'6',t:'The First Time Love Left',a:'Deuteronomy 31:6'},{n:'7',t:'The Church and the Wound',a:'Romans 8:1'},{n:'8',t:'Confusing Intensity for Intimacy',a:'1 Corinthians 13:4-7'},{n:'9',t:'The Secret You Kept',a:'Psalm 34:18'},{n:'10',t:'Watching Other Daughters Be Chosen',a:'Isaiah 43:4'},{n:'11',t:'Running Before They Could Leave',a:'1 John 4:18'},{n:'12',t:'Arriving at Adulthood Already Broken',a:'Isaiah 61:1-3'},{n:'★',t:'WOUND LETTER 1 — I See Where You Came From',a:'Genesis 50:20',wound:true}]},{name:'PART TWO: THE DAMAGE',sub:'What did it cost me? · Letters 13–25',accent:'#c084fc',items:[{n:'13',t:'The Men You Chose',a:'Hosea 2:14'},{n:'14',t:'Abandoning Your Own Projects',a:'Philippians 1:6'},{n:'15',t:'Seeking Validation Online',a:'Matthew 6:1-4'},{n:'16',t:'The Marriage Where You Disappeared',a:'Ezekiel 36:26'},{n:'17',t:'Chasing Unavailable Men',a:'Psalm 4:2'},{n:'18',t:'Performing Strength You Didn\'t Feel',a:'2 Corinthians 12:9'},{n:'19',t:'Giving Your Body When Your Heart Was Gone',a:'1 Corinthians 6:19-20'},{n:'20',t:'Staying Too Long',a:'Isaiah 43:18-19'},{n:'21',t:'Leaving Too Fast',a:'Proverbs 28:1'},{n:'22',t:'Dimming Your Gifts',a:'Matthew 5:14-16'},{n:'23',t:'Mistaking Counterfeit Love',a:'1 John 4:1'},{n:'24',t:'Stopping Trusting Yourself',a:'Proverbs 3:5-6'},{n:'25',t:'The Darkest Place',a:'Psalm 34:18'},{n:'★',t:'WOUND LETTER 2 — Look at What You\'ve Done',a:'Psalm 139:23-24',wound:true}]},{name:'PART THREE: THE TURNING',sub:'When did I start choosing myself? · Letters 26–38',accent:'#34d399',items:[{n:'26',t:'The Gift of Exhaustion',a:'Matthew 11:28-30'},{n:'27',t:'Hearing God in the Quiet',a:'1 Kings 19:11-12'},{n:'28',t:'Picking Up the Pen',a:'Habakkuk 2:2'},{n:'29',t:'Choosing to Stay (With Yourself)',a:'Psalm 46:10'},{n:'30',t:'Seeing the Wound Clearly',a:'John 8:32'},{n:'31',t:'Stopping the Chase',a:'Psalm 62:5-6'},{n:'32',t:'Letting Someone Actually Love You',a:'1 John 4:19'},{n:'33',t:'Coming Back to Your Calling',a:'Joel 2:25'},{n:'34',t:'Forgiving Your Mother',a:'Colossians 3:13'},{n:'35',t:'Forgiving Your Father',a:'Luke 15:20'},{n:'36',t:'Trusting Your Instincts Again',a:'Isaiah 30:21'},{n:'37',t:'Choosing Work Over the Wound',a:'Colossians 3:23'},{n:'38',t:'Letting Yourself Be Proud',a:'Galatians 6:4'},{n:'★',t:'WOUND LETTER 3 — I Notice You\'re Losing Your Grip',a:'Romans 6:6-7',wound:true}]},{name:'PART FOUR: THE RECLAMATION',sub:'Who am I when I am free? · Letters 39–52',accent:'#fbbf24',items:[{n:'39',t:'Learning to Receive',a:'John 1:16'},{n:'40',t:'You Finished Something',a:'2 Timothy 4:7'},{n:'41',t:'Creativity as Calling, Not Coping',a:'Exodus 35:31-32'},{n:'42',t:'Loving Without Losing Yourself',a:'Mark 12:31'},{n:'43',t:'Living Faith, Not Performing It',a:'Micah 6:8'},{n:'44',t:'No Longer Easy to Manipulate',a:'Matthew 10:16'},{n:'45',t:'Choosing Yourself in Arkansas',a:'Ruth 1:16'},{n:'46',t:'Teaching What You Survived',a:'2 Corinthians 1:4'},{n:'47',t:'Letting the Photographs Tell the Truth',a:'Psalm 19:1'},{n:'48',t:'No Longer Afraid of Your Own Depth',a:'Psalm 36:9'},{n:'49',t:'Making Peace With the Women in Your Family',a:'Proverbs 31:25'},{n:'50',t:'Beginning to Believe You Are Worth Loving',a:'Ephesians 3:17-19'},{n:'51',t:'To the Woman Who Stayed',a:'James 1:4'},{n:'★',t:'WOUND LETTER 4 — It Is Time',a:'Galatians 5:1',wound:true},{n:'♥',t:'LETTER 52 — THE BEDSIDE GOODBYE',a:'Psalm 139:13-16',final:true}]}];
+var RESOURCES=[{id:'bgh',title:'Black Girls Heal',type:'Podcast',note:'Start: "Oldest Daughters & Childhood Emotional Neglect"'},{id:'tpwfo',title:'The Place We Find Ourselves',type:'Podcast',note:'Search: abandonment wound, attachment injuries'},{id:'ob',title:'On Being with Krista Tippett',type:'Podcast',note:'Search: Nikki Giovanni, Lucille Clifton, grief'},{id:'haabw',title:'Healing Anxious Attachment for Black Women',type:'Audiobook',note:'Begin from the start — 30–40 min per session'},{id:'aal',title:'All About Love',type:'Audiobook',note:'bell hooks — the philosophical foundation'},{id:'tbkts',title:'The Body Keeps the Score',type:'Audiobook',note:'Bessel van der Kolk — physical wound language'},{id:'moth',title:'The Moth',type:'Podcast',note:'Study how people hold vulnerability with craft'},{id:'hb',title:'Hidden Brain',type:'Podcast',note:'Search: shame, self-destructive choices, love'},{id:'tfbg',title:'Therapy for Black Girls',type:'Podcast',note:'Dr. Joy Bradford — attachment, boundaries'},{id:'rob',title:'The Robcast',type:'Podcast',note:'Search: unconditional love, Prodigal Son'},{id:'hunger',title:'Hunger by Roxane Gay',type:'Audiobook',note:'Lyrical memoir — how to write the wound without performing it'},{id:'heavy',title:'Heavy by Kiese Laymon',type:'Audiobook',note:'Letters to his mother — direct structural influence'}];
+var ACT_LABELS={healing:'📖 Healing Hour',creative:'✍🏾 Creative Practice',journal:'📝 Journal Entry',letter:'✉️ Letter Written'};
+var DOT_CLASSES={healing:'d-healing',creative:'d-creative',journal:'d-journal',letter:'d-letter'};
+var MONTHS_ARR=['January','February','March','April','May','June','July','August','September','October','November','December'];
+var DAYS_ARR=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
-var QUOTES = [
-  'You knit me together in my mother\'s womb. — Psalm 139:13',
-  'I have engraved you on the palms of my hands. — Isaiah 49:16',
-  'Beauty for ashes. — Isaiah 61:3',
-  'He will rejoice over you with singing. — Zephaniah 3:17',
-  'Perfect love drives out fear. — 1 John 4:18',
-  'Nothing can separate us from the love of God. — Romans 8:38',
-  'You are precious and honored in my sight. — Isaiah 43:4',
-  'Though my father and mother forsake me, the LORD will receive me. — Psalm 27:10',
-  'There is now no condemnation. — Romans 8:1',
-  'He who began a good work will carry it to completion. — Philippians 1:6',
-  'Write the vision and make it plain. — Habakkuk 2:2',
-  'I will restore the years the locusts have eaten. — Joel 2:25',
-  'I am doing a new thing. — Isaiah 43:19',
-  'Be still and know that I am God. — Psalm 46:10',
-  'The truth will set you free. — John 8:32'
-];
+function gd(k,fb){try{var v=localStorage.getItem(k);return v?JSON.parse(v):fb;}catch(e){return fb;}}
+function sd(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function getLogs(){return gd('ual_logs',{});}
+function setLogs(v){sd('ual_logs',v);}
+function getEntries(){return gd('ual_entries',{});}
+function setEntries(v){sd('ual_entries',v);}
+function getResData(){return gd('ual_resources',{});}
+function setResData(v){sd('ual_resources',v);}
+function getLetters(){return gd('ual_letters',{});}
+function setLetters(v){sd('ual_letters',v);}
 
-var SCRIPTURES = [
-  {ref:'Psalm 139:1-6',    text:'You have searched me and known me.',                               letter:'Letter 1'},
-  {ref:'Psalm 139:13-16',  text:'You knit me together in my mother\'s womb.',                       letter:'Letter 1'},
-  {ref:'Jeremiah 1:4-5',   text:'Before I formed you in the womb I knew you.',                      letter:'Letter 1'},
-  {ref:'Isaiah 44:2',      text:'The LORD who made you, who formed you from the womb.',             letter:'Letter 1'},
-  {ref:'Lamentations 5:7', text:'Our ancestors sinned and we bear their punishment.',               letter:'Letter 2'},
-  {ref:'Ruth 1:16-17',     text:'Where you go I will go.',                                          letter:'Letter 2'},
-  {ref:'Psalm 27:10',      text:'Though my father and mother forsake me, the LORD will receive me.',letter:'Letter 3'},
-  {ref:'Psalm 68:5',       text:'A father to the fatherless.',                                      letter:'Letter 3'},
-  {ref:'Isaiah 49:15',     text:'Can a mother forget the baby at her breast?',                      letter:'Letter 4'},
-  {ref:'Isaiah 49:16',     text:'I have engraved you on the palms of my hands.',                    letter:'Letter 4'},
-  {ref:'Zephaniah 3:17',   text:'He will rejoice over you with singing.',                           letter:'Letter 4'},
-  {ref:'Matthew 5:14-16',  text:'You are the light of the world.',                                  letter:'Letter 5'},
-  {ref:'Proverbs 29:25',   text:'Fear of man will prove to be a snare.',                            letter:'Letter 5'},
-  {ref:'Deuteronomy 31:6', text:'He will never leave you nor forsake you.',                         letter:'Letter 6'},
-  {ref:'Romans 8:38-39',   text:'Nothing can separate us from the love of God.',                    letter:'Letter 6'},
-  {ref:'Romans 8:1',       text:'There is now no condemnation.',                                    letter:'Letter 7'},
-  {ref:'John 8:1-11',      text:'Neither do I condemn you.',                                        letter:'Letter 7'},
-  {ref:'1 Cor 13:4-7',     text:'Love is patient, love is kind.',                                   letter:'Letter 8'},
-  {ref:'Psalm 34:18',      text:'The LORD is close to the brokenhearted.',                          letter:'Letter 9'},
-  {ref:'Isaiah 43:4',      text:'You are precious and honored in my sight.',                        letter:'Letter 10'},
-  {ref:'1 John 4:18',      text:'Perfect love drives out fear.',                                    letter:'Letter 11'},
-  {ref:'Isaiah 61:1-3',    text:'Beauty for ashes.',                                                letter:'Letter 12'}
-];
+function todayISO(){var n=new Date(),y=n.getFullYear(),mo=n.getMonth()+1,d=n.getDate();return y+'-'+(mo<10?'0'+mo:mo)+'-'+(d<10?'0'+d:d);}
+function getDayNum(){return Math.max(1,Math.min(Math.floor((new Date()-START_DATE)/86400000)+1,TOTAL_DAYS));}
+function isoFriendly(iso){return new Date(iso+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});}
+function getStreak(){var logs=getLogs(),streak=0;for(var i=0;i<365;i++){var n=new Date();n.setDate(n.getDate()-i);var y=n.getFullYear(),mo=n.getMonth()+1,d=n.getDate();var iso=y+'-'+(mo<10?'0'+mo:mo)+'-'+(d<10?'0'+d:d);if(logs[iso]&&logs[iso].length)streak++;else if(i>0)break;}return streak;}
+function getEarned(){var logs=getLogs();return Object.keys(logs).filter(function(d){return logs[d]&&logs[d].length;}).length;}
+function hexToRgb(hex){var r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return r+','+g+','+b;}
+function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
 
-var PROMPTS = [
-  'When did I first learn that love had conditions?',
-  'What did I do to earn love as a child? Did it work?',
-  'Who taught me I was too much — or not enough?',
-  'What is the earliest memory I have of feeling unworthy?',
-  'What did I absorb from the women who raised me about love?',
-  'What did my father\'s absence or presence teach me about whether I was worth staying for?',
-  'When did I first make myself small to keep someone close?',
-  'What secret have I carried the longest without naming it?',
-  'When did I first run before someone could leave me?',
-  'What has this wound cost me that I\'ve never fully named out loud?',
-  'What did I believe about myself before I had language for it?',
-  'What am I afraid I\'ll find if I look all the way to the bottom of this?',
-  'When did I first decide that my fullness was dangerous?',
-  'What does the little girl who started this wound need me to say to her today?',
-  'What patterns do I keep repeating that trace back to the wound?',
-  'How have I abandoned my own work the way I was abandoned?',
-  'When did I confuse neediness for love? Intensity for intimacy?',
-  'What did I give away that I wish I had kept?',
-  'When did I stay long past the time I should have left?',
-  'When did I leave before something real could form?',
-  'How have I dimmed my gifts to make others comfortable?',
-  'Who manipulated me, and what did I ignore in order to stay?',
-  'When did I stop trusting my own perception? What happened?',
-  'What is the full cost — emotionally, creatively, spiritually — of this wound?',
-  'What have I never said out loud about the damage?',
-  'What would I say to the darkest version of myself if she were sitting across from me?',
-  'How did seeking validation online feed the wound instead of heal it?',
-  'When did performing strength cost me something I couldn\'t get back?',
-  'What does it feel like in my body when I\'m about to repeat the pattern?',
-  'What finally broke the pattern — even temporarily?',
-  'When did I first hear God in the quiet instead of the chaos?',
-  'What did I finish that I almost abandoned? How did it feel to finish?',
-  'When did I choose to stay with myself instead of running?',
-  'What does the wound feel like now compared to when I started?',
-  'When did I first trust my own instincts again?',
-  'What does it feel like to let someone actually see me?',
-  'What have I forgiven — or started to forgive?',
-  'Where do I still feel the wound? Is it smaller? Louder?',
-  'What have I learned that I cannot unlearn?',
-  'What does it mean that I am still here?',
-  'When did I choose the work over the wound for the first time?',
-  'What does staying with myself look like on an ordinary Tuesday?',
-  'What is God saying to me in the quiet this week?',
-  'What does it feel like to receive without immediately deflecting?',
-  'What does finishing this project prove about who I am now?',
-  'How has my relationship with my creativity changed this year?',
-  'What does it mean to love without losing myself?',
-  'What has genuine faith — not performance — looked like this year?',
-  'Who am I becoming that the wounded version of me couldn\'t imagine?',
-  'What am I teaching by surviving this?',
-  'What do I want to say to the wound at the end?',
-  'What would I want the girl in Letter 1 to know now?',
-  'What are the final words I want to leave on this year?',
-  'How do I live differently now than I did on March 15?',
-  'What does reclamation feel like in my body?',
-  'If I could write a letter to who I was a year ago, what would I say?',
-  'What does it mean that I did not abandon myself this time?'
-];
-
-var AFFIRMATIONS = [
-  {wound:'The wound says you are worthless',        truth:'I am fearfully and wonderfully made.',                  ref:'Psalm 139:14'},
-  {wound:'The wound says you will be abandoned',    truth:'I will never leave you nor forsake you.',               ref:'Hebrews 13:5'},
-  {wound:'The wound says you have to chase',        truth:'My soul, wait in silence for God alone.',               ref:'Psalm 62:5'},
-  {wound:'The wound says you have too much shame',  truth:'There is now no condemnation for those in Christ.',     ref:'Romans 8:1'},
-  {wound:'The wound says run before you get hurt',  truth:'Perfect love drives out fear.',                         ref:'1 John 4:18'},
-  {wound:'The wound says your work doesn\'t matter',truth:'He who began a good work will carry it to completion.', ref:'Philippians 1:6'},
-  {wound:'The wound says you are too much',         truth:'He will rejoice over you with singing.',                ref:'Zephaniah 3:17'},
-  {wound:'The wound says no one will stay',         truth:'Nothing can separate us from the love of God.',         ref:'Romans 8:38-39'},
-  {wound:'The wound says you failed again',         truth:'I will restore the years the locusts have eaten.',      ref:'Joel 2:25'},
-  {wound:'The wound says you are not enough',       truth:'You are precious and honored in my sight.',             ref:'Isaiah 43:4'},
-  {wound:'The wound says dim your light',           truth:'You are the light of the world.',                       ref:'Matthew 5:14'},
-  {wound:'The wound says you don\'t deserve rest',  truth:'He makes me lie down in green pastures.',               ref:'Psalm 23:2'}
-];
-
-var WEEKLY_AFFS = [
-  {range:'Part One (Letters 1–12)',    text:'I am learning to stop loving what is worthless. My worth was established before I could earn it or lose it.'},
-  {range:'Part Two (Letters 13–25)',   text:'I am naming the damage without shame. God is close to the brokenhearted. I am not too broken to be held.'},
-  {range:'Part Three (Letters 26–38)', text:'I am turning. I am choosing myself. I am learning to stay.'},
-  {range:'Part Four (Letters 39–52)',  text:'I am being reclaimed. I am rooted and grounded in love. I am becoming who I was always meant to be.'}
-];
-
-var CREATIVE = [
-  {day:'Monday',    name:'Morning Pages',        desc:'Three pages. Longhand. No editing. Let the underground river flow.'},
-  {day:'Tuesday',   name:'Poetry / Lyric Study', desc:'Read one poem out loud twice. Then write one — honest, not perfect.'},
-  {day:'Wednesday', name:'Fiction / Novel',       desc:'Reenter your story. Write forward. Leave one sentence as a handoff.'},
-  {day:'Thursday',  name:'Photography',           desc:'20–30 min finding light, texture, time passing. Write 3 sentences about what you saw.'},
-  {day:'Friday',    name:'Literary Reading',      desc:'Read 45–60 min. After: what did this writer do that I want to learn?'},
-  {day:'Saturday',  name:'Free Making',           desc:'No assignment. No prompt. No goal. Create because you are a maker.'},
-  {day:'Sunday',    name:'Rest + Reflection',     desc:'No making. Only receiving. Evening: what did I make? What surprised me?'}
-];
-
-var CHECKLIST_ITEMS = [
-  {id:'scripture',   label:'Read today\'s Scripture passage slowly — out loud if possible'},
-  {id:'write_verse', label:'Write the anchor verse by hand in your journal'},
-  {id:'resource',    label:'Listen to today\'s healing resource (30–40 min)'},
-  {id:'pause_note',  label:'Pause when something connects — write it down'},
-  {id:'reflection',  label:'Free write in today\'s journal entry'},
-  {id:'prompt',      label:'Answer today\'s reflection prompt'},
-  {id:'creative',    label:'Complete today\'s creative practice'},
-  {id:'sentence',    label:'Write one true sentence — on hard days, this is enough'}
-];
-
-var BP_PARTS = [
-  {name:'PART ONE: THE WOUND', sub:'How did it get inside me? · Letters 1–12', accent:'#ec4899', items:[
-    {n:'1', t:'You Were Wanted Before You Were Born',       a:'Psalm 139:13-16'},
-    {n:'2', t:'The Women Who Taught You Love',              a:'Lamentations 5:7'},
-    {n:'3', t:'The Father Who Didn\'t Stay',                a:'Psalm 27:10'},
-    {n:'4', t:'Performing for Your Mother\'s Approval',     a:'Isaiah 49:15'},
-    {n:'5', t:'Making Yourself Small',                      a:'Matthew 5:14-16'},
-    {n:'6', t:'The First Time Love Left',                   a:'Deuteronomy 31:6'},
-    {n:'7', t:'The Church and the Wound',                   a:'Romans 8:1'},
-    {n:'8', t:'Confusing Intensity for Intimacy',           a:'1 Corinthians 13:4-7'},
-    {n:'9', t:'The Secret You Kept',                        a:'Psalm 34:18'},
-    {n:'10',t:'Watching Other Daughters Be Chosen',         a:'Isaiah 43:4'},
-    {n:'11',t:'Running Before They Could Leave',            a:'1 John 4:18'},
-    {n:'12',t:'Arriving at Adulthood Already Broken',       a:'Isaiah 61:1-3'},
-    {n:'★', t:'WOUND LETTER 1 — I See Where You Came From',a:'Genesis 50:20', wound:true}
-  ]},
-  {name:'PART TWO: THE DAMAGE', sub:'What did it cost me? · Letters 13–25', accent:'#c084fc', items:[
-    {n:'13',t:'The Men You Chose',                          a:'Hosea 2:14'},
-    {n:'14',t:'Abandoning Your Own Projects',               a:'Philippians 1:6'},
-    {n:'15',t:'Seeking Validation Online',                  a:'Matthew 6:1-4'},
-    {n:'16',t:'The Marriage Where You Disappeared',         a:'Ezekiel 36:26'},
-    {n:'17',t:'Chasing Unavailable Men',                    a:'Psalm 4:2'},
-    {n:'18',t:'Performing Strength You Didn\'t Feel',       a:'2 Corinthians 12:9'},
-    {n:'19',t:'Giving Your Body When Your Heart Was Gone',  a:'1 Corinthians 6:19-20'},
-    {n:'20',t:'Staying Too Long',                           a:'Isaiah 43:18-19'},
-    {n:'21',t:'Leaving Too Fast',                           a:'Proverbs 28:1'},
-    {n:'22',t:'Dimming Your Gifts',                         a:'Matthew 5:14-16'},
-    {n:'23',t:'Mistaking Counterfeit Love',                 a:'1 John 4:1'},
-    {n:'24',t:'Stopping Trusting Yourself',                 a:'Proverbs 3:5-6'},
-    {n:'25',t:'The Darkest Place',                          a:'Psalm 34:18'},
-    {n:'★', t:'WOUND LETTER 2 — Look at What You\'ve Done', a:'Psalm 139:23-24', wound:true}
-  ]},
-  {name:'PART THREE: THE TURNING', sub:'When did I start choosing myself? · Letters 26–38', accent:'#34d399', items:[
-    {n:'26',t:'The Gift of Exhaustion',                     a:'Matthew 11:28-30'},
-    {n:'27',t:'Hearing God in the Quiet',                   a:'1 Kings 19:11-12'},
-    {n:'28',t:'Picking Up the Pen',                         a:'Habakkuk 2:2'},
-    {n:'29',t:'Choosing to Stay (With Yourself)',           a:'Psalm 46:10'},
-    {n:'30',t:'Seeing the Wound Clearly',                   a:'John 8:32'},
-    {n:'31',t:'Stopping the Chase',                         a:'Psalm 62:5-6'},
-    {n:'32',t:'Letting Someone Actually Love You',          a:'1 John 4:19'},
-    {n:'33',t:'Coming Back to Your Calling',                a:'Joel 2:25'},
-    {n:'34',t:'Forgiving Your Mother',                      a:'Colossians 3:13'},
-    {n:'35',t:'Forgiving Your Father',                      a:'Luke 15:20'},
-    {n:'36',t:'Trusting Your Instincts Again',              a:'Isaiah 30:21'},
-    {n:'37',t:'Choosing Work Over the Wound',               a:'Colossians 3:23'},
-    {n:'38',t:'Letting Yourself Be Proud',                  a:'Galatians 6:4'},
-    {n:'★', t:'WOUND LETTER 3 — I Notice You\'re Losing Your Grip', a:'Romans 6:6-7', wound:true}
-  ]},
-  {name:'PART FOUR: THE RECLAMATION', sub:'Who am I when I am free? · Letters 39–52', accent:'#fbbf24', items:[
-    {n:'39',t:'Learning to Receive',                        a:'John 1:16'},
-    {n:'40',t:'You Finished Something',                     a:'2 Timothy 4:7'},
-    {n:'41',t:'Creativity as Calling, Not Coping',          a:'Exodus 35:31-32'},
-    {n:'42',t:'Loving Without Losing Yourself',             a:'Mark 12:31'},
-    {n:'43',t:'Living Faith, Not Performing It',            a:'Micah 6:8'},
-    {n:'44',t:'No Longer Easy to Manipulate',               a:'Matthew 10:16'},
-    {n:'45',t:'Choosing Yourself in Arkansas',              a:'Ruth 1:16'},
-    {n:'46',t:'Teaching What You Survived',                 a:'2 Corinthians 1:4'},
-    {n:'47',t:'Letting the Photographs Tell the Truth',     a:'Psalm 19:1'},
-    {n:'48',t:'No Longer Afraid of Your Own Depth',         a:'Psalm 36:9'},
-    {n:'49',t:'Making Peace With the Women in Your Family', a:'Proverbs 31:25'},
-    {n:'50',t:'Beginning to Believe You Are Worth Loving',  a:'Ephesians 3:17-19'},
-    {n:'51',t:'To the Woman Who Stayed',                    a:'James 1:4'},
-    {n:'★', t:'WOUND LETTER 4 — It Is Time',               a:'Galatians 5:1', wound:true},
-    {n:'♥', t:'LETTER 52 — THE BEDSIDE GOODBYE',           a:'Psalm 139:13-16', final:true}
-  ]}
-];
-
-var RESOURCES = [
-  {id:'bgh',   title:'Black Girls Heal',                           type:'Podcast',   note:'Start: "Oldest Daughters & Childhood Emotional Neglect"'},
-  {id:'tpwfo', title:'The Place We Find Ourselves',                type:'Podcast',   note:'Search: abandonment wound, attachment injuries'},
-  {id:'ob',    title:'On Being with Krista Tippett',               type:'Podcast',   note:'Search: Nikki Giovanni, Lucille Clifton, grief'},
-  {id:'haabw', title:'Healing Anxious Attachment for Black Women', type:'Audiobook', note:'Begin from the start — 30–40 min per session'},
-  {id:'aal',   title:'All About Love',                             type:'Audiobook', note:'bell hooks — the philosophical foundation'},
-  {id:'tbkts', title:'The Body Keeps the Score',                   type:'Audiobook', note:'Bessel van der Kolk — physical wound language'},
-  {id:'moth',  title:'The Moth',                                   type:'Podcast',   note:'Study how people hold vulnerability with craft'},
-  {id:'hb',    title:'Hidden Brain',                               type:'Podcast',   note:'Search: shame, self-destructive choices, love'},
-  {id:'tfbg',  title:'Therapy for Black Girls',                    type:'Podcast',   note:'Dr. Joy Bradford — attachment, boundaries'},
-  {id:'rob',   title:'The Robcast',                                type:'Podcast',   note:'Search: unconditional love, Prodigal Son'},
-  {id:'hunger',title:'Hunger by Roxane Gay',                       type:'Audiobook', note:'Lyrical memoir — how to write the wound without performing it'},
-  {id:'heavy', title:'Heavy by Kiese Laymon',                      type:'Audiobook', note:'Letters to his mother — direct structural influence'}
-];
-
-var ACT_LABELS = {healing:'📖 Healing Hour', creative:'✍🏾 Creative Practice', journal:'📝 Journal Entry', letter:'✉️ Letter Written'};
-var DOT_CLASSES = {healing:'d-healing', creative:'d-creative', journal:'d-journal', letter:'d-letter'};
-var MONTHS_ARR = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-var DAYS_ARR = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-
-// ══ STORAGE ══════════════════════════════════════════════════
-function gd(k, fb) { try { var v=localStorage.getItem(k); return v?JSON.parse(v):fb; } catch(e){ return fb; } }
-function sd(k, v)  { try { localStorage.setItem(k,JSON.stringify(v)); } catch(e){} }
-function getLogs()     { return gd('ual_logs', {}); }
-function setLogs(v)    { sd('ual_logs', v); }
-function getEntries()  { return gd('ual_entries', {}); }
-function setEntries(v) { sd('ual_entries', v); }
-function getResData()  { return gd('ual_resources', {}); }
-function setResData(v) { sd('ual_resources', v); }
-function getLetters()  { return gd('ual_letters', {}); }
-function setLetters(v) { sd('ual_letters', v); }
-
-// ══ HELPERS ══════════════════════════════════════════════════
-function todayISO() {
-  var n=new Date(), y=n.getFullYear(), mo=n.getMonth()+1, d=n.getDate();
-  return y+'-'+(mo<10?'0'+mo:mo)+'-'+(d<10?'0'+d:d);
-}
-function getDayNum() { return Math.max(1, Math.min(Math.floor((new Date()-START_DATE)/86400000)+1, TOTAL_DAYS)); }
-function getElapsed(){ return getDayNum(); }
-function isoFriendly(iso) { return new Date(iso+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}); }
-
-function getStreak() {
-  var logs=getLogs(), streak=0;
-  for(var i=0;i<365;i++){
-    var n=new Date(); n.setDate(n.getDate()-i);
-    var y=n.getFullYear(), mo=n.getMonth()+1, d=n.getDate();
-    var iso=y+'-'+(mo<10?'0'+mo:mo)+'-'+(d<10?'0'+d:d);
-    if(logs[iso]&&logs[iso].length) streak++;
-    else if(i>0) break;
-  }
-  return streak;
-}
-
-function getEarned() {
-  var logs=getLogs();
-  return Object.keys(logs).filter(function(d){ return logs[d]&&logs[d].length; }).length;
-}
-
-function toast(msg) {
-  var t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 2200);
-}
-
-// ══ TABS ═════════════════════════════════════════════════════
-var currentTab = 'home';
-function switchTab(id) {
-  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
-  document.querySelectorAll('.nav-btn').forEach(function(b){ b.classList.remove('active'); });
+function switchTab(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active');});
   document.getElementById('screen-'+id).classList.add('active');
   document.getElementById('nav-'+id).classList.add('active');
-  currentTab = id;
-  if(id==='home')     renderHome();
-  if(id==='today')    renderToday();
-  if(id==='history')  renderHistory();
-  if(id==='calendar') renderCal();
-  if(id==='more')     renderMore();
+  if(id==='home')renderHome();
+  if(id==='today')renderToday();
+  if(id==='history')renderHistory();
+  if(id==='calendar')renderCal();
+  if(id==='more')renderMore();
 }
 
-// ══ HOME ═════════════════════════════════════════════════════
-function renderHome() {
-  var dn=getDayNum(), el=getElapsed(), earned=getEarned();
-  var earnedPct=Math.round(earned/TOTAL_DAYS*100);
-  var elPct=Math.round(el/TOTAL_DAYS*100);
+function renderHome(){
+  var dn=getDayNum(),earned=getEarned(),el=dn;
+  var ep=Math.round(earned/TOTAL_DAYS*100),elp=Math.round(el/TOTAL_DAYS*100);
   var sc=SCRIPTURES[(dn-1)%SCRIPTURES.length];
-  var cr=CREATIVE.filter(function(r){ return r.day===DAYS_ARR[new Date().getDay()]; })[0]||CREATIVE[0];
-  var resData=getResData();
-  var cur=null;
-  for(var i=0;i<RESOURCES.length;i++){ if(resData[RESOURCES[i].id]&&resData[RESOURCES[i].id].status==='current'){cur=RESOURCES[i];break;} }
-
-  // therapist
-  if(gd('ual_t_done',false)) document.getElementById('therapistCard').style.display='none';
-
-  // quote
+  var cr=CREATIVE.filter(function(r){return r.day===DAYS_ARR[new Date().getDay()];})[0]||CREATIVE[0];
+  var resData=getResData(),cur=null;
+  for(var i=0;i<RESOURCES.length;i++){if(resData[RESOURCES[i].id]&&resData[RESOURCES[i].id].status==='current'){cur=RESOURCES[i];break;}}
+  if(gd('ual_t_done',false))document.getElementById('therapistCard').style.display='none';
   document.getElementById('homeQuote').textContent=QUOTES[dn%QUOTES.length];
-
-  // stats
   document.getElementById('homeStreak').textContent=getStreak();
   document.getElementById('homeEarned').textContent=earned;
   document.getElementById('homeDayNum').textContent=dn;
-
-  // progress
-  document.getElementById('earnedLabel').textContent=earned+'/'+TOTAL_DAYS+' · '+earnedPct+'%';
-  document.getElementById('elapsedLabel').textContent=el+'/'+TOTAL_DAYS+' · '+elPct+'%';
-  document.getElementById('earnedBar').style.width=earnedPct+'%';
-  document.getElementById('elapsedBar').style.width=elPct+'%';
+  document.getElementById('earnedLabel').textContent=earned+'/'+TOTAL_DAYS+' · '+ep+'%';
+  document.getElementById('elapsedLabel').textContent=el+'/'+TOTAL_DAYS+' · '+elp+'%';
+  document.getElementById('earnedBar').style.width=ep+'%';
+  document.getElementById('elapsedBar').style.width=elp+'%';
   var pn=document.getElementById('progNote');
-  if(earned<el){ pn.style.color='#fbbf24'; pn.textContent=(el-earned)+' day'+(el-earned!==1?'s':'')+' behind — but you are not the old pattern. You can return.'; }
-  else if(earned>=el&&el>0){ pn.style.color='#34d399'; pn.textContent='You are keeping pace. ✦'; }
-  else { pn.textContent=''; }
-
-  // scripture
+  if(earned<el){pn.style.color='#fbbf24';pn.textContent=(el-earned)+' day'+(el-earned!==1?'s':'')+' behind — but you are not the old pattern. You can return.';}
+  else if(earned>=el&&el>0){pn.style.color='#34d399';pn.textContent='You are keeping pace. ✦';}
+  else{pn.textContent='';}
   document.getElementById('homeScriptureRef').textContent=sc.ref;
   document.getElementById('homeScriptureText').textContent='"'+sc.text+'"';
   document.getElementById('homeScriptureLetter').textContent=sc.letter;
-
-  // prompt
   document.getElementById('homePromptText').textContent='"'+PROMPTS[(dn-1)%PROMPTS.length]+'"';
-
-  // listen
   var lc=document.getElementById('homeListenCard');
   if(cur){
-    var rd=resData[cur.id]||{};
-    lc.innerHTML='<span style="background:rgba('+(cur.type==='Audiobook'?'190,24,93':'124,58,237')+', .2);border:1px solid rgba('+(cur.type==='Audiobook'?'236,72,153':'168,85,247')+', .5);color:'+(cur.type==='Audiobook'?'#f9a8d4':'#c084fc')+';border-radius:99px;padding:2px 10px;font-size:10px;font-weight:700;">'+cur.type+'</span>'
-      +'<div style="font-size:15px;color:#ede8f5;font-weight:700;margin:6px 0 3px;">'+cur.title+'</div>'
-      +'<div style="font-size:12px;color:#9b90b0;line-height:1.4;margin-bottom:8px;">'+cur.note+'</div>'
-      +'<div style="font-size:11px;color:#06b6d4;">🎧 '+(rd.sessions||0)+' sessions'+(rd.rating?'&nbsp;&nbsp;'+'★'.repeat(rd.rating)+'☆'.repeat(5-rd.rating):'')+' </div>';
+    var rd=resData[cur.id]||{},sc2=rd.sessionLog||[],cnt=sc2.length;
+    lc.innerHTML='<span style="background:rgba('+(cur.type==='Audiobook'?'190,24,93':'124,58,237')+',.2);border:1px solid rgba('+(cur.type==='Audiobook'?'236,72,153':'168,85,247')+',.4);color:'+(cur.type==='Audiobook'?'#f9a8d4':'#c084fc')+';border-radius:99px;padding:2px 10px;font-size:10px;font-weight:700;">'+cur.type+'</span><div style="font-size:15px;color:#ede8f5;font-weight:700;margin:6px 0 3px;">'+cur.title+'</div><div style="font-size:12px;color:#9b90b0;line-height:1.4;margin-bottom:8px;">'+cur.note+'</div><div style="font-size:11px;color:#06b6d4;">🎧 '+cnt+' session'+(cnt!==1?'s':'')+' logged'+(rd.rating?'&nbsp;&nbsp;'+'★'.repeat(rd.rating)+'☆'.repeat(5-rd.rating):'')+' </div>';
   } else {
     lc.innerHTML='<div style="font-size:13px;color:#5a5070;font-style:italic;text-align:center;">No resource marked as current. Go to More → Listen to set one.</div>';
   }
-
-  // creative
   document.getElementById('homeCreativeDay').textContent=cr.day;
   document.getElementById('homeCreativeName').textContent=cr.name;
   document.getElementById('homeCreativeDesc').textContent=cr.desc;
 }
 
-function dismissTherapist() {
-  sd('ual_t_done',true);
-  document.getElementById('therapistCard').style.display='none';
-}
+function dismissTherapist(){sd('ual_t_done',true);document.getElementById('therapistCard').style.display='none';}
 
-// ══ TODAY ════════════════════════════════════════════════════
-var recStream=null, recObj=null, recChunks=[], recType=null, blobUrl=null;
-var affIdx=0, schedOpen=false;
+var affIdx=0,schedOpen=false,recStream=null,recObj=null,recChunks=[],recType=null,blobUrl=null;
 
-function renderToday() {
-  var dn=getDayNum();
-  var todayKey='ual_chk_'+new Date().toDateString();
-  var checked=gd(todayKey,{});
+function renderToday(){
+  var dn=getDayNum(),todayKey='ual_chk_'+new Date().toDateString(),checked=gd(todayKey,{});
   var entry=getEntries()[todayISO()]||{};
-  var cr=CREATIVE.filter(function(r){ return r.day===DAYS_ARR[new Date().getDay()]; })[0]||CREATIVE[0];
-
+  var cr=CREATIVE.filter(function(r){return r.day===DAYS_ARR[new Date().getDay()];})[0]||CREATIVE[0];
   document.getElementById('todayDateLabel').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
   document.getElementById('todayDayLabel').textContent='Day '+dn+' of 291';
   document.getElementById('promptDayNum').textContent=dn;
   document.getElementById('todayPromptText').textContent='"'+PROMPTS[(dn-1)%PROMPTS.length]+'"';
-
-  // restore saved text
   document.getElementById('journalThoughts').value=entry.thoughts||'';
   document.getElementById('journalPromptResp').value=entry.promptResponse||'';
-
-  renderChecklist(checked);
-  renderAff();
-  renderSched(cr);
+  renderChecklist(checked);renderAff();renderSched(cr);
 }
 
-function renderChecklist(checked) {
-  var count=0;
-  var html='';
+function renderChecklist(checked){
+  var count=0,html='';
   CHECKLIST_ITEMS.forEach(function(item){
-    var done=!!checked[item.id];
-    if(done) count++;
+    var done=!!checked[item.id];if(done)count++;
     html+='<div class="check-item'+(done?' done':'')+'" onclick="toggleCheck(\''+item.id+'\')">'
       +'<div class="check-box"><span class="check-box-tick">✓</span></div>'
-      +'<div class="check-lbl">'+item.label+'</div>'
-      +'</div>';
+      +'<div class="check-lbl">'+item.label+'</div></div>';
   });
   document.getElementById('checklistContainer').innerHTML=html;
   document.getElementById('todayCount').textContent=count+'/'+CHECKLIST_ITEMS.length;
   document.getElementById('todayCount').style.color=count===CHECKLIST_ITEMS.length?'#34d399':'#c084fc';
   document.getElementById('todayProgBar').style.width=(count/CHECKLIST_ITEMS.length*100)+'%';
-  document.getElementById('todayProgBar').style.boxShadow=count===CHECKLIST_ITEMS.length?'0 0 10px #a855f7':'none';
   document.getElementById('allDoneBanner').style.display=count===CHECKLIST_ITEMS.length?'block':'none';
 }
 
-function toggleCheck(id) {
-  var todayKey='ual_chk_'+new Date().toDateString();
-  var checked=gd(todayKey,{});
-  checked[id]=!checked[id];
-  sd(todayKey,checked);
-  // auto-log
-  var logs=getLogs(), acts=logs[todayISO()]||[];
-  if(id==='resource'&&checked[id]&&acts.indexOf('healing')===-1){ acts.push('healing'); logs[todayISO()]=acts; setLogs(logs); }
-  if(id==='creative'&&checked[id]&&acts.indexOf('creative')===-1){ acts.push('creative'); logs[todayISO()]=acts; setLogs(logs); }
+function toggleCheck(id){
+  var todayKey='ual_chk_'+new Date().toDateString(),checked=gd(todayKey,{});
+  checked[id]=!checked[id];sd(todayKey,checked);
+  var logs=getLogs(),acts=logs[todayISO()]||[];
+  if(id==='resource'&&checked[id]&&acts.indexOf('healing')===-1){acts.push('healing');logs[todayISO()]=acts;setLogs(logs);}
+  if(id==='creative'&&checked[id]&&acts.indexOf('creative')===-1){acts.push('creative');logs[todayISO()]=acts;setLogs(logs);}
   renderChecklist(checked);
 }
 
-function renderAff() {
-  var a=AFFIRMATIONS[affIdx%AFFIRMATIONS.length];
-  document.getElementById('affWound').textContent=a.wound;
-  document.getElementById('affTruth').textContent=a.truth;
-  document.getElementById('affRef').textContent='— '+a.ref;
-  document.getElementById('affCounter').textContent=(affIdx%AFFIRMATIONS.length+1)+' of '+AFFIRMATIONS.length;
-}
-function prevAff(){ affIdx=(affIdx-1+AFFIRMATIONS.length)%AFFIRMATIONS.length; renderAff(); }
-function nextAff(){ affIdx=(affIdx+1)%AFFIRMATIONS.length; renderAff(); }
+function renderAff(){var a=AFFIRMATIONS[affIdx%AFFIRMATIONS.length];document.getElementById('affWound').textContent=a.wound;document.getElementById('affTruth').textContent=a.truth;document.getElementById('affRef').textContent='— '+a.ref;document.getElementById('affCounter').textContent=(affIdx%AFFIRMATIONS.length+1)+' of '+AFFIRMATIONS.length;}
+function prevAff(){affIdx=(affIdx-1+AFFIRMATIONS.length)%AFFIRMATIONS.length;renderAff();}
+function nextAff(){affIdx=(affIdx+1)%AFFIRMATIONS.length;renderAff();}
 
-function renderSched(cr) {
-  var items=[
-    {t:'6:30 AM', l:'🏋🏾‍♀️ Workout', s:false},
-    {t:'8:15 AM', l:'🚿 Shower · Water · No phone', s:false},
-    {t:'8:30 AM', l:'📖 HEALING HOUR', s:true},
-    {t:'9:30 AM', l:'✍🏾 CREATIVE — '+(cr?cr.name:''), s:true},
-    {t:'10:30 AM',l:'🌅 Sacred block closes.', s:false}
-  ];
+function renderSched(cr){
+  var items=[{t:'6:30 AM',l:'🏋🏾‍♀️ Workout',s:false},{t:'8:15 AM',l:'🚿 Shower · Water · No phone',s:false},{t:'8:30 AM',l:'📖 HEALING HOUR',s:true},{t:'9:30 AM',l:'✍🏾 CREATIVE — '+(cr?cr.name:''),s:true},{t:'10:30 AM',l:'🌅 Sacred block closes.',s:false}];
   var html='';
-  items.forEach(function(s){
-    html+='<div style="display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;">'
-      +'<div style="font-size:10px;color:#c084fc;font-weight:700;min-width:58px;padding-top:2px;">'+s.t+'</div>'
-      +'<div style="flex:1;padding:6px 10px;border-radius:8px;background:'+(s.s?'rgba(46,13,94,.3)':'#0a0015')+';border:1px solid '+(s.s?'rgba(124,58,237,.4)':'#2a1845')+';font-size:12px;color:#ede8f5;">'+s.l+'</div>'
-      +'</div>';
-  });
+  items.forEach(function(s){html+='<div style="display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;"><div style="font-size:10px;color:#c084fc;font-weight:700;min-width:58px;padding-top:2px;">'+s.t+'</div><div style="flex:1;padding:6px 10px;border-radius:8px;background:'+(s.s?'rgba(46,13,94,.3)':'#0a0015')+';border:1px solid '+(s.s?'rgba(124,58,237,.4)':'#2a1845')+';font-size:12px;color:#ede8f5;">'+s.l+'</div></div>';});
   document.getElementById('schedContent').innerHTML=html;
 }
+function toggleSched(){schedOpen=!schedOpen;document.getElementById('schedBlock').style.display=schedOpen?'block':'none';document.getElementById('schedArrow').textContent=schedOpen?'▲':'▼';}
 
-function toggleSched() {
-  schedOpen=!schedOpen;
-  document.getElementById('schedBlock').style.display=schedOpen?'block':'none';
-  document.getElementById('schedArrow').textContent=schedOpen?'▲':'▼';
-}
-
-function saveEntry() {
+function saveEntry(){
   var thoughts=document.getElementById('journalThoughts').value.trim();
   var promptResp=document.getElementById('journalPromptResp').value.trim();
-  if(!thoughts&&!promptResp&&!blobUrl){ toast('Write something first ✦'); return; }
-  var all=getEntries();
-  var dn=getDayNum();
-  all[todayISO()]={
-    thoughts:thoughts, promptResponse:promptResp,
-    prompt:PROMPTS[(dn-1)%PROMPTS.length], dayNum:dn,
-    date:isoFriendly(todayISO()),
-    media:blobUrl||null, mediaType:blobUrl?recType:null,
-    savedAt:new Date().toISOString()
-  };
+  if(!thoughts&&!promptResp&&!blobUrl){toast('Write something first ✦');return;}
+  var all=getEntries(),dn=getDayNum();
+  all[todayISO()]={thoughts:thoughts,promptResponse:promptResp,prompt:PROMPTS[(dn-1)%PROMPTS.length],dayNum:dn,date:isoFriendly(todayISO()),media:blobUrl||null,mediaType:blobUrl?recType:null,savedAt:new Date().toISOString()};
   setEntries(all);
-  // auto-log journal
-  var logs=getLogs(), acts=logs[todayISO()]||[];
-  if(acts.indexOf('journal')===-1){ acts.push('journal'); logs[todayISO()]=acts; setLogs(logs); }
-  var btn=document.getElementById('saveEntryBtn');
-  btn.textContent='✓ Saved!';
-  setTimeout(function(){ btn.textContent='Save Today\'s Entry ✦'; }, 2000);
+  var logs=getLogs(),acts=logs[todayISO()]||[];
+  if(acts.indexOf('journal')===-1){acts.push('journal');logs[todayISO()]=acts;setLogs(logs);}
+  var btn=document.getElementById('saveEntryBtn');btn.textContent='✓ Saved!';setTimeout(function(){btn.textContent='Save Today\'s Entry ✦';},2000);
 }
 
-function startRec(type) {
-  var constraints=type==='video'?{video:true,audio:true}:{audio:true};
-  navigator.mediaDevices.getUserMedia(constraints).then(function(stream){
-    recStream=stream; recChunks=[]; recType=type;
+function startRec(type){
+  navigator.mediaDevices.getUserMedia(type==='video'?{video:true,audio:true}:{audio:true}).then(function(stream){
+    recStream=stream;recChunks=[];recType=type;
     recObj=new MediaRecorder(stream);
-    recObj.ondataavailable=function(e){ if(e.data.size>0) recChunks.push(e.data); };
-    recObj.onstop=function(){
-      var blob=new Blob(recChunks,{type:type==='video'?'video/webm':'audio/webm'});
-      blobUrl=URL.createObjectURL(blob);
-      stream.getTracks().forEach(function(t){ t.stop(); });
-      renderMediaPreview();
-      renderMediaBtns(false);
-    };
-    recObj.start();
-    renderMediaBtns(true);
-  }).catch(function(){ alert('Could not access '+type+'. Check browser permissions.'); });
+    recObj.ondataavailable=function(e){if(e.data.size>0)recChunks.push(e.data);};
+    recObj.onstop=function(){var blob=new Blob(recChunks,{type:type==='video'?'video/webm':'audio/webm'});blobUrl=URL.createObjectURL(blob);stream.getTracks().forEach(function(t){t.stop();});renderMediaPreview();renderMediaBtns(false);};
+    recObj.start();renderMediaBtns(true);
+  }).catch(function(){alert('Could not access '+type+'. Check browser permissions.');});
 }
-
-function stopRec(){ if(recObj) recObj.stop(); }
-
-function renderMediaBtns(recording) {
-  var area=document.getElementById('mediaBtnsArea');
-  if(recording){
-    area.innerHTML='<button class="media-btn" style="background:#3d0010;border-color:#ef4444;color:#fca5a5;" onclick="stopRec()">⏹ Stop Recording</button>';
-  } else {
-    area.innerHTML='<button class="media-btn" style="background:rgba(124,58,237,.2);border-color:rgba(124,58,237,.4);color:#c084fc;" onclick="startRec(\'audio\')">🎙 Voice Note</button>'
-      +'<button class="media-btn" style="background:rgba(190,24,93,.15);border-color:rgba(236,72,153,.4);color:#f9a8d4;" onclick="startRec(\'video\')">🎥 Video Note</button>';
-  }
+function stopRec(){if(recObj)recObj.stop();}
+function renderMediaBtns(rec){
+  document.getElementById('mediaBtnsArea').innerHTML=rec
+    ?'<button class="media-btn" style="background:#3d0010;border-color:#ef4444;color:#fca5a5;" onclick="stopRec()">⏹ Stop Recording</button>'
+    :'<button class="media-btn" style="background:rgba(124,58,237,.2);border-color:rgba(124,58,237,.4);color:#c084fc;" onclick="startRec(\'audio\')">🎙 Voice Note</button><button class="media-btn" style="background:rgba(190,24,93,.15);border-color:rgba(236,72,153,.4);color:#f9a8d4;" onclick="startRec(\'video\')">🎥 Video Note</button>';
 }
-
-function renderMediaPreview() {
+function renderMediaPreview(){
   var area=document.getElementById('mediaPreviewArea');
-  if(!blobUrl){ area.innerHTML=''; return; }
-  var el=recType==='video'?'<video controls src="'+blobUrl+'" style="width:100%;border-radius:10px;margin-bottom:6px;"></video>'
-    :'<audio controls src="'+blobUrl+'" style="width:100%;margin-bottom:6px;"></audio>';
-  area.innerHTML=el+'<button onclick="clearMedia()" style="background:none;border:none;color:#5a5070;font-size:11px;cursor:pointer;">Remove</button>';
+  if(!blobUrl){area.innerHTML='';return;}
+  area.innerHTML=(recType==='video'?'<video controls src="'+blobUrl+'" style="width:100%;border-radius:10px;margin-bottom:6px;"></video>':'<audio controls src="'+blobUrl+'" style="width:100%;margin-bottom:6px;"></audio>')+'<button onclick="clearMedia()" style="background:none;border:none;color:#5a5070;font-size:11px;cursor:pointer;">Remove</button>';
 }
+function clearMedia(){blobUrl=null;recType=null;document.getElementById('mediaPreviewArea').innerHTML='';}
 
-function clearMedia(){ blobUrl=null; recType=null; document.getElementById('mediaPreviewArea').innerHTML=''; }
-
-// ══ HISTORY ══════════════════════════════════════════════════
-function renderHistory() {
+function renderHistory(){
   document.getElementById('historyMain').style.display='block';
   document.getElementById('historyDetail').style.display='none';
-  var logs=getLogs(), entries=getEntries();
-  var allDates={};
-  Object.keys(logs).forEach(function(d){ if(logs[d]&&logs[d].length) allDates[d]=1; });
-  Object.keys(entries).forEach(function(d){ allDates[d]=1; });
-  var sorted=Object.keys(allDates).sort(function(a,b){ return b.localeCompare(a); });
-  if(!sorted.length){
-    document.getElementById('historyList').innerHTML='<div style="text-align:center;color:#5a5070;font-size:13px;padding:40px 0;font-style:italic;">No entries yet. Start writing in the Today tab.</div>';
-    return;
-  }
+  var logs=getLogs(),entries=getEntries(),allDates={};
+  Object.keys(logs).forEach(function(d){if(logs[d]&&logs[d].length)allDates[d]=1;});
+  Object.keys(entries).forEach(function(d){allDates[d]=1;});
+  var sorted=Object.keys(allDates).sort(function(a,b){return b.localeCompare(a);});
+  if(!sorted.length){document.getElementById('historyList').innerHTML='<div style="text-align:center;color:#5a5070;font-size:13px;padding:40px 0;font-style:italic;">No entries yet. Start writing in the Today tab.</div>';return;}
   var html='';
   sorted.forEach(function(iso){
-    var entry=entries[iso]||{}, acts=logs[iso]||[];
-    var dt=new Date(iso+'T12:00:00');
+    var entry=entries[iso]||{},acts=logs[iso]||[],dt=new Date(iso+'T12:00:00');
     var dn=entry.dayNum||Math.max(1,Math.floor((dt-START_DATE)/86400000)+1);
     var hasW=!!(entry.thoughts||entry.promptResponse);
-    var dotsHtml='';
-    acts.forEach(function(a){ dotsHtml+='<div class="dot '+DOT_CLASSES[a]+'" style="box-shadow:0 0 4px currentColor;"></div>'; });
+    var dotsHtml='';acts.forEach(function(a){dotsHtml+='<div class="dot '+DOT_CLASSES[a]+'" style="box-shadow:0 0 4px currentColor;"></div>';});
     html+='<div class="hist-item'+(hasW?' has-entry':'')+'" onclick="openHistDetail(\''+iso+'\')">'
       +'<div class="hist-date-col"><div class="hist-day-num">'+dt.getDate()+'</div><div class="hist-month">'+MONTHS_ARR[dt.getMonth()].slice(0,3)+'</div></div>'
       +'<div class="hist-divider"></div>'
       +'<div style="flex:1;min-width:0;">'
-        +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">'
-          +'<div style="font-size:12px;font-weight:700;color:#9b90b0;">'+DAYS_ARR[dt.getDay()]+' · Day '+dn+'</div>'
-          +(hasW?'<span style="background:rgba(168,85,247,.2);border:1px solid rgba(168,85,247,.4);color:#c084fc;border-radius:99px;padding:2px 10px;font-size:9px;font-weight:700;">Written</span>':'')
-        +'</div>'
+        +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;"><div style="font-size:12px;font-weight:700;color:#9b90b0;">'+DAYS_ARR[dt.getDay()]+' · Day '+dn+'</div>'+(hasW?'<span style="background:rgba(168,85,247,.2);border:1px solid rgba(168,85,247,.4);color:#c084fc;border-radius:99px;padding:2px 10px;font-size:9px;font-weight:700;">Written</span>':'')+'</div>'
         +(entry.thoughts?'<div style="font-size:12px;color:#9b90b0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-style:italic;margin-bottom:4px;">'+entry.thoughts+'</div>':'')
         +(dotsHtml?'<div class="dot-row" style="margin-top:4px;">'+dotsHtml+'</div>':'')
         +(!hasW&&!acts.length?'<div style="font-size:11px;color:#3a3050;font-style:italic;">No entry recorded</div>':'')
-      +'</div>'
-      +'<div style="color:#5a5070;font-size:16px;padding-top:2px;">›</div>'
-      +'</div>';
+      +'</div><div style="color:#5a5070;font-size:16px;padding-top:2px;">›</div></div>';
   });
   document.getElementById('historyList').innerHTML=html;
 }
 
-function openHistDetail(iso) {
-  var entry=getEntries()[iso]||{}, acts=getLogs()[iso]||[];
-  var dt=new Date(iso+'T12:00:00');
+function openHistDetail(iso){
+  var entry=getEntries()[iso]||{},acts=getLogs()[iso]||[],dt=new Date(iso+'T12:00:00');
   var dn=entry.dayNum||Math.max(1,Math.floor((dt-START_DATE)/86400000)+1);
   document.getElementById('historyMain').style.display='none';
   document.getElementById('historyDetail').style.display='block';
-
-  // header
-  var actsHtml='';
-  acts.forEach(function(a){
-    actsHtml+='<div style="display:flex;align-items:center;gap:4px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.3);border-radius:99px;padding:2px 8px;">'
-      +'<div class="dot '+DOT_CLASSES[a]+'"></div>'
-      +'<span style="font-size:10px;color:#c084fc;font-weight:700;">'+(ACT_LABELS[a]||a).split(' ').slice(1).join(' ')+'</span>'
-      +'</div>';
-  });
-  document.getElementById('histDetailHeader').innerHTML=
-    '<div style="font-size:17px;font-weight:900;color:#ede8f5;margin-bottom:3px;">'+isoFriendly(iso)+'</div>'
-    +'<div style="font-size:11px;color:#5a5070;margin-bottom:'+(actsHtml?'8':'0')+'px;">Day '+dn+' of 291</div>'
-    +(actsHtml?'<div style="display:flex;gap:6px;flex-wrap:wrap;">'+actsHtml+'</div>':'');
-
-  // body
+  var actsHtml='';acts.forEach(function(a){actsHtml+='<div style="display:flex;align-items:center;gap:4px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.3);border-radius:99px;padding:2px 8px;"><div class="dot '+DOT_CLASSES[a]+'"></div><span style="font-size:10px;color:#c084fc;font-weight:700;">'+(ACT_LABELS[a]||a).split(' ').slice(1).join(' ')+'</span></div>';});
+  document.getElementById('histDetailHeader').innerHTML='<div style="font-size:17px;font-weight:900;color:#ede8f5;margin-bottom:3px;">'+isoFriendly(iso)+'</div><div style="font-size:11px;color:#5a5070;margin-bottom:'+(actsHtml?'8':'0')+'px;">Day '+dn+' of 291</div>'+(actsHtml?'<div style="display:flex;gap:6px;flex-wrap:wrap;">'+actsHtml+'</div>':'');
   var sc=SCRIPTURES[(dn-1)%SCRIPTURES.length];
-  var body=''
-    +'<div style="background:linear-gradient(135deg,#160028,#1e0035);border:1px solid #2a1845;border-left:3px solid #ec4899;border-radius:14px;padding:14px 16px;margin-bottom:14px;">'
-      +'<div style="font-size:10px;font-weight:700;color:#c084fc;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Scripture — Day '+dn+'</div>'
-      +'<div style="font-size:14px;color:#ede8f5;font-style:italic;line-height:1.6;font-family:Georgia,serif;">"'+sc.text+'"</div>'
-      +'<div style="font-size:11px;color:#5a5070;margin-top:4px;">'+sc.ref+'</div>'
-    +'</div>';
-
-  if(entry.thoughts){
-    body+='<div style="font-size:10px;font-weight:700;color:#c084fc;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">General Thoughts</div>'
-      +'<div style="font-size:15px;color:#ede8f5;line-height:1.8;white-space:pre-wrap;font-family:Georgia,serif;background:#160028;border:1px solid #2a1845;border-radius:12px;padding:14px 16px;margin-bottom:16px;">'+entry.thoughts+'</div>';
-  }
-  if(entry.prompt){
-    body+='<div style="font-size:10px;font-weight:700;color:#f9a8d4;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">Prompt Response</div>'
-      +'<div style="background:linear-gradient(135deg,#160028,#200020);border:1px solid #2a1845;border-left:3px solid #f9a8d4;border-radius:14px;padding:14px 16px;margin-bottom:16px;">'
-        +'<div style="font-size:12px;color:#f9a8d4;font-style:italic;line-height:1.5;margin-bottom:8px;">"'+entry.prompt+'"</div>'
-        +(entry.promptResponse
-          ?'<div style="font-size:15px;color:#ede8f5;line-height:1.8;white-space:pre-wrap;font-family:Georgia,serif;">'+entry.promptResponse+'</div>'
-          :'<div style="font-size:13px;color:#5a5070;font-style:italic;">No response written.</div>')
-      +'</div>';
-  }
-  if(entry.media&&entry.mediaType==='audio'){
-    body+='<div style="margin-bottom:14px;"><div style="font-size:10px;font-weight:700;color:#06b6d4;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">Voice Note</div>'
-      +'<audio controls src="'+entry.media+'" style="width:100%;"></audio></div>';
-  }
-  if(entry.media&&entry.mediaType==='video'){
-    body+='<div style="margin-bottom:14px;"><div style="font-size:10px;font-weight:700;color:#06b6d4;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">Video Note</div>'
-      +'<video controls src="'+entry.media+'" style="width:100%;border-radius:10px;"></video></div>';
-  }
-  if(!entry.thoughts&&!entry.prompt&&!entry.media){
-    body+='<div style="text-align:center;color:#5a5070;font-size:13px;padding:20px 0;font-style:italic;">No written entry for this day — but the calendar shows you were here. That counts.</div>';
-  }
-  if(entry.thoughts||entry.promptResponse){
-    body+='<button onclick="deleteHistEntry(\''+iso+'\')" style="background:#1a0010;border:1px solid rgba(239,68,68,.3);color:#ef4444;border-radius:10px;font-size:12px;font-weight:700;padding:8px 16px;cursor:pointer;margin-top:8px;">Delete Entry</button>';
-  }
+  var body='<div style="background:linear-gradient(135deg,#160028,#1e0035);border:1px solid #2a1845;border-left:3px solid #ec4899;border-radius:14px;padding:14px 16px;margin-bottom:14px;"><div style="font-size:10px;font-weight:700;color:#c084fc;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Scripture — Day '+dn+'</div><div style="font-size:14px;color:#ede8f5;font-style:italic;line-height:1.6;font-family:Georgia,serif;">"'+sc.text+'"</div><div style="font-size:11px;color:#5a5070;margin-top:4px;">'+sc.ref+'</div></div>';
+  if(entry.thoughts)body+='<div style="font-size:10px;font-weight:700;color:#c084fc;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">General Thoughts</div><div style="font-size:15px;color:#ede8f5;line-height:1.8;white-space:pre-wrap;font-family:Georgia,serif;background:#160028;border:1px solid #2a1845;border-radius:12px;padding:14px 16px;margin-bottom:16px;">'+entry.thoughts+'</div>';
+  if(entry.prompt)body+='<div style="font-size:10px;font-weight:700;color:#f9a8d4;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">Prompt Response</div><div style="background:linear-gradient(135deg,#160028,#200020);border:1px solid #2a1845;border-left:3px solid #f9a8d4;border-radius:14px;padding:14px 16px;margin-bottom:16px;"><div style="font-size:12px;color:#f9a8d4;font-style:italic;line-height:1.5;margin-bottom:8px;">"'+entry.prompt+'"</div>'+(entry.promptResponse?'<div style="font-size:15px;color:#ede8f5;line-height:1.8;white-space:pre-wrap;font-family:Georgia,serif;">'+entry.promptResponse+'</div>':'<div style="font-size:13px;color:#5a5070;font-style:italic;">No response written.</div>')+'</div>';
+  if(entry.media&&entry.mediaType==='audio')body+='<div style="margin-bottom:14px;"><div style="font-size:10px;font-weight:700;color:#06b6d4;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">Voice Note</div><audio controls src="'+entry.media+'" style="width:100%;"></audio></div>';
+  if(entry.media&&entry.mediaType==='video')body+='<div style="margin-bottom:14px;"><div style="font-size:10px;font-weight:700;color:#06b6d4;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">Video Note</div><video controls src="'+entry.media+'" style="width:100%;border-radius:10px;"></video></div>';
+  if(!entry.thoughts&&!entry.prompt&&!entry.media)body+='<div style="text-align:center;color:#5a5070;font-size:13px;padding:20px 0;font-style:italic;">No written entry for this day — but the calendar shows you were here. That counts.</div>';
+  if(entry.thoughts||entry.promptResponse)body+='<button onclick="deleteHistEntry(\''+iso+'\')" style="background:#1a0010;border:1px solid rgba(239,68,68,.3);color:#ef4444;border-radius:10px;font-size:12px;font-weight:700;padding:8px 16px;cursor:pointer;margin-top:8px;">Delete Entry</button>';
   document.getElementById('histDetailBody').innerHTML=body;
 }
+function closeHistDetail(){document.getElementById('historyMain').style.display='block';document.getElementById('historyDetail').style.display='none';}
+function deleteHistEntry(iso){var all=getEntries();delete all[iso];setEntries(all);closeHistDetail();renderHistory();toast('Entry deleted 🗑');}
 
-function closeHistDetail() {
-  document.getElementById('historyMain').style.display='block';
-  document.getElementById('historyDetail').style.display='none';
-}
+var calYear=new Date().getFullYear(),calMonth=new Date().getMonth();
+var logModalISO='',logCheckedSet=new Set(),dayModalISO='';
 
-function deleteHistEntry(iso) {
-  var all=getEntries(); delete all[iso]; setEntries(all);
-  closeHistDetail(); renderHistory();
-  toast('Entry deleted 🗑');
-}
-
-// ══ CALENDAR ═════════════════════════════════════════════════
-var calYear=new Date().getFullYear(), calMonth=new Date().getMonth();
-var logModalISO='', logCheckedSet=new Set(), dayModalISO='';
-
-function renderCal() {
-  var logs=getLogs(), entries=getEntries(), tISO=todayISO();
-  var streak=getStreak(), earned=getEarned();
-  var now=new Date(), mo=now.getMonth(), yr=now.getFullYear();
-  var allDates=Object.keys(logs).filter(function(d){ return logs[d]&&logs[d].length; });
-  var monthCount=allDates.filter(function(d){ var dt=new Date(d+'T12:00:00'); return dt.getMonth()===mo&&dt.getFullYear()===yr; }).length;
-  document.getElementById('calStreak').textContent=streak;
-  document.getElementById('calTotal').textContent=earned;
-  document.getElementById('calMonth').textContent=monthCount;
+function renderCal(){
+  var logs=getLogs(),entries=getEntries(),tISO=todayISO();
+  var streak=getStreak(),earned=getEarned(),now=new Date(),mo=now.getMonth(),yr=now.getFullYear();
+  var allDates=Object.keys(logs).filter(function(d){return logs[d]&&logs[d].length;});
+  var monthCount=allDates.filter(function(d){var dt=new Date(d+'T12:00:00');return dt.getMonth()===mo&&dt.getFullYear()===yr;}).length;
+  document.getElementById('calStreak').textContent=streak;document.getElementById('calTotal').textContent=earned;document.getElementById('calMonth').textContent=monthCount;
   document.getElementById('calTitle').textContent=MONTHS_ARR[calMonth]+' '+calYear;
-  var firstDay=new Date(calYear,calMonth,1).getDay();
-  var dim=new Date(calYear,calMonth+1,0).getDate();
-  var html='';
-  for(var i=0;i<firstDay;i++) html+='<div class="cal-day empty"></div>';
+  var firstDay=new Date(calYear,calMonth,1).getDay(),dim=new Date(calYear,calMonth+1,0).getDate(),html='';
+  for(var i=0;i<firstDay;i++)html+='<div class="cal-day empty"></div>';
   for(var d=1;d<=dim;d++){
     var iso=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
-    var isFuture=iso>tISO, isToday=iso===tISO;
-    var acts=logs[iso]||[], worked=acts.length>0;
+    var isFuture=iso>tISO,isToday=iso===tISO,acts=logs[iso]||[],worked=acts.length>0;
     var hasEntry=!!(entries[iso]&&(entries[iso].thoughts||entries[iso].promptResponse));
-    var dots='';
-    acts.forEach(function(a){ dots+='<div class="dot '+DOT_CLASSES[a]+'" style="box-shadow:0 0 4px currentColor;"></div>'; });
-    if(hasEntry&&acts.indexOf('journal')===-1) dots+='<div class="dot d-journal" style="box-shadow:0 0 4px currentColor;"></div>';
-    var cls='cal-day'+(isToday?' today':'')+(worked||hasEntry?' worked':'')+(isFuture?' future':'');
-    html+='<div class="'+cls+'" onclick="openCalDay(\''+iso+'\')">'
-      +d+((worked||hasEntry)?'<div class="dot-row">'+dots+'</div>':'')
-      +'</div>';
+    var dots='';acts.forEach(function(a){dots+='<div class="dot '+DOT_CLASSES[a]+'" style="box-shadow:0 0 4px currentColor;"></div>';});
+    if(hasEntry&&acts.indexOf('journal')===-1)dots+='<div class="dot d-journal" style="box-shadow:0 0 4px currentColor;"></div>';
+    html+='<div class="cal-day'+(isToday?' today':'')+(worked||hasEntry?' worked':'')+(isFuture?' future':'')+'" onclick="openCalDay(\''+iso+'\')">'
+      +d+((worked||hasEntry)?'<div class="dot-row">'+dots+'</div>':'')+'</div>';
   }
   document.getElementById('calGrid').innerHTML=html;
 }
+function changeMonth(dir){calMonth+=dir;if(calMonth>11){calMonth=0;calYear++;}if(calMonth<0){calMonth=11;calYear--;}renderCal();}
+function openCalDay(iso){if(iso>todayISO())return;var acts=getLogs()[iso]||[];if(acts.length)openDayModal(iso);else openLogModal(iso);}
 
-function changeMonth(dir) {
-  calMonth+=dir;
-  if(calMonth>11){calMonth=0;calYear++;}
-  if(calMonth<0){calMonth=11;calYear--;}
-  renderCal();
-}
-
-function openCalDay(iso) {
-  if(iso>todayISO()) return;
-  var logs=getLogs(), acts=logs[iso]||[];
-  if(acts.length) openDayModal(iso); else openLogModal(iso);
-}
-
-function openLogModal(iso) {
-  logModalISO=iso;
-  var logs=getLogs(), existing=logs[iso]||[];
-  logCheckedSet=new Set(existing);
-  ['healing','creative','journal','letter'].forEach(function(k){
-    document.getElementById('chk-'+k).classList.toggle('checked', logCheckedSet.has(k));
-  });
-  var isPast=iso<todayISO();
+function openLogModal(iso){
+  logModalISO=iso;var logs=getLogs(),existing=logs[iso]||[];logCheckedSet=new Set(existing);
+  ['healing','creative','journal','letter'].forEach(function(k){document.getElementById('chk-'+k).classList.toggle('checked',logCheckedSet.has(k));});
   document.getElementById('logModalTitle').textContent=existing.length?'✏️ Edit Log':'✅ Log Practice';
-  document.getElementById('logModalSub').textContent=isPast?isoFriendly(iso):'';
+  document.getElementById('logModalSub').textContent=iso<todayISO()?isoFriendly(iso):'';
   document.getElementById('logDeleteBtn').style.display=existing.length?'block':'none';
   document.getElementById('logModal').classList.add('open');
 }
-function closeLogModal(){ document.getElementById('logModal').classList.remove('open'); }
-function toggleAct(k){
-  logCheckedSet.has(k)?logCheckedSet.delete(k):logCheckedSet.add(k);
-  document.getElementById('chk-'+k).classList.toggle('checked', logCheckedSet.has(k));
-}
-function saveLog(){
-  var logs=getLogs();
-  if(logCheckedSet.size) logs[logModalISO]=Array.from(logCheckedSet); else delete logs[logModalISO];
-  setLogs(logs); closeLogModal(); renderCal(); toast('Practice logged! ✦');
-}
-function deleteLog(){
-  var logs=getLogs(); delete logs[logModalISO]; setLogs(logs);
-  closeLogModal(); renderCal(); toast('Log deleted 🗑');
-}
+function closeLogModal(){document.getElementById('logModal').classList.remove('open');}
+function toggleAct(k){logCheckedSet.has(k)?logCheckedSet.delete(k):logCheckedSet.add(k);document.getElementById('chk-'+k).classList.toggle('checked',logCheckedSet.has(k));}
+function saveLog(){var logs=getLogs();if(logCheckedSet.size)logs[logModalISO]=Array.from(logCheckedSet);else delete logs[logModalISO];setLogs(logs);closeLogModal();renderCal();toast('Practice logged! ✦');}
+function deleteLog(){var logs=getLogs();delete logs[logModalISO];setLogs(logs);closeLogModal();renderCal();toast('Log deleted 🗑');}
 
-function openDayModal(iso) {
-  dayModalISO=iso;
-  var acts=getLogs()[iso]||[];
+function openDayModal(iso){
+  dayModalISO=iso;var acts=getLogs()[iso]||[];
   document.getElementById('dayModalTitle').textContent='📅 '+isoFriendly(iso);
-  var html='';
-  acts.forEach(function(a){
-    html+='<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #2a1845;">'
-      +'<div style="display:flex;align-items:center;gap:8px;"><div class="dot '+DOT_CLASSES[a]+'" style="width:10px;height:10px;"></div><span style="font-size:13px;color:#ede8f5;">'+(ACT_LABELS[a]||a)+'</span></div>'
-      +'<button onclick="removeCalAct(\''+a+'\')" style="background:#1a0010;border:1px solid rgba(239,68,68,.3);color:#ef4444;border-radius:6px;font-size:11px;font-weight:700;padding:4px 10px;cursor:pointer;">Remove</button>'
-      +'</div>';
-  });
-  if(!html) html='<div style="text-align:center;color:#5a5070;font-size:13px;padding:12px 0;">Nothing logged.</div>';
+  var html='';acts.forEach(function(a){html+='<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #2a1845;"><div style="display:flex;align-items:center;gap:8px;"><div class="dot '+DOT_CLASSES[a]+'" style="width:10px;height:10px;"></div><span style="font-size:13px;color:#ede8f5;">'+(ACT_LABELS[a]||a)+'</span></div><button onclick="removeCalAct(\''+a+'\')" style="background:#1a0010;border:1px solid rgba(239,68,68,.3);color:#ef4444;border-radius:6px;font-size:11px;font-weight:700;padding:4px 10px;cursor:pointer;">Remove</button></div>';});
+  if(!html)html='<div style="text-align:center;color:#5a5070;font-size:13px;padding:12px 0;">Nothing logged.</div>';
   document.getElementById('dayModalContent').innerHTML=html;
   document.getElementById('dayModal').classList.add('open');
 }
-function closeDayModal(){ document.getElementById('dayModal').classList.remove('open'); }
-function editDay(){ closeDayModal(); openLogModal(dayModalISO); }
-function removeCalAct(act){
-  var logs=getLogs(), acts=(logs[dayModalISO]||[]).filter(function(a){ return a!==act; });
-  if(acts.length) logs[dayModalISO]=acts; else delete logs[dayModalISO];
-  setLogs(logs); renderCal();
-  if(acts.length) openDayModal(dayModalISO); else closeDayModal();
-}
+function closeDayModal(){document.getElementById('dayModal').classList.remove('open');}
+function editDay(){closeDayModal();openLogModal(dayModalISO);}
+function removeCalAct(act){var logs=getLogs(),acts=(logs[dayModalISO]||[]).filter(function(a){return a!==act;});if(acts.length)logs[dayModalISO]=acts;else delete logs[dayModalISO];setLogs(logs);renderCal();if(acts.length)openDayModal(dayModalISO);else closeDayModal();}
 
-// close modals on bg click
-document.getElementById('logModal').addEventListener('click',function(e){ if(e.target===this) closeLogModal(); });
-document.getElementById('dayModal').addEventListener('click',function(e){ if(e.target===this) closeDayModal(); });
-document.getElementById('listenModal').addEventListener('click',function(e){ if(e.target===this) closeListenModal(); });
+document.getElementById('logModal').addEventListener('click',function(e){if(e.target===this)closeLogModal();});
+document.getElementById('dayModal').addEventListener('click',function(e){if(e.target===this)closeDayModal();});
+document.getElementById('listenModal').addEventListener('click',function(e){if(e.target===this)closeListenModal();});
+document.getElementById('sessionModal').addEventListener('click',function(e){if(e.target===this)closeSessionModal();});
 
-// ══ MORE ═════════════════════════════════════════════════════
 var moreSection='menu';
-function renderMore() {
-  showMoreSection('menu');
-}
-function showMoreSection(s) {
+function renderMore(){showMoreSection('menu');}
+function showMoreSection(s){
   moreSection=s;
-  document.getElementById('moreMenu').style.display=s==='menu'?'block':'none';
-  document.getElementById('moreBlueprint').style.display=s==='blueprint'?'block':'none';
-  document.getElementById('moreAffirmations').style.display=s==='affirmations'?'block':'none';
-  document.getElementById('moreListen').style.display=s==='listen'?'block':'none';
-  if(s==='menu') renderMoreMenu();
-  if(s==='blueprint') renderBlueprint();
-  if(s==='affirmations') renderAffirmations();
-  if(s==='listen') renderListen();
+  ['menu','blueprint','affirmations','listen'].forEach(function(sec){document.getElementById('more'+sec.charAt(0).toUpperCase()+sec.slice(1)).style.display=s===sec?'block':'none';});
+  if(s==='menu')renderMoreMenu();
+  if(s==='blueprint')renderBlueprint();
+  if(s==='affirmations')renderAffirmations();
+  if(s==='listen')renderListen();
 }
+function backBtn(){return '<button onclick="showMoreSection(\'menu\')" style="background:none;border:none;color:#c084fc;font-size:14px;cursor:pointer;margin-bottom:14px;padding:0;">← Back</button>';}
 
-function renderMoreMenu() {
-  var items=[
-    {id:'blueprint',   icon:'☽',  title:'Book Blueprint',  sub:'All 52 letters with letter tracker',     color:'#ec4899'},
-    {id:'affirmations',icon:'✦',  title:'Affirmations',    sub:'When the wound speaks — truth by truth', color:'#c084fc'},
-    {id:'listen',      icon:'🎧', title:'Listen Tracker',  sub:'Podcasts, audiobooks, sessions, notes',  color:'#06b6d4'}
-  ];
+function renderMoreMenu(){
+  var items=[{id:'blueprint',icon:'☽',title:'Book Blueprint',sub:'All 52 letters with letter tracker',color:'#ec4899'},{id:'affirmations',icon:'✦',title:'Affirmations',sub:'When the wound speaks — truth by truth',color:'#c084fc'},{id:'listen',icon:'🎧',title:'Listen Tracker',sub:'Session logs, notes, history per resource',color:'#06b6d4'}];
   var html='';
-  items.forEach(function(item){
-    html+='<div onclick="showMoreSection(\''+item.id+'\')" style="background:#160028;border:1px solid #2a1845;border-left:4px solid '+item.color+';border-radius:14px;padding:16px;margin-bottom:10px;cursor:pointer;display:flex;gap:14px;align-items:center;">'
-      +'<div style="font-size:28px;filter:drop-shadow(0 0 8px '+item.color+'66);">'+item.icon+'</div>'
-      +'<div><div style="font-size:15px;font-weight:800;color:'+item.color+';margin-bottom:3px;">'+item.title+'</div><div style="font-size:12px;color:#9b90b0;">'+item.sub+'</div></div>'
-      +'<div style="margin-left:auto;color:#5a5070;font-size:18px;">›</div>'
-      +'</div>';
-  });
+  items.forEach(function(item){html+='<div onclick="showMoreSection(\''+item.id+'\')" style="background:#160028;border:1px solid #2a1845;border-left:4px solid '+item.color+';border-radius:14px;padding:16px;margin-bottom:10px;cursor:pointer;display:flex;gap:14px;align-items:center;"><div style="font-size:28px;filter:drop-shadow(0 0 8px '+item.color+'66);">'+item.icon+'</div><div><div style="font-size:15px;font-weight:800;color:'+item.color+';margin-bottom:3px;">'+item.title+'</div><div style="font-size:12px;color:#9b90b0;">'+item.sub+'</div></div><div style="margin-left:auto;color:#5a5070;font-size:18px;">›</div></div>';});
   document.getElementById('moreMenuItems').innerHTML=html;
 }
 
-function backBtn() { return '<button onclick="showMoreSection(\'menu\')" style="background:none;border:none;color:#c084fc;font-size:14px;cursor:pointer;margin-bottom:14px;padding:0;">← Back</button>'; }
-
-// ── Blueprint ─────────────────────────────────────────────────
-function renderBlueprint() {
+function renderBlueprint(){
   var letters=getLetters();
-  var totalL=BP_PARTS.reduce(function(s,p){ return s+p.items.length; },0);
-  var writtenC=Object.values(letters).filter(function(v){ return v==='written'; }).length;
+  var totalL=BP_PARTS.reduce(function(s,p){return s+p.items.length;},0);
+  var writtenC=Object.values(letters).filter(function(v){return v==='written';}).length;
   var STATUS_CYCLE={'not_started':'writing','writing':'written','written':'not_started'};
   var STATUS_COLORS={'not_started':'#5a5070','writing':'#fbbf24','written':'#34d399'};
   var STATUS_LABELS={'not_started':'○ Not started','writing':'✏️ Writing','written':'✅ Written'};
-
-  var html=backBtn()
-    +'<div style="background:linear-gradient(135deg,#1a0030,#2e0025);border:1px solid rgba(190,24,93,.3);border-radius:14px;padding:16px;text-align:center;margin-bottom:14px;">'
-      +'<div style="font-size:10px;color:#f9a8d4;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Final Twelve Words</div>'
-      +'<div style="font-size:17px;color:#fff;font-style:italic;line-height:1.7;font-family:Georgia,serif;">"And for every broken piece of me,<br>I thank you."</div>'
-    +'</div>'
-    +'<div style="background:#160028;border-radius:12px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">'
-      +'<div style="font-size:12px;color:#9b90b0;">Letters written</div>'
-      +'<div style="font-size:15px;font-weight:900;color:#34d399;">'+writtenC+' <span style="font-size:11px;color:#5a5070;font-weight:400;">of '+totalL+'</span></div>'
-    +'</div>';
-
-  BP_PARTS.forEach(function(part, pi){
-    var partW=part.items.filter(function(_,ii){ return (letters[pi+'-'+ii]||'not_started')==='written'; }).length;
-    html+='<div style="margin-bottom:10px;">'
-      +'<button onclick="toggleBP('+pi+')" id="bptrig-'+pi+'" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:#160028;border:1px solid #2a1845;border-left:4px solid '+part.accent+';border-radius:12px;cursor:pointer;text-align:left;">'
-        +'<div><div style="font-size:14px;font-weight:800;color:'+part.accent+';">'+part.name+'</div><div style="font-size:11px;color:#5a5070;margin-top:2px;">'+part.sub+'</div></div>'
-        +'<div style="display:flex;align-items:center;gap:8px;"><div style="font-size:11px;color:'+(partW===part.items.length?'#34d399':'#5a5070')+';">'+partW+'/'+part.items.length+'</div><div style="font-size:12px;color:#5a5070;background:rgba(255,255,255,.07);border-radius:20px;padding:3px 9px;" id="bparr-'+pi+'">▼</div></div>'
-      +'</button>'
-      +'<div style="display:none;background:#0a0018;border-radius:0 0 12px 12px;border:1px solid #2a1845;border-top:none;padding:4px 0;" id="bpitems-'+pi+'">';
-
+  var html=backBtn()+'<div style="background:linear-gradient(135deg,#1a0030,#2e0025);border:1px solid rgba(190,24,93,.3);border-radius:14px;padding:16px;text-align:center;margin-bottom:14px;"><div style="font-size:10px;color:#f9a8d4;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Final Twelve Words</div><div style="font-size:17px;color:#fff;font-style:italic;line-height:1.7;font-family:Georgia,serif;">"And for every broken piece of me,<br>I thank you."</div></div>'
+    +'<div style="background:#160028;border-radius:12px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;"><div style="font-size:12px;color:#9b90b0;">Letters written</div><div style="font-size:15px;font-weight:900;color:#34d399;">'+writtenC+' <span style="font-size:11px;color:#5a5070;font-weight:400;">of '+totalL+'</span></div></div>';
+  BP_PARTS.forEach(function(part,pi){
+    var partW=part.items.filter(function(_,ii){return(letters[pi+'-'+ii]||'not_started')==='written';}).length;
+    html+='<div style="margin-bottom:10px;"><button onclick="toggleBP('+pi+')" id="bptrig-'+pi+'" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:#160028;border:1px solid #2a1845;border-left:4px solid '+part.accent+';border-radius:12px;cursor:pointer;text-align:left;"><div><div style="font-size:14px;font-weight:800;color:'+part.accent+';">'+part.name+'</div><div style="font-size:11px;color:#5a5070;margin-top:2px;">'+part.sub+'</div></div><div style="display:flex;align-items:center;gap:8px;"><div style="font-size:11px;color:'+(partW===part.items.length?'#34d399':'#5a5070')+';">'+partW+'/'+part.items.length+'</div><div style="font-size:12px;color:#5a5070;background:rgba(255,255,255,.07);border-radius:20px;padding:3px 9px;" id="bparr-'+pi+'">▼</div></div></button><div style="display:none;background:#0a0018;border-radius:0 0 12px 12px;border:1px solid #2a1845;border-top:none;padding:4px 0;" id="bpitems-'+pi+'">';
     part.items.forEach(function(item,ii){
       var st=letters[pi+'-'+ii]||'not_started';
-      html+='<div style="display:flex;gap:10px;padding:10px 14px;border-bottom:'+( ii<part.items.length-1?'1px solid #160028':'none')+';align-items:center;">'
-        +'<div style="font-size:11px;font-weight:700;min-width:24px;color:'+(item.wound?'#fbbf24':item.final?'#ec4899':'#3a3050')+';">'+item.n+'</div>'
-        +'<div style="flex:1;"><div style="font-size:13px;color:'+(item.wound?'#fbbf24':item.final?'#f9a8d4':'#ede8f5')+';line-height:1.4;">'+item.t+'</div><div style="font-size:11px;color:#5a5070;margin-top:2px;">'+item.a+'</div></div>'
-        +'<button onclick="cycleLetterStatus('+pi+','+ii+')" style="background:rgba('+hexToRgb(STATUS_COLORS[st])+', .15);border:1px solid rgba('+hexToRgb(STATUS_COLORS[st])+', .4);border-radius:8px;color:'+STATUS_COLORS[st]+';font-size:10px;padding:4px 8px;cursor:pointer;font-weight:700;white-space:nowrap;">'+STATUS_LABELS[st]+'</button>'
-        +'</div>';
+      html+='<div style="display:flex;gap:10px;padding:10px 14px;border-bottom:'+(ii<part.items.length-1?'1px solid #160028':'none')+';align-items:center;"><div style="font-size:11px;font-weight:700;min-width:24px;color:'+(item.wound?'#fbbf24':item.final?'#ec4899':'#3a3050')+';">'+item.n+'</div><div style="flex:1;"><div style="font-size:13px;color:'+(item.wound?'#fbbf24':item.final?'#f9a8d4':'#ede8f5')+';line-height:1.4;">'+item.t+'</div><div style="font-size:11px;color:#5a5070;margin-top:2px;">'+item.a+'</div></div><button onclick="cycleLetterStatus('+pi+','+ii+')" style="background:rgba('+hexToRgb(STATUS_COLORS[st])+',.15);border:1px solid rgba('+hexToRgb(STATUS_COLORS[st])+',.4);border-radius:8px;color:'+STATUS_COLORS[st]+';font-size:10px;padding:4px 8px;cursor:pointer;font-weight:700;white-space:nowrap;">'+STATUS_LABELS[st]+'</button></div>';
     });
     html+='</div></div>';
   });
   document.getElementById('moreBlueprint').innerHTML=html;
 }
+function toggleBP(pi){var items=document.getElementById('bpitems-'+pi),arr=document.getElementById('bparr-'+pi),open=items.style.display==='block';items.style.display=open?'none':'block';arr.textContent=open?'▼':'▲';document.getElementById('bptrig-'+pi).style.borderRadius=open?'12px':'12px 12px 0 0';}
+function cycleLetterStatus(pi,ii){var CYCLE={'not_started':'writing','writing':'written','written':'not_started'};var letters=getLetters();var k=pi+'-'+ii;letters[k]=CYCLE[letters[k]||'not_started'];setLetters(letters);renderBlueprint();}
 
-function hexToRgb(hex){
-  var r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
-  return r+','+g+','+b;
-}
-function toggleBP(pi){
-  var items=document.getElementById('bpitems-'+pi);
-  var arr=document.getElementById('bparr-'+pi);
-  var open=items.style.display==='block';
-  items.style.display=open?'none':'block';
-  arr.textContent=open?'▼':'▲';
-  var trig=document.getElementById('bptrig-'+pi);
-  trig.style.borderRadius=open?'12px':'12px 12px 0 0';
-}
-function cycleLetterStatus(pi,ii){
-  var CYCLE={'not_started':'writing','writing':'written','written':'not_started'};
-  var letters=getLetters();
-  var k=pi+'-'+ii;
-  letters[k]=CYCLE[letters[k]||'not_started'];
-  setLetters(letters);
-  renderBlueprint();
-}
-
-// ── Affirmations ──────────────────────────────────────────────
-function renderAffirmations() {
-  var html=backBtn()
-    +'<div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin-bottom:6px;">When the Wound Speaks</div>'
-    +'<div style="font-size:12px;color:#5a5070;margin-bottom:16px;font-style:italic;">Say it out loud. Write it. Return here when you need to remember.</div>';
-
-  AFFIRMATIONS.forEach(function(a){
-    html+='<div class="aff-card"><div style="font-size:11px;color:#5a5070;margin-bottom:6px;font-style:italic;line-height:1.4;">'+a.wound+'</div>'
-      +'<div style="font-size:15px;color:#ede8f5;font-weight:700;margin-bottom:4px;font-family:Georgia,serif;line-height:1.5;">'+a.truth+'</div>'
-      +'<div style="font-size:11px;color:#c084fc;">— '+a.ref+'</div></div>';
-  });
-
-  html+='<div style="background:linear-gradient(135deg,#1a003a,#2e0025);border:1px solid #2a1845;border-radius:14px;padding:16px;margin-bottom:16px;">'
-    +'<div style="font-size:10px;font-weight:700;color:#c084fc;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px;">Power Affirmation</div>'
-    +'<div style="font-size:14px;color:#ede8f5;line-height:1.9;font-style:italic;font-family:Georgia,serif;">"I am God\'s beloved daughter. I am seen. I am known. I am held. I am never alone. My worth is inherent. My belonging is permanent. I am learning to stay."</div>'
-    +'</div>'
-    +'<div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#f9a8d4;margin-bottom:10px;">Weekly Focus by Part</div>';
-
-  WEEKLY_AFFS.forEach(function(w){
-    html+='<div style="background:#160028;border:1px solid #2a1845;border-left:3px solid #ec4899;border-radius:14px;padding:14px 16px;margin-bottom:10px;">'
-      +'<div style="font-size:11px;font-weight:700;color:#f9a8d4;margin-bottom:6px;">'+w.range+'</div>'
-      +'<div style="font-size:13px;color:#ede8f5;line-height:1.6;font-style:italic;font-family:Georgia,serif;">"'+w.text+'"</div>'
-      +'</div>';
-  });
+function renderAffirmations(){
+  var html=backBtn()+'<div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin-bottom:6px;">When the Wound Speaks</div><div style="font-size:12px;color:#5a5070;margin-bottom:16px;font-style:italic;">Say it out loud. Write it. Return here when you need to remember.</div>';
+  AFFIRMATIONS.forEach(function(a){html+='<div class="aff-card"><div style="font-size:11px;color:#5a5070;margin-bottom:6px;font-style:italic;line-height:1.4;">'+a.wound+'</div><div style="font-size:15px;color:#ede8f5;font-weight:700;margin-bottom:4px;font-family:Georgia,serif;line-height:1.5;">'+a.truth+'</div><div style="font-size:11px;color:#c084fc;">— '+a.ref+'</div></div>';});
+  html+='<div style="background:linear-gradient(135deg,#1a003a,#2e0025);border:1px solid #2a1845;border-radius:14px;padding:16px;margin-bottom:16px;"><div style="font-size:10px;font-weight:700;color:#c084fc;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px;">Power Affirmation</div><div style="font-size:14px;color:#ede8f5;line-height:1.9;font-style:italic;font-family:Georgia,serif;">"I am God\'s beloved daughter. I am seen. I am known. I am held. I am never alone. My worth is inherent. My belonging is permanent. I am learning to stay."</div></div>';
+  html+='<div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#f9a8d4;margin-bottom:10px;">Weekly Focus by Part</div>';
+  WEEKLY_AFFS.forEach(function(w){html+='<div style="background:#160028;border:1px solid #2a1845;border-left:3px solid #ec4899;border-radius:14px;padding:14px 16px;margin-bottom:10px;"><div style="font-size:11px;font-weight:700;color:#f9a8d4;margin-bottom:6px;">'+w.range+'</div><div style="font-size:13px;color:#ede8f5;line-height:1.6;font-style:italic;font-family:Georgia,serif;">"'+w.text+'"</div></div>';});
   document.getElementById('moreAffirmations').innerHTML=html;
 }
 
-// ── Listen ────────────────────────────────────────────────────
-var listenEditId='', listenDraft={};
+var listenEditId='',listenDraft={},listenSessionId='',listenHistOpen={};
 
-function renderListen() {
+function renderListen(){
   var resData=getResData();
-  var STATUS_COLORS={current:'#06b6d4', finished:'#34d399', not_started:'#5a5070'};
-  var STATUS_LABELS={current:'🎧 Currently Listening', finished:'✅ Finished', not_started:'○ Not Started'};
+  var STATUS_COLORS={current:'#06b6d4',finished:'#34d399',not_started:'#5a5070'};
+  var STATUS_LABELS={current:'🎧 Currently Listening',finished:'✅ Finished',not_started:'○ Not Started'};
   var counts={current:0,finished:0,not_started:0};
-  RESOURCES.forEach(function(r){ var s=(resData[r.id]&&resData[r.id].status)||'not_started'; counts[s]=(counts[s]||0)+1; });
-
-  var html=backBtn()
-    +'<div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#06b6d4;margin-bottom:14px;">Listen Tracker</div>'
-    +'<div style="display:flex;gap:8px;margin-bottom:14px;">';
-  [{v:counts.current,l:'Listening',c:'#06b6d4'},{v:counts.finished,l:'Finished',c:'#34d399'},{v:counts.not_started,l:'To Start',c:'#5a5070'}].forEach(function(s){
-    html+='<div style="flex:1;background:#160028;border-radius:12px;padding:10px 8px;text-align:center;border:1px solid rgba('+hexToRgb(s.c)+',.2);"><div style="font-size:1.5rem;font-weight:900;color:'+s.c+';">'+s.v+'</div><div style="font-size:10px;color:#9b90b0;margin-top:1px;">'+s.l+'</div></div>';
-  });
+  RESOURCES.forEach(function(r){var s=(resData[r.id]&&resData[r.id].status)||'not_started';counts[s]=(counts[s]||0)+1;});
+  var html=backBtn()+'<div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#06b6d4;margin-bottom:14px;">Listen Tracker</div><div style="display:flex;gap:8px;margin-bottom:14px;">';
+  [{v:counts.current,l:'Listening',c:'#06b6d4'},{v:counts.finished,l:'Finished',c:'#34d399'},{v:counts.not_started,l:'To Start',c:'#5a5070'}].forEach(function(s){html+='<div style="flex:1;background:#160028;border-radius:12px;padding:10px 8px;text-align:center;border:1px solid rgba('+hexToRgb(s.c)+',.2);"><div style="font-size:1.5rem;font-weight:900;color:'+s.c+';">'+s.v+'</div><div style="font-size:10px;color:#9b90b0;margin-top:1px;">'+s.l+'</div></div>';});
   html+='</div>';
-
   RESOURCES.forEach(function(r){
-    var rd=resData[r.id]||{}, status=rd.status||'not_started', sc=STATUS_COLORS[status];
+    var rd=resData[r.id]||{},status=rd.status||'not_started',sc=STATUS_COLORS[status];
+    var sessions=rd.sessionLog||[],sessCount=sessions.length,histOpen=!!listenHistOpen[r.id];
     html+='<div style="background:#160028;border:1px solid #2a1845;border-left:3px solid '+sc+';border-radius:14px;padding:14px 16px;margin-bottom:10px;">'
-      +'<div style="display:flex;gap:6px;align-items:center;margin-bottom:4px;flex-wrap:wrap;">'
-        +'<span style="background:rgba('+(r.type==='Audiobook'?'190,24,93':'124,58,237')+',.2);border:1px solid rgba('+(r.type==='Audiobook'?'236,72,153':'168,85,247')+',.4);color:'+(r.type==='Audiobook'?'#f9a8d4':'#c084fc')+';border-radius:99px;padding:2px 10px;font-size:10px;font-weight:700;">'+r.type+'</span>'
-        +'<span style="font-size:10px;font-weight:700;color:'+sc+';">'+STATUS_LABELS[status]+'</span>'
-      +'</div>'
+      +'<div style="display:flex;gap:6px;align-items:center;margin-bottom:4px;flex-wrap:wrap;"><span style="background:rgba('+(r.type==='Audiobook'?'190,24,93':'124,58,237')+',.2);border:1px solid rgba('+(r.type==='Audiobook'?'236,72,153':'168,85,247')+',.4);color:'+(r.type==='Audiobook'?'#f9a8d4':'#c084fc')+';border-radius:99px;padding:2px 10px;font-size:10px;font-weight:700;">'+r.type+'</span><span style="font-size:10px;font-weight:700;color:'+sc+';">'+STATUS_LABELS[status]+'</span></div>'
       +'<div style="font-size:14px;color:#ede8f5;font-weight:700;margin-bottom:3px;">'+r.title+'</div>'
       +'<div style="font-size:12px;color:#9b90b0;line-height:1.4;margin-bottom:8px;">'+r.note+'</div>'
-      +(status!=='not_started'?'<div style="font-size:11px;color:#06b6d4;margin-bottom:8px;">🎧 '+(rd.sessions||0)+' sessions'+(rd.rating?'&nbsp;&nbsp;'+'★'.repeat(rd.rating)+'☆'.repeat(5-rd.rating):'')+' </div>':'')
-      +(rd.takeaway?'<div style="font-size:12px;color:#9b90b0;font-style:italic;border-top:1px solid #2a1845;padding-top:8px;line-height:1.5;margin-bottom:8px;">"'+rd.takeaway+'"</div>':'')
-      +'<button onclick="openListenModal(\''+r.id+'\')" style="width:100%;background:rgba(124,58,237,.15);border:1px solid #2a1845;border-radius:8px;color:#c084fc;font-size:12px;padding:7px 14px;cursor:pointer;">'+(status==='not_started'?'+ Track This Resource':'✏️ Update')+'</button>'
+      +(status!=='not_started'?'<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;"><div style="font-size:11px;color:#06b6d4;">🎧 '+sessCount+' session'+(sessCount!==1?'s':'')+' logged</div>'+(rd.rating?'<div style="font-size:12px;color:#fbbf24;">'+'★'.repeat(rd.rating)+'☆'.repeat(5-rd.rating)+'</div>':'')+'</div>':'')
+      +(rd.takeaway?'<div style="font-size:12px;color:#9b90b0;font-style:italic;border-top:1px solid #2a1845;padding-top:8px;line-height:1.5;margin-bottom:10px;">"'+rd.takeaway+'"</div>':'')
+      +(sessCount>0?'<button onclick="toggleListenHist(\''+r.id+'\')" style="width:100%;background:#0a0015;border:1px solid #2a1845;border-radius:8px;color:#5a5070;font-size:11px;padding:6px 14px;cursor:pointer;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;"><span>📋 Session History ('+sessCount+')</span><span>'+(histOpen?'▲':'▼')+'</span></button>'+(histOpen?renderSessionHistory(sessions,r.id):''):'')
+      +'<div style="display:flex;gap:8px;"><button onclick="openListenModal(\''+r.id+'\')" style="flex:1;background:rgba(124,58,237,.15);border:1px solid #2a1845;border-radius:8px;color:#c084fc;font-size:12px;padding:7px 10px;cursor:pointer;">⚙️ Settings</button>'+(status!=='not_started'?'<button onclick="openSessionModal(\''+r.id+'\')" style="flex:1;background:linear-gradient(135deg,#7c3aed,#be185d);border:none;border-radius:8px;color:#fff;font-size:12px;padding:7px 10px;cursor:pointer;font-weight:700;">+ Log Session</button>':'')+'</div>'
       +'</div>';
   });
   document.getElementById('moreListen').innerHTML=html;
 }
 
-function openListenModal(id) {
+function renderSessionHistory(sessions,rid){
+  if(!sessions||!sessions.length)return '';
+  var html='<div style="background:#0a0015;border:1px solid #2a1845;border-radius:10px;padding:10px 12px;margin-bottom:8px;">';
+  sessions.slice().reverse().forEach(function(s,i){
+    var realIdx=sessions.length-1-i;
+    html+='<div style="padding:8px 0;border-bottom:'+(i===sessions.length-1?'none':'1px solid #2a1845')+';">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">'
+        +'<div style="font-size:11px;font-weight:700;color:#06b6d4;">Session '+(realIdx+1)+'</div>'
+        +'<div style="display:flex;gap:6px;align-items:center;"><div style="font-size:10px;color:#5a5070;">'+s.date+'</div><button onclick="deleteSession(\''+rid+'\','+realIdx+')" style="background:none;border:none;color:#5a5070;font-size:11px;cursor:pointer;padding:0;">🗑</button></div>'
+      +'</div>'
+      +(s.notes?'<div style="font-size:12px;color:#9b90b0;line-height:1.5;white-space:pre-wrap;">'+s.notes+'</div>':'<div style="font-size:11px;color:#3a3050;font-style:italic;">No notes for this session.</div>')
+      +'</div>';
+  });
+  return html+'</div>';
+}
+
+function toggleListenHist(id){listenHistOpen[id]=!listenHistOpen[id];renderListen();}
+function deleteSession(rid,idx){var rd=getResData();if(rd[rid]&&rd[rid].sessionLog){rd[rid].sessionLog.splice(idx,1);rd[rid].sessions=rd[rid].sessionLog.length;setResData(rd);renderListen();toast('Session deleted 🗑');}}
+
+function openSessionModal(id){
+  listenSessionId=id;
+  var r=RESOURCES.filter(function(x){return x.id===id;})[0];
+  var rd=getResData()[id]||{};
+  var num=(rd.sessionLog||[]).length+1;
+  document.getElementById('sessModalTitle').textContent=r.title;
+  document.getElementById('sessModalNum').textContent='Session '+num;
+  document.getElementById('sessNotes').value='';
+  document.getElementById('sessionModal').classList.add('open');
+}
+function closeSessionModal(){document.getElementById('sessionModal').classList.remove('open');}
+function saveSession(){
+  var notes=document.getElementById('sessNotes').value.trim();
+  var rd=getResData();
+  if(!rd[listenSessionId])rd[listenSessionId]={status:'current',sessionLog:[],rating:0,takeaway:''};
+  if(!rd[listenSessionId].sessionLog)rd[listenSessionId].sessionLog=[];
+  rd[listenSessionId].sessionLog.push({notes:notes,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})});
+  rd[listenSessionId].sessions=rd[listenSessionId].sessionLog.length;
+  setResData(rd);closeSessionModal();listenHistOpen[listenSessionId]=true;renderListen();toast('Session logged 🎧');
+}
+
+function openListenModal(id){
   listenEditId=id;
-  var r=RESOURCES.filter(function(x){ return x.id===id; })[0];
-  var rd=getResData()[id]||{status:'not_started',sessions:0,rating:0,notes:'',takeaway:''};
-  listenDraft={status:rd.status||'not_started',sessions:rd.sessions||0,rating:rd.rating||0,notes:rd.notes||'',takeaway:rd.takeaway||''};
+  var r=RESOURCES.filter(function(x){return x.id===id;})[0];
+  var rd=getResData()[id]||{status:'not_started',rating:0,takeaway:''};
+  listenDraft={status:rd.status||'not_started',rating:rd.rating||0,takeaway:rd.takeaway||''};
   document.getElementById('listenModalTitle').textContent=r.title;
   document.getElementById('listenModalType').textContent=r.type;
-  document.getElementById('sessCount').textContent=listenDraft.sessions;
-  document.getElementById('resNotes').value=listenDraft.notes;
   document.getElementById('resTakeaway').value=listenDraft.takeaway;
-  updateStatusBtns(); updateStars();
+  updateStatusBtns();updateStars();
   document.getElementById('listenModal').classList.add('open');
 }
-function closeListenModal(){ document.getElementById('listenModal').classList.remove('open'); }
-
-function setResStatus(s){
-  listenDraft.status=s; updateStatusBtns();
-}
-function updateStatusBtns(){
-  ['not_started','current','finished'].forEach(function(s){
-    var btn=document.getElementById('rs-'+s);
-    var active=listenDraft.status===s;
-    btn.style.background=active?'linear-gradient(135deg,#7c3aed,#be185d)':'#0a0015';
-    btn.style.border='1px solid '+(active?'transparent':'#2a1845');
-    btn.style.color=active?'#fff':'#9b90b0';
-  });
-}
-function adjSess(d){ listenDraft.sessions=Math.max(0,listenDraft.sessions+d); document.getElementById('sessCount').textContent=listenDraft.sessions; }
-function setRating(n){ listenDraft.rating=n; updateStars(); }
-function updateStars(){
-  var html='';
-  for(var n=1;n<=5;n++){
-    html+='<button onclick="setRating('+n+')" style="font-size:22px;background:none;border:none;cursor:pointer;color:'+(n<=listenDraft.rating?'#fbbf24':'#5a5070')+';">'+(n<=listenDraft.rating?'★':'☆')+'</button>';
-  }
-  document.getElementById('starRow').innerHTML=html;
-}
+function closeListenModal(){document.getElementById('listenModal').classList.remove('open');}
+function setResStatus(s){listenDraft.status=s;updateStatusBtns();}
+function updateStatusBtns(){['not_started','current','finished'].forEach(function(s){var btn=document.getElementById('rs-'+s),active=listenDraft.status===s;btn.style.background=active?'linear-gradient(135deg,#7c3aed,#be185d)':'#0a0015';btn.style.border='1px solid '+(active?'transparent':'#2a1845');btn.style.color=active?'#fff':'#9b90b0';});}
+function setRating(n){listenDraft.rating=n;updateStars();}
+function updateStars(){var html='';for(var n=1;n<=5;n++){html+='<button onclick="setRating('+n+')" style="font-size:22px;background:none;border:none;cursor:pointer;color:'+(n<=listenDraft.rating?'#fbbf24':'#5a5070')+';">'+(n<=listenDraft.rating?'★':'☆')+'</button>';}document.getElementById('starRow').innerHTML=html;}
 function saveListenEdit(){
-  listenDraft.notes=document.getElementById('resNotes').value;
   listenDraft.takeaway=document.getElementById('resTakeaway').value;
-  var rd=getResData(); rd[listenEditId]=listenDraft; setResData(rd);
-  closeListenModal(); renderListen(); toast('Saved ✦');
+  var rd=getResData();
+  if(!rd[listenEditId])rd[listenEditId]={sessionLog:[]};
+  rd[listenEditId].status=listenDraft.status;rd[listenEditId].rating=listenDraft.rating;rd[listenEditId].takeaway=listenDraft.takeaway;
+  setResData(rd);closeListenModal();renderListen();toast('Saved ✦');
 }
 
-// ══ INIT ═════════════════════════════════════════════════════
 renderHome();
 </script>
 </body>
