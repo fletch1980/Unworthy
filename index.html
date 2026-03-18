@@ -12,7 +12,6 @@ body{background:#07000f;font-family:system-ui,sans-serif;min-height:100vh;paddin
 .header p{font-size:12px;color:#9b90b0;margin-top:4px;font-style:italic;}
 .collapse-card{border-radius:16px;margin-bottom:14px;overflow:hidden;}
 .collapse-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 20px;cursor:pointer;border:none;background:transparent;text-align:left;}
-.collapse-trigger:active{opacity:.8;}
 .ct-left{display:flex;align-items:center;gap:12px;}
 .ct-icon{font-size:24px;}
 .ct-title{font-size:16px;font-weight:800;color:#fff;}
@@ -113,6 +112,8 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
       </div>
       <div id="progNote" style="font-size:11px;margin-top:6px;font-style:italic;"></div>
     </div>
+
+    <!-- SCRIPTURE -->
     <div class="scripture-box">
       <div style="font-size:11px;font-weight:700;color:#f9a8d4;margin-bottom:4px;" id="scriptureRef"></div>
       <div style="font-size:15px;color:#fff;font-style:italic;line-height:1.55;font-family:Georgia,serif;" id="scriptureText"></div>
@@ -122,27 +123,31 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
         <span style="font-size:12px;font-weight:700;color:#38bdf8;">Open in YouVersion →</span>
       </a>
     </div>
+
+    <!-- PROMPT -->
     <div class="prompt-box" onclick="window.location.href='https://fletch1980.github.io/Unworthy_today/'">
       <div style="font-size:10px;font-weight:700;color:#f9a8d4;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;">Today's Prompt · Day <span id="promptDay"></span></div>
       <div style="font-size:14px;color:#fff;font-style:italic;line-height:1.55;font-family:Georgia,serif;margin-bottom:6px;" id="promptText"></div>
       <div style="font-size:11px;color:#f9a8d4;font-weight:700;">Tap to write your response →</div>
     </div>
+
+    <!-- DAILY AFFIRMATION -->
     <div class="aff-box">
-      <div style="font-size:10px;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Power Affirmation</div>
-      <div style="font-size:12px;color:#e9d5ff;font-style:italic;line-height:1.7;font-family:Georgia,serif;">"I am God's beloved daughter. I am seen. I am known. I am held. I am never alone. My worth is inherent. My belonging is permanent. I am learning to stay."</div>
+      <div style="font-size:10px;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Daily Affirmation</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;" id="affPart"></div>
+      <div style="font-size:13px;color:#e9d5ff;font-style:italic;line-height:1.7;font-family:Georgia,serif;" id="affText"></div>
     </div>
   </div>
 </div>
 
+<!-- CALENDAR -->
 <div class="cal-box">
   <div class="cal-hdr">
     <button class="cal-nav" onclick="changeMonth(-1)">◀</button>
     <div style="color:#fff;font-size:15px;font-weight:800;" id="calTitle"></div>
     <button class="cal-nav" onclick="changeMonth(1)">▶</button>
   </div>
-  <div class="cal-days-hdr">
-    <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
-  </div>
+  <div class="cal-days-hdr"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
   <div class="cal-grid" id="calGrid"></div>
   <div class="legend">
     <div class="leg-item"><div class="leg-dot" style="background:#a855f7;box-shadow:0 0 4px #a855f7;"></div>Healing</div>
@@ -155,6 +160,7 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
 
 <button onclick="openLogModal(todayISO())" style="width:100%;padding:14px;background:linear-gradient(135deg,#7c3aed,#be185d);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:800;cursor:pointer;margin-bottom:14px;">✅ Log Today's Practice</button>
 
+<!-- CURRENTLY LISTENING -->
 <div class="listen-snap">
   <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px;">
     <div style="color:#06b6d4;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">🎧 Currently Listening</div>
@@ -163,6 +169,7 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
   <div style="padding:0 16px 14px;" id="listenSnap"></div>
 </div>
 
+<!-- YOUR APPS -->
 <div class="collapse-card apps-card">
   <button class="collapse-trigger" onclick="toggle('appsBody','appsArrow')">
     <div class="ct-left">
@@ -221,7 +228,6 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
 <nav class="bot-nav">
   <button class="nav-btn"><span class="nav-icon">✦</span>Home</button>
 </nav>
-
 <div class="toast" id="toast"></div>
 
 <script>
@@ -233,9 +239,57 @@ var ACT_LABELS={healing:'📖 Healing Hour',creative:'✍🏾 Creative Practice'
 var RES_IDS=['detached','bgh','tpwfo','ob','haabw','aal','tbkts','moth','hb','tfbg','rob','hunger','heavy','fightfind'];
 var RES_TITLES={detached:'Detached — Sabrina Bendory',bgh:'Black Girls Heal',tpwfo:'The Place We Find Ourselves',ob:'On Being',haabw:'Healing Anxious Attachment',aal:'All About Love',tbkts:'The Body Keeps the Score',moth:'The Moth',hb:'Hidden Brain',tfbg:'Therapy for Black Girls',rob:'The Robcast',hunger:'Hunger',heavy:'Heavy',fightfind:'The Fight to Find Yourself — Joel Tudman'};
 
-var SCRIPTURES=[{ref:'Psalm 139:1-6',text:'You have searched me and known me.',letter:'Letter 1'},{ref:'Psalm 139:13-16',text:'You knit me together in my mother\'s womb.',letter:'Letter 1'},{ref:'Jeremiah 1:4-5',text:'Before I formed you in the womb I knew you.',letter:'Letter 1'},{ref:'Isaiah 44:2',text:'The LORD who made you, who formed you from the womb.',letter:'Letter 1'},{ref:'Lamentations 5:7',text:'Our ancestors sinned and we bear their punishment.',letter:'Letter 2'},{ref:'Ruth 1:16-17',text:'Where you go I will go.',letter:'Letter 2'},{ref:'Psalm 27:10',text:'Though my father and mother forsake me, the LORD will receive me.',letter:'Letter 3'},{ref:'Psalm 68:5',text:'A father to the fatherless.',letter:'Letter 3'},{ref:'Isaiah 49:15',text:'Can a mother forget the baby at her breast?',letter:'Letter 4'},{ref:'Isaiah 49:16',text:'I have engraved you on the palms of my hands.',letter:'Letter 4'},{ref:'Zephaniah 3:17',text:'He will rejoice over you with singing.',letter:'Letter 4'},{ref:'Matthew 5:14-16',text:'You are the light of the world.',letter:'Letter 5'},{ref:'Proverbs 29:25',text:'Fear of man will prove to be a snare.',letter:'Letter 5'},{ref:'Deuteronomy 31:6',text:'He will never leave you nor forsake you.',letter:'Letter 6'},{ref:'Romans 8:38-39',text:'Nothing can separate us from the love of God.',letter:'Letter 6'},{ref:'Romans 8:1',text:'There is now no condemnation.',letter:'Letter 7'},{ref:'John 8:1-11',text:'Neither do I condemn you.',letter:'Letter 7'},{ref:'1 Cor 13:4-7',text:'Love is patient, love is kind.',letter:'Letter 8'},{ref:'Psalm 34:18',text:'The LORD is close to the brokenhearted.',letter:'Letter 9'},{ref:'Isaiah 43:4',text:'You are precious and honored in my sight.',letter:'Letter 10'},{ref:'1 John 4:18',text:'Perfect love drives out fear.',letter:'Letter 11'},{ref:'Isaiah 61:1-3',text:'Beauty for ashes.',letter:'Letter 12'}];
+var SCRIPTURES=[
+  {ref:'Psalm 139:1-6',text:'You have searched me and known me.',letter:'Letter 1'},
+  {ref:'Psalm 139:13-16',text:'You knit me together in my mother\'s womb.',letter:'Letter 1'},
+  {ref:'Jeremiah 1:4-5',text:'Before I formed you in the womb I knew you.',letter:'Letter 1'},
+  {ref:'Isaiah 44:2',text:'The LORD who made you, who formed you from the womb.',letter:'Letter 1'},
+  {ref:'Lamentations 5:7',text:'Our ancestors sinned and we bear their punishment.',letter:'Letter 2'},
+  {ref:'Ruth 1:16-17',text:'Where you go I will go.',letter:'Letter 2'},
+  {ref:'Psalm 27:10',text:'Though my father and mother forsake me, the LORD will receive me.',letter:'Letter 3'},
+  {ref:'Psalm 68:5',text:'A father to the fatherless.',letter:'Letter 3'},
+  {ref:'Isaiah 49:15',text:'Can a mother forget the baby at her breast?',letter:'Letter 4'},
+  {ref:'Isaiah 49:16',text:'I have engraved you on the palms of my hands.',letter:'Letter 4'},
+  {ref:'Zephaniah 3:17',text:'He will rejoice over you with singing.',letter:'Letter 4'},
+  {ref:'Matthew 5:14-16',text:'You are the light of the world.',letter:'Letter 5'},
+  {ref:'Proverbs 29:25',text:'Fear of man will prove to be a snare.',letter:'Letter 5'},
+  {ref:'Deuteronomy 31:6',text:'He will never leave you nor forsake you.',letter:'Letter 6'},
+  {ref:'Romans 8:38-39',text:'Nothing can separate us from the love of God.',letter:'Letter 6'},
+  {ref:'Romans 8:1',text:'There is now no condemnation.',letter:'Letter 7'},
+  {ref:'John 8:1-11',text:'Neither do I condemn you.',letter:'Letter 7'},
+  {ref:'1 Cor 13:4-7',text:'Love is patient, love is kind.',letter:'Letter 8'},
+  {ref:'Psalm 34:18',text:'The LORD is close to the brokenhearted.',letter:'Letter 9'},
+  {ref:'Isaiah 43:4',text:'You are precious and honored in my sight.',letter:'Letter 10'},
+  {ref:'1 John 4:18',text:'Perfect love drives out fear.',letter:'Letter 11'},
+  {ref:'Isaiah 61:1-3',text:'Beauty for ashes.',letter:'Letter 12'}
+];
+
 var PROMPTS=['When did I first learn that love had conditions?','What did I do to earn love as a child? Did it work?','Who taught me I was too much — or not enough?','What is the earliest memory I have of feeling unworthy?','What did I absorb from the women who raised me about love?','What did my father\'s absence or presence teach me about whether I was worth staying for?','When did I first make myself small to keep someone close?','What secret have I carried the longest without naming it?','When did I first run before someone could leave me?','What has this wound cost me that I\'ve never fully named out loud?','What did I believe about myself before I had language for it?','What am I afraid I\'ll find if I look all the way to the bottom of this?','When did I first decide that my fullness was dangerous?','What does the little girl who started this wound need me to say to her today?','What patterns do I keep repeating that trace back to the wound?','How have I abandoned my own work the way I was abandoned?','When did I confuse neediness for love? Intensity for intimacy?','What did I give away that I wish I had kept?','When did I stay long past the time I should have left?','When did I leave before something real could form?','How have I dimmed my gifts to make others comfortable?','Who manipulated me, and what did I ignore in order to stay?','When did I stop trusting my own perception? What happened?','What is the full cost — emotionally, creatively, spiritually — of this wound?','What have I never said out loud about the damage?','What would I say to the darkest version of myself if she were sitting across from me?','How did seeking validation online feed the wound instead of heal it?','When did performing strength cost me something I couldn\'t get back?','What does it feel like in my body when I\'m about to repeat the pattern?','What finally broke the pattern — even temporarily?','When did I first hear God in the quiet instead of the chaos?','What did I finish that I almost abandoned? How did it feel to finish?','When did I choose to stay with myself instead of running?','What does the wound feel like now compared to when I started?','When did I first trust my own instincts again?','What does it feel like to let someone actually see me?','What have I forgiven — or started to forgive?','Where do I still feel the wound? Is it smaller? Louder?','What have I learned that I cannot unlearn?','What does it mean that I am still here?','When did I choose the work over the wound for the first time?','What does staying with myself look like on an ordinary Tuesday?','What is God saying to me in the quiet this week?','What does it feel like to receive without immediately deflecting?','What does finishing this project prove about who I am now?','How has my relationship with my creativity changed this year?','What does it mean to love without losing myself?','What has genuine faith — not performance — looked like this year?','Who am I becoming that the wounded version of me couldn\'t imagine?','What am I teaching by surviving this?','What do I want to say to the wound at the end?','What would I want the girl in Letter 1 to know now?','What are the final words I want to leave on this year?','How do I live differently now than I did on March 15?','What does reclamation feel like in my body?','If I could write a letter to who I was a year ago, what would I say?','What does it mean that I did not abandon myself this time?'];
+
 var CREATIVE=[{day:'Monday',name:'Morning Pages'},{day:'Tuesday',name:'Poetry / Lyric Study'},{day:'Wednesday',name:'Fiction / Novel'},{day:'Thursday',name:'Photography'},{day:'Friday',name:'Literary Reading'},{day:'Saturday',name:'Free Making'},{day:'Sunday',name:'Rest + Reflection'}];
+
+var AFFIRMATIONS={
+  1:['I was wanted before I had a name. God formed me on purpose, for a purpose.','My worth was never something I had to earn. It was given before I drew my first breath.','I am not the wound. I am the one who survived it.','The love I never received from others was never a reflection of my value.','I did not cause the abandonment. I was a child. Children deserve to be stayed for.','I am allowed to grieve what I did not receive without performing strength.','My longing for love is not weakness — it is evidence that I was made for connection.','I am seen by God even when I am invisible to the people I love.','I do not have to make myself small to be loved. The right love makes room.','I am not too much. I have simply been in rooms too small for who I am.','My sensitivity is not a flaw. It is the same gift that makes me a writer.','I am allowed to need things. Needing does not make me needy.'],
+  2:['I made choices from a wounded place. That is not the same as being broken beyond repair.','I do not have to carry shame for the love I chased. I was looking for what I deserved.','The damage is real. And I am still here. Both things are true.','I am not what was done to me, and I am not what I did in response to it.','I am allowed to name the cost without drowning in it.','Choosing unavailable people was a pattern, not a destiny.','I stayed too long in some rooms. I am learning to trust the door.','Performing strength kept me safe once. I no longer need that armor.','I forgive myself for disappearing inside relationships that couldn\'t hold my fullness.','I am not defined by the darkest place I have been. I am defined by the fact that I left.','I survived what I thought would undo me. That is not small.','I gave my gifts to people who could not hold them. That ends now.'],
+  3:['I am choosing myself today — quietly, completely, without announcement.','Staying with my own work is an act of love toward the girl who always ran.','I can hear God in the quiet now. I no longer need chaos to feel alive.','I trust my instincts. They were never wrong — I just didn\'t listen.','I am allowed to forgive without excusing. Forgiveness is for my freedom.','I am no longer chasing love. I am becoming someone who can receive it.','My calling did not leave while I was wounded. It waited.','I choose the work over the wound today.','Finishing what I start is how I love myself back to life.','I am learning that staying is not the same as settling.','I am proud of who I am becoming. I am allowed to say that.','I am no longer easy to manipulate. I know the difference now.'],
+  4:['I am free. Not because the wound never happened — but because it no longer runs me.','I am God\'s beloved daughter. I am seen. I am known. I am held. I am never alone.','My worth is inherent. My belonging is permanent. I am learning to stay.','I finished what I started. That is who I am now.','I teach what I survived. My story is not a liability — it is the curriculum.','I love without losing myself. I give without disappearing.','I am no longer performing faith. I am living it.','I let my photographs tell the truth. I let my writing tell the truth. I am done hiding.','I have made peace with the women in my family. Their wounds were not my sentence.','I believe I am worth loving. On ordinary Tuesdays. In Arkansas. Right now.','I did not abandon myself this time. That changes everything.','And for every broken piece of me — I am grateful. It all led here.']
+};
+
+var PART_LABELS={1:'Part One · The Wound',2:'Part Two · The Damage',3:'Part Three · The Turning',4:'Part Four · The Reclamation'};
+var PART_COLORS={1:'#ec4899',2:'#c084fc',3:'#34d399',4:'#fbbf24'};
+
+function getDailyAffirmation(dn){
+  var part=dn<=84?1:dn<=182?2:dn<=252?3:4;
+  var arr=AFFIRMATIONS[part];
+  return {text:arr[(dn-1)%arr.length],label:PART_LABELS[part],color:PART_COLORS[part]};
+}
+
+function buildYVLink(ref){
+  var BOOK_ABBR={Genesis:'gen',Exodus:'exo',Ruth:'rut',Psalms:'psa',Psalm:'psa',Proverbs:'pro',Isaiah:'isa',Jeremiah:'jer',Lamentations:'lam',Ezekiel:'ezk',Daniel:'dan',Zephaniah:'zep',Malachi:'mal',Matthew:'mat',Mark:'mrk',Luke:'luk',John:'jhn',Romans:'rom','1 Cor':'1co','1 Corinthians':'1co','2 Corinthians':'2co',Galatians:'gal',Ephesians:'eph',Philippians:'php',Colossians:'col','1 Timothy':'1ti','2 Timothy':'2ti',Hebrews:'heb',James:'jas','1 John':'1jn',Revelation:'rev',Deuteronomy:'deu','1 Kings':'1ki',Hosea:'hos',Joel:'jol',Habakkuk:'hab',Micah:'mic',Nehemiah:'neh'};
+  var abbr='psa',chapter=1,verse=1;
+  for(var bk in BOOK_ABBR){if(ref.indexOf(bk)===0){abbr=BOOK_ABBR[bk];var rest=ref.slice(bk.length).trim();var cv=rest.split(':');chapter=parseInt(cv[0])||1;verse=parseInt((cv[1]||'1').split('-')[0])||1;break;}}
+  return 'https://bible.com/bible/111/'+abbr+'.'+chapter+'.'+verse+'.NIV';
+}
 
 function gd(k,fb){try{var v=localStorage.getItem(k);return v?JSON.parse(v):fb;}catch(e){return fb;}}
 function sd(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
@@ -249,8 +303,8 @@ function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.c
 function dismissTherapist(){sd('ual_t_done',true);document.getElementById('therapistBanner').style.display='none';}
 
 function renderHome(){
-  var dn=getDayNum(), earned=getEarned(), elapsed=dn;
-  var ep=Math.round(earned/TOTAL*100), elp=Math.round(elapsed/TOTAL*100);
+  var dn=getDayNum(),earned=getEarned(),elapsed=dn;
+  var ep=Math.round(earned/TOTAL*100),elp=Math.round(elapsed/TOTAL*100);
   var sc=SCRIPTURES[(dn-1)%SCRIPTURES.length];
   var cr=CREATIVE.filter(function(r){return r.day===DAYS[new Date().getDay()];})[0]||CREATIVE[0];
   var now=new Date();
@@ -275,11 +329,15 @@ function renderHome(){
   document.getElementById('scriptureRef').textContent=sc.ref;
   document.getElementById('scriptureText').textContent='"'+sc.text+'"';
   document.getElementById('scriptureLetter').textContent=sc.letter;
-
-  // Build YouVersion deep link from scripture ref
   document.getElementById('bibleBtn').href=buildYVLink(sc.ref);
+
   document.getElementById('promptDay').textContent=dn;
   document.getElementById('promptText').textContent='"'+PROMPTS[(dn-1)%PROMPTS.length]+'"';
+
+  var aff=getDailyAffirmation(dn);
+  document.getElementById('affPart').style.color=aff.color;
+  document.getElementById('affPart').textContent=aff.label;
+  document.getElementById('affText').textContent='"'+aff.text+'"';
 
   var resData=gd('ual_resources',{}),cur=null;
   for(var i=0;i<RES_IDS.length;i++){if(resData[RES_IDS[i]]&&resData[RES_IDS[i]].status==='current'){cur={id:RES_IDS[i],data:resData[RES_IDS[i]]};break;}}
@@ -294,11 +352,11 @@ function renderHome(){
   }
 }
 
-var calYear=new Date().getFullYear(), calMonth=new Date().getMonth();
-var logModalISO='', logCheckedSet=new Set(), dayModalISO='';
+var calYear=new Date().getFullYear(),calMonth=new Date().getMonth();
+var logModalISO='',logCheckedSet=new Set(),dayModalISO='';
 
 function renderCal(){
-  var logs=gd('ual_logs',{}), entries=gd('ual_entries',{}), tISO=todayISO();
+  var logs=gd('ual_logs',{}),entries=gd('ual_entries',{}),tISO=todayISO();
   document.getElementById('calTitle').textContent=MONTHS_ARR[calMonth]+' '+calYear;
   var firstDay=new Date(calYear,calMonth,1).getDay();
   var dim=new Date(calYear,calMonth+1,0).getDate();
@@ -306,19 +364,17 @@ function renderCal(){
   for(var i=0;i<firstDay;i++) html+='<div class="cal-day empty"></div>';
   for(var d=1;d<=dim;d++){
     var iso=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
-    var isFuture=iso>tISO, isToday=iso===tISO;
-    var acts=logs[iso]||[], worked=acts.length>0;
+    var isFuture=iso>tISO,isToday=iso===tISO;
+    var acts=logs[iso]||[],worked=acts.length>0;
     var hasEntry=!!(entries[iso]&&(entries[iso].thoughts||entries[iso].promptResponse));
     var dots='';
-    acts.forEach(function(a){ if(DOT_COLORS[a]) dots+='<div class="dot" style="background:'+DOT_COLORS[a]+';box-shadow:0 0 4px '+DOT_COLORS[a]+';"></div>'; });
-    if(hasEntry&&acts.indexOf('journal')===-1) dots+='<div class="dot" style="background:#06b6d4;box-shadow:0 0 4px #06b6d4;"></div>';
+    acts.forEach(function(a){if(DOT_COLORS[a])dots+='<div class="dot" style="background:'+DOT_COLORS[a]+';box-shadow:0 0 4px '+DOT_COLORS[a]+';"></div>';});
+    if(hasEntry&&acts.indexOf('journal')===-1)dots+='<div class="dot" style="background:#06b6d4;box-shadow:0 0 4px #06b6d4;"></div>';
     var color=worked||isToday?'#fff':'#5a5070';
     var bg=worked?'rgba(124,58,237,.25)':'#0a0015';
     var border=isToday?'1.5px solid #a855f7':worked?'1px solid rgba(124,58,237,.4)':'1px solid transparent';
     var shadow=worked?'0 0 10px rgba(124,58,237,.35)':'none';
-    html+='<div class="cal-day'+(isFuture?' future':'')+'" onclick="'+(isFuture?'':'openCalDay(\''+iso+'\')')+'" style="color:'+color+';background:'+bg+';border:'+border+';box-shadow:'+shadow+';">'
-      +d+((worked||hasEntry)?'<div class="dot-row">'+dots+'</div>':'')
-      +'</div>';
+    html+='<div class="cal-day'+(isFuture?' future':'')+'" onclick="'+(isFuture?'':'openCalDay(\''+iso+'\')')+'" style="color:'+color+';background:'+bg+';border:'+border+';box-shadow:'+shadow+';">'+d+((worked||hasEntry)?'<div class="dot-row">'+dots+'</div>':'')+'</div>';
   }
   document.getElementById('calGrid').innerHTML=html;
 }
@@ -330,16 +386,19 @@ function changeMonth(dir){
   renderCal();
 }
 
-function openCalDay(iso){
-  openDayModal(iso);
+function getScriptureForISO(iso){
+  var dn=Math.max(1,Math.min(Math.floor((new Date(iso+'T12:00:00')-START)/86400000)+1,TOTAL));
+  return SCRIPTURES[(dn-1)%SCRIPTURES.length];
 }
+
+function openCalDay(iso){openDayModal(iso);}
 
 function openLogModal(iso){
   logModalISO=iso;
   var existing=gd('ual_logs',{})[iso]||[];
   logCheckedSet=new Set(existing);
-      ['healing','creative','journal','letter','bible'].forEach(function(k){
-    document.getElementById('chk-'+k).classList.toggle('checked', logCheckedSet.has(k));
+  ['healing','creative','journal','letter','bible'].forEach(function(k){
+    document.getElementById('chk-'+k).classList.toggle('checked',logCheckedSet.has(k));
   });
   document.getElementById('logModalTitle').textContent=existing.length?'✏️ Edit Log':'✅ Log Practice';
   document.getElementById('logModalSub').textContent=iso<todayISO()?isoFriendly(iso):'';
@@ -347,31 +406,20 @@ function openLogModal(iso){
   document.getElementById('logModal').classList.add('open');
 }
 function closeLogModal(){document.getElementById('logModal').classList.remove('open');}
-function toggleAct(k){
-  logCheckedSet.has(k)?logCheckedSet.delete(k):logCheckedSet.add(k);
-  document.getElementById('chk-'+k).classList.toggle('checked', logCheckedSet.has(k));
-}
+function toggleAct(k){logCheckedSet.has(k)?logCheckedSet.delete(k):logCheckedSet.add(k);document.getElementById('chk-'+k).classList.toggle('checked',logCheckedSet.has(k));}
 function saveLog(){
   var logs=gd('ual_logs',{});
-  if(logCheckedSet.size) logs[logModalISO]=Array.from(logCheckedSet); else delete logs[logModalISO];
-  sd('ual_logs',logs); closeLogModal(); renderCal(); renderHome(); toast('Practice logged! ✦');
+  if(logCheckedSet.size)logs[logModalISO]=Array.from(logCheckedSet);else delete logs[logModalISO];
+  sd('ual_logs',logs);closeLogModal();renderCal();renderHome();toast('Practice logged! ✦');
 }
 function deleteLog(){
-  var logs=gd('ual_logs',{}); delete logs[logModalISO]; sd('ual_logs',logs);
-  closeLogModal(); renderCal(); renderHome(); toast('Log deleted 🗑');
+  var logs=gd('ual_logs',{});delete logs[logModalISO];sd('ual_logs',logs);
+  closeLogModal();renderCal();renderHome();toast('Log deleted 🗑');
 }
-function getScriptureForISO(iso){
-  var dn=Math.max(1,Math.min(Math.floor((new Date(iso+'T12:00:00')-START)/86400000)+1,TOTAL));
-  return SCRIPTURES[(dn-1)%SCRIPTURES.length];
-}
-function buildYVLink(ref){
-  var BOOK_ABBR={Genesis:'gen',Exodus:'exo',Ruth:'rut',Psalms:'psa',Psalm:'psa',Proverbs:'pro',Isaiah:'isa',Jeremiah:'jer',Lamentations:'lam',Ezekiel:'ezk',Daniel:'dan',Zephaniah:'zep',Malachi:'mal',Matthew:'mat',Mark:'mrk',Luke:'luk',John:'jhn',Romans:'rom','1 Cor':'1co','1 Corinthians':'1co','2 Corinthians':'2co',Galatians:'gal',Ephesians:'eph',Philippians:'php',Colossians:'col','1 Timothy':'1ti','2 Timothy':'2ti',Hebrews:'heb',James:'jas','1 John':'1jn',Revelation:'rev',Deuteronomy:'deu','1 Kings':'1ki',Hosea:'hos',Joel:'jol',Habakkuk:'hab',Micah:'mic',Nehemiah:'neh',Zephaniah:'zep'};
-  var abbr='psa',chapter=1,verse=1;
-  for(var bk in BOOK_ABBR){if(ref.indexOf(bk)===0){abbr=BOOK_ABBR[bk];var rest=ref.slice(bk.length).trim();var cv=rest.split(':');chapter=parseInt(cv[0])||1;verse=parseInt((cv[1]||'1').split('-')[0])||1;break;}}
-  return 'https://bible.com/bible/111/'+abbr+'.'+chapter+'.'+verse+'.NIV';
-}
+
 function openDayModal(iso){
-  dayModalISO=iso; var acts=gd('ual_logs',{})[iso]||[];
+  dayModalISO=iso;
+  var acts=gd('ual_logs',{})[iso]||[];
   document.getElementById('dayModalTitle').textContent='📅 '+isoFriendly(iso);
   var sc=getScriptureForISO(iso);
   var html='<div style="background:rgba(255,255,255,.06);border-left:3px solid #ec4899;border-radius:8px;padding:10px 12px;margin-bottom:12px;">'
@@ -393,10 +441,10 @@ function openDayModal(iso){
 function closeDayModal(){document.getElementById('dayModal').classList.remove('open');}
 function editDay(){closeDayModal();openLogModal(dayModalISO);}
 function removeCalAct(act){
-  var logs=gd('ual_logs',{}), acts=(logs[dayModalISO]||[]).filter(function(a){return a!==act;});
-  if(acts.length) logs[dayModalISO]=acts; else delete logs[dayModalISO];
-  sd('ual_logs',logs); renderCal();
-  if(acts.length) openDayModal(dayModalISO); else closeDayModal();
+  var logs=gd('ual_logs',{}),acts=(logs[dayModalISO]||[]).filter(function(a){return a!==act;});
+  if(acts.length)logs[dayModalISO]=acts;else delete logs[dayModalISO];
+  sd('ual_logs',logs);renderCal();
+  if(acts.length)openDayModal(dayModalISO);else closeDayModal();
 }
 
 document.getElementById('logModal').addEventListener('click',function(e){if(e.target===this)closeLogModal();});
