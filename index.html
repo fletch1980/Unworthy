@@ -113,7 +113,6 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
       <div id="progNote" style="font-size:11px;margin-top:6px;font-style:italic;"></div>
     </div>
 
-    <!-- SCRIPTURE -->
     <div class="scripture-box">
       <div style="font-size:11px;font-weight:700;color:#f9a8d4;margin-bottom:4px;" id="scriptureRef"></div>
       <div style="font-size:15px;color:#fff;font-style:italic;line-height:1.55;font-family:Georgia,serif;" id="scriptureText"></div>
@@ -124,14 +123,12 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
       </a>
     </div>
 
-    <!-- PROMPT -->
     <div class="prompt-box" onclick="window.location.href='https://fletch1980.github.io/Unworthy_today/'">
       <div style="font-size:10px;font-weight:700;color:#f9a8d4;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;">Today's Prompt · Day <span id="promptDay"></span></div>
       <div style="font-size:14px;color:#fff;font-style:italic;line-height:1.55;font-family:Georgia,serif;margin-bottom:6px;" id="promptText"></div>
       <div style="font-size:11px;color:#f9a8d4;font-weight:700;">Tap to write your response →</div>
     </div>
 
-    <!-- DAILY AFFIRMATION -->
     <div class="aff-box">
       <div style="font-size:10px;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Daily Affirmation</div>
       <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;" id="affPart"></div>
@@ -140,7 +137,6 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
   </div>
 </div>
 
-<!-- CALENDAR -->
 <div class="cal-box">
   <div class="cal-hdr">
     <button class="cal-nav" onclick="changeMonth(-1)">◀</button>
@@ -160,7 +156,6 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
 
 <button onclick="openLogModal(todayISO())" style="width:100%;padding:14px;background:linear-gradient(135deg,#7c3aed,#be185d);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:800;cursor:pointer;margin-bottom:14px;">✅ Log Today's Practice</button>
 
-<!-- CURRENTLY LISTENING -->
 <div class="listen-snap">
   <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px;">
     <div style="color:#06b6d4;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">🎧 Currently Listening</div>
@@ -169,7 +164,6 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
   <div style="padding:0 16px 14px;" id="listenSnap"></div>
 </div>
 
-<!-- YOUR APPS -->
 <div class="collapse-card apps-card">
   <button class="collapse-trigger" onclick="toggle('appsBody','appsArrow')">
     <div class="ct-left">
@@ -193,7 +187,6 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
   </div>
 </div>
 
-<!-- LOG MODAL -->
 <div class="modal-bg" id="logModal">
   <div class="modal">
     <div style="color:#fff;font-size:17px;font-weight:800;margin-bottom:4px;" id="logModalTitle">✅ Log Practice</div>
@@ -214,7 +207,6 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
   </div>
 </div>
 
-<!-- DAY MODAL -->
 <div class="modal-bg" id="dayModal">
   <div class="modal">
     <div style="color:#fff;font-size:17px;font-weight:800;margin-bottom:16px;" id="dayModalTitle">📅 Day Log</div>
@@ -232,7 +224,7 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
 <div class="toast" id="toast"></div>
 
 <script>
-var START=new Date('2026-03-15'), TOTAL=291;
+var START=new Date('2026-04-07'), TOTAL=291;
 var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var MONTHS_ARR=['January','February','March','April','May','June','July','August','September','October','November','December'];
 var DOT_COLORS={healing:'#a855f7',creative:'#ec4899',journal:'#06b6d4',letter:'#f59e0b',bible:'#38bdf8'};
@@ -265,7 +257,7 @@ var SCRIPTURES=[
   {ref:'Isaiah 61:1-3',text:'Beauty for ashes.',letter:'Letter 12'}
 ];
 
-var PROMPTS=['When did I first learn that love had conditions?','What did I do to earn love as a child? Did it work?','Who taught me I was too much — or not enough?','What is the earliest memory I have of feeling unworthy?','What did I absorb from the women who raised me about love?','What did my father\'s absence or presence teach me about whether I was worth staying for?','When did I first make myself small to keep someone close?','What secret have I carried the longest without naming it?','When did I first run before someone could leave me?','What has this wound cost me that I\'ve never fully named out loud?','What did I believe about myself before I had language for it?','What am I afraid I\'ll find if I look all the way to the bottom of this?','When did I first decide that my fullness was dangerous?','What does the little girl who started this wound need me to say to her today?','What patterns do I keep repeating that trace back to the wound?','How have I abandoned my own work the way I was abandoned?','When did I confuse neediness for love? Intensity for intimacy?','What did I give away that I wish I had kept?','When did I stay long past the time I should have left?','When did I leave before something real could form?','How have I dimmed my gifts to make others comfortable?','Who manipulated me, and what did I ignore in order to stay?','When did I stop trusting my own perception? What happened?','What is the full cost — emotionally, creatively, spiritually — of this wound?','What have I never said out loud about the damage?','What would I say to the darkest version of myself if she were sitting across from me?','How did seeking validation online feed the wound instead of heal it?','When did performing strength cost me something I couldn\'t get back?','What does it feel like in my body when I\'m about to repeat the pattern?','What finally broke the pattern — even temporarily?','When did I first hear God in the quiet instead of the chaos?','What did I finish that I almost abandoned? How did it feel to finish?','When did I choose to stay with myself instead of running?','What does the wound feel like now compared to when I started?','When did I first trust my own instincts again?','What does it feel like to let someone actually see me?','What have I forgiven — or started to forgive?','Where do I still feel the wound? Is it smaller? Louder?','What have I learned that I cannot unlearn?','What does it mean that I am still here?','When did I choose the work over the wound for the first time?','What does staying with myself look like on an ordinary Tuesday?','What is God saying to me in the quiet this week?','What does it feel like to receive without immediately deflecting?','What does finishing this project prove about who I am now?','How has my relationship with my creativity changed this year?','What does it mean to love without losing myself?','What has genuine faith — not performance — looked like this year?','Who am I becoming that the wounded version of me couldn\'t imagine?','What am I teaching by surviving this?','What do I want to say to the wound at the end?','What would I want the girl in Letter 1 to know now?','What are the final words I want to leave on this year?','How do I live differently now than I did on March 15?','What does reclamation feel like in my body?','If I could write a letter to who I was a year ago, what would I say?','What does it mean that I did not abandon myself this time?'];
+var PROMPTS=['When did I first learn that love had conditions?','What did I do to earn love as a child? Did it work?','Who taught me I was too much — or not enough?','What is the earliest memory I have of feeling unworthy?','What did I absorb from the women who raised me about love?','What did my father\'s absence or presence teach me about whether I was worth staying for?','When did I first make myself small to keep someone close?','What secret have I carried the longest without naming it?','When did I first run before someone could leave me?','What has this wound cost me that I\'ve never fully named out loud?','What did I believe about myself before I had language for it?','What am I afraid I\'ll find if I look all the way to the bottom of this?','When did I first decide that my fullness was dangerous?','What does the little girl who started this wound need me to say to her today?','What patterns do I keep repeating that trace back to the wound?','How have I abandoned my own work the way I was abandoned?','When did I confuse neediness for love? Intensity for intimacy?','What did I give away that I wish I had kept?','When did I stay long past the time I should have left?','When did I leave before something real could form?','How have I dimmed my gifts to make others comfortable?','Who manipulated me, and what did I ignore in order to stay?','When did I stop trusting my own perception? What happened?','What is the full cost — emotionally, creatively, spiritually — of this wound?','What have I never said out loud about the damage?','What would I say to the darkest version of myself if she were sitting across from me?','How did seeking validation online feed the wound instead of heal it?','When did performing strength cost me something I couldn\'t get back?','What does it feel like in my body when I\'m about to repeat the pattern?','What finally broke the pattern — even temporarily?','When did I first hear God in the quiet instead of the chaos?','What did I finish that I almost abandoned? How did it feel to finish?','When did I choose to stay with myself instead of running?','What does the wound feel like now compared to when I started?','When did I first trust my own instincts again?','What does it feel like to let someone actually see me?','What have I forgiven — or started to forgive?','Where do I still feel the wound? Is it smaller? Louder?','What have I learned that I cannot unlearn?','What does it mean that I am still here?','When did I choose the work over the wound for the first time?','What does staying with myself look like on an ordinary Tuesday?','What is God saying to me in the quiet this week?','What does it feel like to receive without immediately deflecting?','What does finishing this project prove about who I am now?','How has my relationship with my creativity changed this year?','What does it mean to love without losing myself?','What has genuine faith — not performance — looked like this year?','Who am I becoming that the wounded version of me couldn\'t imagine?','What am I teaching by surviving this?','What do I want to say to the wound at the end?','What would I want the girl in Letter 1 to know now?','What are the final words I want to leave on this year?','How do I live differently now than I did on April 7?','What does reclamation feel like in my body?','If I could write a letter to who I was a year ago, what would I say?','What does it mean that I did not abandon myself this time?'];
 
 var CREATIVE=[{day:'Monday',name:'Morning Pages'},{day:'Tuesday',name:'Poetry / Lyric Study'},{day:'Wednesday',name:'Fiction / Novel'},{day:'Thursday',name:'Photography'},{day:'Friday',name:'Literary Reading'},{day:'Saturday',name:'Free Making'},{day:'Sunday',name:'Rest + Reflection'}];
 
