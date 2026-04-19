@@ -72,6 +72,10 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
 .nav-icon{font-size:19px;}
 .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#7c3aed;color:#fff;padding:10px 22px;border-radius:20px;font-size:14px;font-weight:700;z-index:999;pointer-events:none;opacity:0;transition:opacity .3s;}
 .toast.show{opacity:1;}
+.backup-card{background:linear-gradient(135deg,#001a2e,#002a1a);border:1px solid rgba(6,182,212,.25);border-radius:14px;padding:14px 16px;margin-bottom:14px;}
+.backup-row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.backup-btn{flex:1;min-width:120px;padding:10px 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;border:none;transition:opacity .2s;}
+.backup-btn:active{opacity:.8;}
 </style>
 </head>
 <body>
@@ -85,6 +89,23 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
   <div style="font-size:24px;">🧠</div>
   <div style="flex:1;"><div style="font-size:13px;color:#fbbf24;font-weight:700;margin-bottom:2px;">Find a New Therapist</div><div style="font-size:11px;color:#9b90b0;line-height:1.4;">This work deserves professional support alongside it.</div></div>
   <button onclick="dismissTherapist()" style="background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.4);border-radius:8px;color:#fbbf24;font-size:11px;padding:5px 10px;cursor:pointer;white-space:nowrap;font-weight:700;">Done ✓</button>
+</div>
+
+<!-- BACKUP CARD -->
+<div class="backup-card">
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <div>
+      <div style="font-size:13px;color:#06b6d4;font-weight:700;">🔒 Your Data</div>
+      <div style="font-size:11px;color:#5a5070;margin-top:2px;" id="backupStatus">Checking backup status…</div>
+    </div>
+    <div id="driveAuthBtn"></div>
+  </div>
+  <div class="backup-row">
+    <button class="backup-btn" onclick="manualDriveSave()" style="background:rgba(6,182,212,.15);color:#06b6d4;border:1px solid rgba(6,182,212,.3);">☁️ Save to Drive</button>
+    <button class="backup-btn" onclick="downloadBackup()" style="background:rgba(124,58,237,.15);color:#c084fc;border:1px solid rgba(124,58,237,.3);">⬇️ Download File</button>
+    <button class="backup-btn" onclick="document.getElementById('restoreInput').click()" style="background:rgba(236,72,153,.1);color:#f9a8d4;border:1px solid rgba(236,72,153,.3);">⬆️ Restore</button>
+  </div>
+  <input type="file" id="restoreInput" accept=".json" style="display:none;" onchange="restoreFromFile(event)"/>
 </div>
 
 <div class="collapse-card hero-card">
@@ -224,7 +245,13 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
 <div class="toast" id="toast"></div>
 
 <script>
+// ── CONFIG ──────────────────────────────────────────────
 var START=new Date('2026-04-19'), TOTAL=291;
+var GAPI_CLIENT_ID='YOUR_GOOGLE_CLIENT_ID'; // Replace with your OAuth client ID
+var BACKUP_FILENAME='ual_backup.json';
+var UAL_KEYS=['ual_logs','ual_entries','ual_resources','ual_letters','ual_t_done'];
+
+// ── CORE DATA ───────────────────────────────────────────
 var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var MONTHS_ARR=['January','February','March','April','May','June','July','August','September','October','November','December'];
 var DOT_COLORS={healing:'#a855f7',creative:'#ec4899',journal:'#06b6d4',letter:'#f59e0b',bible:'#38bdf8'};
@@ -232,30 +259,89 @@ var ACT_LABELS={healing:'📖 Healing Hour',creative:'✍🏾 Creative Practice'
 var RES_IDS=['detached','bgh','tpwfo','ob','haabw','aal','tbkts','moth','hb','tfbg','rob','hunger','heavy','fightfind'];
 var RES_TITLES={detached:'Detached — Sabrina Bendory',bgh:'Black Girls Heal',tpwfo:'The Place We Find Ourselves',ob:'On Being',haabw:'Healing Anxious Attachment',aal:'All About Love',tbkts:'The Body Keeps the Score',moth:'The Moth',hb:'Hidden Brain',tfbg:'Therapy for Black Girls',rob:'The Robcast',hunger:'Hunger',heavy:'Heavy',fightfind:'The Fight to Find Yourself — Joel Tudman'};
 
-var SCRIPTURES=[
-  {ref:'Psalm 139:1-6',text:'You have searched me and known me.',letter:'Letter 1'},
-  {ref:'Psalm 139:13-16',text:'You knit me together in my mother\'s womb.',letter:'Letter 1'},
-  {ref:'Jeremiah 1:4-5',text:'Before I formed you in the womb I knew you.',letter:'Letter 1'},
-  {ref:'Isaiah 44:2',text:'The LORD who made you, who formed you from the womb.',letter:'Letter 1'},
-  {ref:'Lamentations 5:7',text:'Our ancestors sinned and we bear their punishment.',letter:'Letter 2'},
-  {ref:'Ruth 1:16-17',text:'Where you go I will go.',letter:'Letter 2'},
-  {ref:'Psalm 27:10',text:'Though my father and mother forsake me, the LORD will receive me.',letter:'Letter 3'},
-  {ref:'Psalm 68:5',text:'A father to the fatherless.',letter:'Letter 3'},
-  {ref:'Isaiah 49:15',text:'Can a mother forget the baby at her breast?',letter:'Letter 4'},
-  {ref:'Isaiah 49:16',text:'I have engraved you on the palms of my hands.',letter:'Letter 4'},
-  {ref:'Zephaniah 3:17',text:'He will rejoice over you with singing.',letter:'Letter 4'},
-  {ref:'Matthew 5:14-16',text:'You are the light of the world.',letter:'Letter 5'},
-  {ref:'Proverbs 29:25',text:'Fear of man will prove to be a snare.',letter:'Letter 5'},
-  {ref:'Deuteronomy 31:6',text:'He will never leave you nor forsake you.',letter:'Letter 6'},
-  {ref:'Romans 8:38-39',text:'Nothing can separate us from the love of God.',letter:'Letter 6'},
-  {ref:'Romans 8:1',text:'There is now no condemnation.',letter:'Letter 7'},
-  {ref:'John 8:1-11',text:'Neither do I condemn you.',letter:'Letter 7'},
-  {ref:'1 Cor 13:4-7',text:'Love is patient, love is kind.',letter:'Letter 8'},
-  {ref:'Psalm 34:18',text:'The LORD is close to the brokenhearted.',letter:'Letter 9'},
-  {ref:'Isaiah 43:4',text:'You are precious and honored in my sight.',letter:'Letter 10'},
-  {ref:'1 John 4:18',text:'Perfect love drives out fear.',letter:'Letter 11'},
-  {ref:'Isaiah 61:1-3',text:'Beauty for ashes.',letter:'Letter 12'}
-];
+// ── SCRIPTURES BY PART ──────────────────────────────────
+// Each part only shows its own scriptures, cycling through that part's days.
+var SCRIPTURES_BY_PART={
+  1:[
+    {ref:'Psalm 139:1-6',    text:'You have searched me and known me.',                    letter:'Letter 1'},
+    {ref:'Psalm 139:13-16',  text:'You knit me together in my mother\'s womb.',            letter:'Letter 1'},
+    {ref:'Jeremiah 1:4-5',   text:'Before I formed you in the womb I knew you.',           letter:'Letter 1'},
+    {ref:'Isaiah 44:2',      text:'The LORD who made you, who formed you from the womb.',  letter:'Letter 1'},
+    {ref:'Lamentations 5:7', text:'Our ancestors sinned and we bear their punishment.',    letter:'Letter 2'},
+    {ref:'Ruth 1:16-17',     text:'Where you go I will go.',                               letter:'Letter 2'},
+    {ref:'Psalm 27:10',      text:'Though my father and mother forsake me, the LORD will receive me.', letter:'Letter 3'},
+    {ref:'Psalm 68:5',       text:'A father to the fatherless.',                           letter:'Letter 3'},
+    {ref:'Isaiah 49:15',     text:'Can a mother forget the baby at her breast?',           letter:'Letter 4'},
+    {ref:'Isaiah 49:16',     text:'I have engraved you on the palms of my hands.',         letter:'Letter 4'},
+    {ref:'Zephaniah 3:17',   text:'He will rejoice over you with singing.',                letter:'Letter 4'},
+    {ref:'Matthew 5:14-16',  text:'You are the light of the world.',                       letter:'Letter 5'},
+    {ref:'Proverbs 29:25',   text:'Fear of man will prove to be a snare.',                 letter:'Letter 5'},
+    {ref:'Deuteronomy 31:6', text:'He will never leave you nor forsake you.',              letter:'Letter 6'},
+    {ref:'Genesis 50:20',    text:'You intended to harm me, but God intended it for good.',letter:'Wound Letter 1'}
+  ],
+  2:[
+    {ref:'Romans 8:38-39',        text:'Nothing can separate us from the love of God.',       letter:'Letter 6'},
+    {ref:'Romans 8:1',            text:'There is now no condemnation.',                        letter:'Letter 7'},
+    {ref:'John 8:1-11',           text:'Neither do I condemn you.',                            letter:'Letter 7'},
+    {ref:'1 Cor 13:4-7',          text:'Love is patient, love is kind.',                       letter:'Letter 8'},
+    {ref:'Hosea 2:14',            text:'I will allure her and speak tenderly to her.',         letter:'Letter 13'},
+    {ref:'Philippians 1:6',       text:'He who began a good work in you will carry it on.',   letter:'Letter 14'},
+    {ref:'Matthew 6:1-4',         text:'Do not practice your righteousness in front of others.',letter:'Letter 15'},
+    {ref:'Ezekiel 36:26',         text:'I will give you a new heart.',                         letter:'Letter 16'},
+    {ref:'Psalm 4:2',             text:'How long will you love delusions and seek false gods?',letter:'Letter 17'},
+    {ref:'2 Corinthians 12:9',    text:'My grace is sufficient for you.',                      letter:'Letter 18'},
+    {ref:'1 Corinthians 6:19-20', text:'You are not your own; you were bought at a price.',   letter:'Letter 19'},
+    {ref:'Isaiah 43:18-19',       text:'Forget the former things; see, I am doing a new thing.',letter:'Letter 20'},
+    {ref:'Proverbs 28:1',         text:'The righteous are as bold as a lion.',                 letter:'Letter 21'},
+    {ref:'1 John 4:1',            text:'Test the spirits to see whether they are from God.',   letter:'Letter 23'},
+    {ref:'Proverbs 3:5-6',        text:'Trust in the LORD with all your heart.',               letter:'Letter 24'},
+    {ref:'Psalm 139:23-24',       text:'Search me, God, and know my heart.',                   letter:'Wound Letter 2'}
+  ],
+  3:[
+    {ref:'Psalm 34:18',     text:'The LORD is close to the brokenhearted.',              letter:'Letter 9'},
+    {ref:'Matthew 11:28-30',text:'Come to me, all you who are weary and burdened.',      letter:'Letter 26'},
+    {ref:'1 Kings 19:11-12',text:'After the fire came a gentle whisper.',                letter:'Letter 27'},
+    {ref:'Habakkuk 2:2',    text:'Write down the revelation and make it plain.',         letter:'Letter 28'},
+    {ref:'Psalm 46:10',     text:'Be still, and know that I am God.',                   letter:'Letter 29'},
+    {ref:'John 8:32',       text:'The truth will set you free.',                         letter:'Letter 30'},
+    {ref:'Psalm 62:5-6',    text:'Yes, my soul, find rest in God.',                     letter:'Letter 31'},
+    {ref:'1 John 4:19',     text:'We love because he first loved us.',                   letter:'Letter 32'},
+    {ref:'Joel 2:25',       text:'I will repay you for the years the locusts have eaten.',letter:'Letter 33'},
+    {ref:'Colossians 3:13', text:'Forgive as the Lord forgave you.',                     letter:'Letter 34'},
+    {ref:'Luke 15:20',      text:'While he was still a long way off, his father saw him.',letter:'Letter 35'},
+    {ref:'Isaiah 30:21',    text:'Your ears will hear a voice behind you saying, this is the way.',letter:'Letter 36'},
+    {ref:'Colossians 3:23', text:'Whatever you do, work at it with all your heart.',     letter:'Letter 37'},
+    {ref:'Galatians 6:4',   text:'Each one should test their own actions.',              letter:'Letter 38'},
+    {ref:'Romans 6:6-7',    text:'Our old self was crucified with him.',                 letter:'Wound Letter 3'}
+  ],
+  4:[
+    {ref:'Isaiah 43:4',       text:'You are precious and honored in my sight.',          letter:'Letter 10'},
+    {ref:'1 John 4:18',       text:'Perfect love drives out fear.',                      letter:'Letter 11'},
+    {ref:'Isaiah 61:1-3',     text:'Beauty for ashes.',                                  letter:'Letter 12'},
+    {ref:'John 1:16',         text:'Out of his fullness we have all received grace.',    letter:'Letter 39'},
+    {ref:'2 Timothy 4:7',     text:'I have fought the good fight, I have finished the race.',letter:'Letter 40'},
+    {ref:'Exodus 35:31-32',   text:'He has filled them with skill to do all kinds of work.',letter:'Letter 41'},
+    {ref:'Mark 12:31',        text:'Love your neighbor as yourself.',                    letter:'Letter 42'},
+    {ref:'Micah 6:8',         text:'Act justly, love mercy, walk humbly with your God.', letter:'Letter 43'},
+    {ref:'Matthew 10:16',     text:'Be as shrewd as snakes and as innocent as doves.',  letter:'Letter 44'},
+    {ref:'Ruth 1:16',         text:'Where you go I will go.',                            letter:'Letter 45'},
+    {ref:'2 Corinthians 1:4', text:'He comforts us so we can comfort others.',          letter:'Letter 46'},
+    {ref:'Psalm 19:1',        text:'The heavens declare the glory of God.',              letter:'Letter 47'},
+    {ref:'Psalm 36:9',        text:'In your light we see light.',                        letter:'Letter 48'},
+    {ref:'Proverbs 31:25',    text:'She is clothed with strength and dignity.',          letter:'Letter 49'},
+    {ref:'Ephesians 3:17-19', text:'To grasp how wide and long and high and deep is the love of Christ.',letter:'Letter 50'},
+    {ref:'James 1:4',         text:'Let perseverance finish its work.',                  letter:'Letter 51'},
+    {ref:'Galatians 5:1',     text:'It is for freedom that Christ has set us free.',    letter:'Wound Letter 4'},
+    {ref:'Psalm 139:13-16',   text:'You knit me together in my mother\'s womb.',        letter:'Letter 52 — The Goodbye'}
+  ]
+};
+
+function getPartForDay(dn){return dn<=84?1:dn<=182?2:dn<=252?3:4;}
+function getScriptureForDay(dn){
+  var part=getPartForDay(dn);
+  var arr=SCRIPTURES_BY_PART[part];
+  return arr[(dn-1)%arr.length];
+}
 
 var PROMPTS=['When did I first learn that love had conditions?','What did I do to earn love as a child? Did it work?','Who taught me I was too much — or not enough?','What is the earliest memory I have of feeling unworthy?','What did I absorb from the women who raised me about love?','What did my father\'s absence or presence teach me about whether I was worth staying for?','When did I first make myself small to keep someone close?','What secret have I carried the longest without naming it?','When did I first run before someone could leave me?','What has this wound cost me that I\'ve never fully named out loud?','What did I believe about myself before I had language for it?','What am I afraid I\'ll find if I look all the way to the bottom of this?','When did I first decide that my fullness was dangerous?','What does the little girl who started this wound need me to say to her today?','What patterns do I keep repeating that trace back to the wound?','How have I abandoned my own work the way I was abandoned?','When did I confuse neediness for love? Intensity for intimacy?','What did I give away that I wish I had kept?','When did I stay long past the time I should have left?','When did I leave before something real could form?','How have I dimmed my gifts to make others comfortable?','Who manipulated me, and what did I ignore in order to stay?','When did I stop trusting my own perception? What happened?','What is the full cost — emotionally, creatively, spiritually — of this wound?','What have I never said out loud about the damage?','What would I say to the darkest version of myself if she were sitting across from me?','How did seeking validation online feed the wound instead of heal it?','When did performing strength cost me something I couldn\'t get back?','What does it feel like in my body when I\'m about to repeat the pattern?','What finally broke the pattern — even temporarily?','When did I first hear God in the quiet instead of the chaos?','What did I finish that I almost abandoned? How did it feel to finish?','When did I choose to stay with myself instead of running?','What does the wound feel like now compared to when I started?','When did I first trust my own instincts again?','What does it feel like to let someone actually see me?','What have I forgiven — or started to forgive?','Where do I still feel the wound? Is it smaller? Louder?','What have I learned that I cannot unlearn?','What does it mean that I am still here?','When did I choose the work over the wound for the first time?','What does staying with myself look like on an ordinary Tuesday?','What is God saying to me in the quiet this week?','What does it feel like to receive without immediately deflecting?','What does finishing this project prove about who I am now?','How has my relationship with my creativity changed this year?','What does it mean to love without losing myself?','What has genuine faith — not performance — looked like this year?','Who am I becoming that the wounded version of me couldn\'t imagine?','What am I teaching by surviving this?','What do I want to say to the wound at the end?','What would I want the girl in Letter 1 to know now?','What are the final words I want to leave on this year?','How do I live differently now than I did on April 19?','What does reclamation feel like in my body?','If I could write a letter to who I was a year ago, what would I say?','What does it mean that I did not abandon myself this time?'];
 
@@ -271,8 +357,156 @@ var AFFIRMATIONS={
 var PART_LABELS={1:'Part One · The Wound',2:'Part Two · The Damage',3:'Part Three · The Turning',4:'Part Four · The Reclamation'};
 var PART_COLORS={1:'#ec4899',2:'#c084fc',3:'#34d399',4:'#fbbf24'};
 
+// ── STORAGE HELPERS ─────────────────────────────────────
+function gd(k,fb){try{var v=localStorage.getItem(k);return v?JSON.parse(v):fb;}catch(e){return fb;}}
+function sd(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+
+function getAllData(){
+  var data={version:1,exported:new Date().toISOString()};
+  UAL_KEYS.forEach(function(k){data[k]=gd(k,null);});
+  return data;
+}
+
+function restoreAllData(data){
+  UAL_KEYS.forEach(function(k){if(data[k]!==undefined&&data[k]!==null)sd(k,data[k]);});
+}
+
+// ── DOWNLOAD BACKUP ─────────────────────────────────────
+function downloadBackup(){
+  var data=getAllData();
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url;
+  a.download='ual_backup_'+todayISO()+'.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('Backup downloaded ⬇️');
+}
+
+// ── RESTORE FROM FILE ────────────────────────────────────
+function restoreFromFile(e){
+  var file=e.target.files[0];
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(ev){
+    try{
+      var data=JSON.parse(ev.target.result);
+      restoreAllData(data);
+      toast('Data restored! ✦');
+      renderHome();renderCal();
+    }catch(err){toast('Could not read file.');}
+  };
+  reader.readAsText(file);
+  e.target.value='';
+}
+
+// ── GOOGLE DRIVE ─────────────────────────────────────────
+var driveReady=false, driveFileId=null;
+
+function initGoogleDrive(){
+  var script=document.createElement('script');
+  script.src='https://accounts.google.com/gsi/client';
+  script.onload=function(){setupGoogleAuth();};
+  document.head.appendChild(script);
+}
+
+function setupGoogleAuth(){
+  var savedToken=gd('ual_drive_token',null);
+  if(savedToken&&savedToken.expiry>Date.now()){
+    driveReady=true;
+    updateBackupStatus('☁️ Drive connected');
+    loadDriveFileId();
+  } else {
+    renderAuthButton();
+  }
+}
+
+function renderAuthButton(){
+  var btn=document.getElementById('driveAuthBtn');
+  btn.innerHTML='<button onclick="authDrive()" style="background:rgba(6,182,212,.15);border:1px solid rgba(6,182,212,.3);color:#06b6d4;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;">Connect Drive</button>';
+}
+
+function authDrive(){
+  if(typeof google==='undefined'){toast('Loading Google auth…');return;}
+  var client=google.accounts.oauth2.initTokenClient({
+    client_id:GAPI_CLIENT_ID,
+    scope:'https://www.googleapis.com/auth/drive.file',
+    callback:function(resp){
+      if(resp.error){toast('Drive auth failed.');return;}
+      sd('ual_drive_token',{token:resp.access_token,expiry:Date.now()+(resp.expires_in*1000)});
+      driveReady=true;
+      document.getElementById('driveAuthBtn').innerHTML='';
+      updateBackupStatus('☁️ Drive connected');
+      loadDriveFileId();
+      autoSaveToDrive();
+    }
+  });
+  client.requestAccessToken();
+}
+
+function getDriveToken(){
+  var t=gd('ual_drive_token',null);
+  return(t&&t.expiry>Date.now())?t.token:null;
+}
+
+function updateBackupStatus(msg){
+  document.getElementById('backupStatus').textContent=msg;
+}
+
+function loadDriveFileId(){
+  var token=getDriveToken();
+  if(!token)return;
+  fetch('https://www.googleapis.com/drive/v3/files?q=name%3D%22'+BACKUP_FILENAME+'%22+and+trashed%3Dfalse&spaces=drive&fields=files(id,modifiedTime)',{
+    headers:{Authorization:'Bearer '+token}
+  }).then(function(r){return r.json();}).then(function(data){
+    if(data.files&&data.files.length){
+      driveFileId=data.files[0].id;
+      var d=new Date(data.files[0].modifiedTime);
+      updateBackupStatus('☁️ Last saved '+d.toLocaleDateString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}));
+    } else {
+      updateBackupStatus('☁️ Connected · No backup yet');
+    }
+  }).catch(function(){updateBackupStatus('☁️ Connected');});
+}
+
+function autoSaveToDrive(){
+  if(!driveReady)return;
+  var token=getDriveToken();
+  if(!token){driveReady=false;renderAuthButton();return;}
+  var content=JSON.stringify(getAllData(),null,2);
+  var blob=new Blob([content],{type:'application/json'});
+  var meta=JSON.stringify({name:BACKUP_FILENAME,mimeType:'application/json'});
+  var form=new FormData();
+  form.append('metadata',new Blob([meta],{type:'application/json'}));
+  form.append('file',blob);
+  var url=driveFileId
+    ?'https://www.googleapis.com/upload/drive/v3/files/'+driveFileId+'?uploadType=multipart'
+    :'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart';
+  var method=driveFileId?'PATCH':'POST';
+  fetch(url,{method:method,headers:{Authorization:'Bearer '+token},body:form})
+    .then(function(r){return r.json();})
+    .then(function(data){
+      if(data.id){driveFileId=data.id;updateBackupStatus('☁️ Saved '+new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}));}
+    }).catch(function(){});
+}
+
+function manualDriveSave(){
+  if(!driveReady){toast('Connect Drive first');return;}
+  autoSaveToDrive();
+  toast('Saving to Drive… ☁️');
+}
+
+// ── DATE / DAY HELPERS ───────────────────────────────────
+function todayISO(){var n=new Date(),y=n.getFullYear(),mo=n.getMonth()+1,d=n.getDate();return y+'-'+(mo<10?'0'+mo:mo)+'-'+(d<10?'0'+d:d);}
+function isoFriendly(iso){return new Date(iso+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});}
+function getDayNum(){return Math.max(1,Math.min(Math.floor((new Date()-START)/86400000)+1,TOTAL));}
+function getStreak(){var logs=gd('ual_logs',{}),s=0;for(var i=0;i<365;i++){var n=new Date();n.setDate(n.getDate()-i);var y=n.getFullYear(),mo=n.getMonth()+1,d=n.getDate();var iso=y+'-'+(mo<10?'0'+mo:mo)+'-'+(d<10?'0'+d:d);if(logs[iso]&&logs[iso].length)s++;else if(i>0)break;}return s;}
+function getEarned(){var logs=gd('ual_logs',{});return Object.keys(logs).filter(function(d){return logs[d]&&logs[d].length;}).length;}
+
+// ── UI HELPERS ───────────────────────────────────────────
 function getDailyAffirmation(dn){
-  var part=dn<=84?1:dn<=182?2:dn<=252?3:4;
+  var part=getPartForDay(dn);
   var arr=AFFIRMATIONS[part];
   return {text:arr[(dn-1)%arr.length],label:PART_LABELS[part],color:PART_COLORS[part]};
 }
@@ -284,21 +518,15 @@ function buildYVLink(ref){
   return 'https://bible.com/bible/111/'+abbr+'.'+chapter+'.'+verse+'.NIV';
 }
 
-function gd(k,fb){try{var v=localStorage.getItem(k);return v?JSON.parse(v):fb;}catch(e){return fb;}}
-function sd(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
-function todayISO(){var n=new Date(),y=n.getFullYear(),mo=n.getMonth()+1,d=n.getDate();return y+'-'+(mo<10?'0'+mo:mo)+'-'+(d<10?'0'+d:d);}
-function isoFriendly(iso){return new Date(iso+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});}
-function getDayNum(){return Math.max(1,Math.min(Math.floor((new Date()-START)/86400000)+1,TOTAL));}
-function getStreak(){var logs=gd('ual_logs',{}),s=0;for(var i=0;i<365;i++){var n=new Date();n.setDate(n.getDate()-i);var y=n.getFullYear(),mo=n.getMonth()+1,d=n.getDate();var iso=y+'-'+(mo<10?'0'+mo:mo)+'-'+(d<10?'0'+d:d);if(logs[iso]&&logs[iso].length)s++;else if(i>0)break;}return s;}
-function getEarned(){var logs=gd('ual_logs',{});return Object.keys(logs).filter(function(d){return logs[d]&&logs[d].length;}).length;}
 function toggle(bodyId,arrowId){var b=document.getElementById(bodyId),a=document.getElementById(arrowId),open=b.classList.contains('open');b.classList.toggle('open',!open);a.textContent=open?'▼ Show':'▲ Hide';}
 function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
 function dismissTherapist(){sd('ual_t_done',true);document.getElementById('therapistBanner').style.display='none';}
 
+// ── RENDER HOME ──────────────────────────────────────────
 function renderHome(){
   var dn=getDayNum(),earned=getEarned(),elapsed=dn;
   var ep=Math.round(earned/TOTAL*100),elp=Math.round(elapsed/TOTAL*100);
-  var sc=SCRIPTURES[(dn-1)%SCRIPTURES.length];
+  var sc=getScriptureForDay(dn);
   var cr=CREATIVE.filter(function(r){return r.day===DAYS[new Date().getDay()];})[0]||CREATIVE[0];
   var now=new Date();
 
@@ -345,6 +573,7 @@ function renderHome(){
   }
 }
 
+// ── CALENDAR ─────────────────────────────────────────────
 var calYear=new Date().getFullYear(),calMonth=new Date().getMonth();
 var logModalISO='',logCheckedSet=new Set(),dayModalISO='';
 
@@ -381,7 +610,7 @@ function changeMonth(dir){
 
 function getScriptureForISO(iso){
   var dn=Math.max(1,Math.min(Math.floor((new Date(iso+'T12:00:00')-START)/86400000)+1,TOTAL));
-  return SCRIPTURES[(dn-1)%SCRIPTURES.length];
+  return getScriptureForDay(dn);
 }
 
 function openCalDay(iso){openDayModal(iso);}
@@ -400,14 +629,21 @@ function openLogModal(iso){
 }
 function closeLogModal(){document.getElementById('logModal').classList.remove('open');}
 function toggleAct(k){logCheckedSet.has(k)?logCheckedSet.delete(k):logCheckedSet.add(k);document.getElementById('chk-'+k).classList.toggle('checked',logCheckedSet.has(k));}
+
 function saveLog(){
   var logs=gd('ual_logs',{});
   if(logCheckedSet.size)logs[logModalISO]=Array.from(logCheckedSet);else delete logs[logModalISO];
-  sd('ual_logs',logs);closeLogModal();renderCal();renderHome();toast('Practice logged! ✦');
+  sd('ual_logs',logs);
+  closeLogModal();renderCal();renderHome();
+  toast('Practice logged! ✦');
+  autoSaveToDrive();
 }
+
 function deleteLog(){
   var logs=gd('ual_logs',{});delete logs[logModalISO];sd('ual_logs',logs);
-  closeLogModal();renderCal();renderHome();toast('Log deleted 🗑');
+  closeLogModal();renderCal();renderHome();
+  toast('Log deleted 🗑');
+  autoSaveToDrive();
 }
 
 function openDayModal(iso){
@@ -437,6 +673,7 @@ function removeCalAct(act){
   var logs=gd('ual_logs',{}),acts=(logs[dayModalISO]||[]).filter(function(a){return a!==act;});
   if(acts.length)logs[dayModalISO]=acts;else delete logs[dayModalISO];
   sd('ual_logs',logs);renderCal();
+  autoSaveToDrive();
   if(acts.length)openDayModal(dayModalISO);else closeDayModal();
 }
 
@@ -445,6 +682,7 @@ document.getElementById('dayModal').addEventListener('click',function(e){if(e.ta
 
 renderHome();
 renderCal();
+initGoogleDrive();
 </script>
 </body>
 </html>
