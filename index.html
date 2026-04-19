@@ -247,7 +247,7 @@ a.app-card:active{transform:scale(.97);opacity:.9;}
 <script>
 // ── CONFIG ──────────────────────────────────────────────
 var START=new Date('2026-04-19'), TOTAL=291;
-var GAPI_CLIENT_ID='YOUR_GOOGLE_CLIENT_ID'; // Replace with your OAuth client ID
+var FB_CONFIG={apiKey:"AIzaSyBuPt2HzGw3fr-QhzajnPOjV6ywLPYJAIs",authDomain:"unworthy-7623b.firebaseapp.com",projectId:"unworthy-7623b",storageBucket:"unworthy-7623b.firebasestorage.app",messagingSenderId:"798336669142",appId:"1:798336669142:web:21b167fc08761c93068077"};
 var BACKUP_FILENAME='ual_backup.json';
 var UAL_KEYS=['ual_logs','ual_entries','ual_resources','ual_letters','ual_t_done'];
 
@@ -401,95 +401,47 @@ function restoreFromFile(e){
   e.target.value='';
 }
 
-// ── GOOGLE DRIVE ─────────────────────────────────────────
-var driveReady=false, driveFileId=null;
-
-function initGoogleDrive(){
-  var script=document.createElement('script');
-  script.src='https://accounts.google.com/gsi/client';
-  script.onload=function(){setupGoogleAuth();};
-  document.head.appendChild(script);
+// ── FIREBASE ─────────────────────────────────────────────
+var db=null;
+function initFirebase(){
+  var s1=document.createElement('script');
+  s1.src='https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js';
+  s1.onload=function(){
+    var s2=document.createElement('script');
+    s2.src='https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js';
+    s2.onload=function(){
+      firebase.initializeApp(FB_CONFIG);
+      db=firebase.firestore();
+      updateBackupStatus('☁️ Firebase connected');
+      loadFromFirebase();
+    };
+    document.head.appendChild(s2);
+  };
+  document.head.appendChild(s1);
 }
 
-function setupGoogleAuth(){
-  var savedToken=gd('ual_drive_token',null);
-  if(savedToken&&savedToken.expiry>Date.now()){
-    driveReady=true;
-    updateBackupStatus('☁️ Drive connected');
-    loadDriveFileId();
-  } else {
-    renderAuthButton();
-  }
+function saveToFirebase(){
+  if(!db){updateBackupStatus('⚠️ Not connected');return;}
+  var data=getAllData();
+  db.collection('ual').doc('backup').set(data)
+    .then(function(){updateBackupStatus('☁️ Saved '+new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}));})
+    .catch(function(e){updateBackupStatus('⚠️ Save failed');console.error(e);});
 }
 
-function renderAuthButton(){
-  var btn=document.getElementById('driveAuthBtn');
-  btn.innerHTML='<button onclick="authDrive()" style="background:rgba(6,182,212,.15);border:1px solid rgba(6,182,212,.3);color:#06b6d4;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;">Connect Drive</button>';
-}
-
-function authDrive(){
-  if(typeof google==='undefined'){toast('Loading Google auth…');return;}
-  var client=google.accounts.oauth2.initTokenClient({
-    client_id:GAPI_CLIENT_ID,
-    scope:'https://www.googleapis.com/auth/drive.file',
-    callback:function(resp){
-      if(resp.error){toast('Drive auth failed.');return;}
-      sd('ual_drive_token',{token:resp.access_token,expiry:Date.now()+(resp.expires_in*1000)});
-      driveReady=true;
-      document.getElementById('driveAuthBtn').innerHTML='';
-      updateBackupStatus('☁️ Drive connected');
-      loadDriveFileId();
-      autoSaveToDrive();
-    }
-  });
-  client.requestAccessToken();
-}
-
-function getDriveToken(){
-  var t=gd('ual_drive_token',null);
-  return(t&&t.expiry>Date.now())?t.token:null;
-}
-
-function updateBackupStatus(msg){
-  document.getElementById('backupStatus').textContent=msg;
-}
-
-function loadDriveFileId(){
-  var token=getDriveToken();
-  if(!token)return;
-  fetch('https://www.googleapis.com/drive/v3/files?q=name%3D%22'+BACKUP_FILENAME+'%22+and+trashed%3Dfalse&spaces=drive&fields=files(id,modifiedTime)',{
-    headers:{Authorization:'Bearer '+token}
-  }).then(function(r){return r.json();}).then(function(data){
-    if(data.files&&data.files.length){
-      driveFileId=data.files[0].id;
-      var d=new Date(data.files[0].modifiedTime);
-      updateBackupStatus('☁️ Last saved '+d.toLocaleDateString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}));
+function loadFromFirebase(){
+  if(!db)return;
+  db.collection('ual').doc('backup').get().then(function(doc){
+    if(doc.exists){
+      var data=doc.data();
+      var last=data.exported?new Date(data.exported).toLocaleDateString('en-US',{month:'short',day:'numeric'}):'unknown date';
+      updateBackupStatus('☁️ Last saved '+last);
     } else {
       updateBackupStatus('☁️ Connected · No backup yet');
     }
   }).catch(function(){updateBackupStatus('☁️ Connected');});
 }
 
-function autoSaveToDrive(){
-  if(!driveReady)return;
-  var token=getDriveToken();
-  if(!token){driveReady=false;renderAuthButton();return;}
-  var content=JSON.stringify(getAllData(),null,2);
-  var blob=new Blob([content],{type:'application/json'});
-  var meta=JSON.stringify({name:BACKUP_FILENAME,mimeType:'application/json'});
-  var form=new FormData();
-  form.append('metadata',new Blob([meta],{type:'application/json'}));
-  form.append('file',blob);
-  var url=driveFileId
-    ?'https://www.googleapis.com/upload/drive/v3/files/'+driveFileId+'?uploadType=multipart'
-    :'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart';
-  var method=driveFileId?'PATCH':'POST';
-  fetch(url,{method:method,headers:{Authorization:'Bearer '+token},body:form})
-    .then(function(r){return r.json();})
-    .then(function(data){
-      if(data.id){driveFileId=data.id;updateBackupStatus('☁️ Saved '+new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}));}
-    }).catch(function(){});
-}
+function manualDriveSave(){saveToFirebase();toast('Saving to Firebase… ☁️');}
 
 function manualDriveSave(){
   if(!driveReady){toast('Connect Drive first');return;}
@@ -680,9 +632,10 @@ function removeCalAct(act){
 document.getElementById('logModal').addEventListener('click',function(e){if(e.target===this)closeLogModal();});
 document.getElementById('dayModal').addEventListener('click',function(e){if(e.target===this)closeDayModal();});
 
+autoSaveToDrive=saveToFirebase;
 renderHome();
 renderCal();
-initGoogleDrive();
+initFirebase();
 </script>
 </body>
 </html>
