@@ -374,6 +374,33 @@ function restoreAllData(data){
 
 // ── DOWNLOAD BACKUP ─────────────────────────────────────
 function downloadBackup(){
+  if(db){
+    updateBackupStatus('Fetching from Firebase…');
+    db.collection('ual').doc('backup').get().then(function(doc){
+      if(doc.exists){
+        var data=doc.data();
+        var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+        var url=URL.createObjectURL(blob);
+        var a=document.createElement('a');
+        a.href=url;
+        a.download='ual_backup_'+todayISO()+'.json';
+        a.click();
+        URL.revokeObjectURL(url);
+        toast('Backup downloaded from Firebase ⬇️');
+        updateBackupStatus('☁️ Downloaded from Firebase');
+      } else {
+        // Fall back to localStorage if no Firebase backup exists yet
+        downloadFromLocal();
+      }
+    }).catch(function(){
+      downloadFromLocal();
+    });
+  } else {
+    downloadFromLocal();
+  }
+}
+
+function downloadFromLocal(){
   var data=getAllData();
   var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   var url=URL.createObjectURL(blob);
@@ -436,8 +463,14 @@ function loadFromFirebase(){
       var data=doc.data();
       var last=data.exported?new Date(data.exported).toLocaleDateString('en-US',{month:'short',day:'numeric'}):'unknown date';
       updateBackupStatus('☁️ Last saved '+last);
+      // Merge Firebase data into localStorage — Firebase wins on conflict
+      restoreAllData(data);
+      renderHome();
+      renderCal();
     } else {
       updateBackupStatus('☁️ Connected · No backup yet');
+      // No Firebase data yet — push whatever is in localStorage now
+      saveToFirebase();
     }
   }).catch(function(){updateBackupStatus('☁️ Connected');});
 }
@@ -648,6 +681,10 @@ autoSaveToDrive=saveToFirebase;
 renderHome();
 renderCal();
 initFirebase();
+// Auto-save to Firebase on load to catch anything written in other apps
+window.addEventListener('load',function(){
+  setTimeout(function(){if(db)saveToFirebase();},3000);
+});
 </script>
 </body>
 </html>
